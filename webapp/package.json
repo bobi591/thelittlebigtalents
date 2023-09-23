@@ -1,0 +1,57 @@
+{
+  "name": "webapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.39",
+    "@types/react": "^18.2.19",
+    "@types/react-dom": "^18.2.7",
+    "axios": "^1.4.0",
+    "bootstrap": "^5.3.1",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2",
+    "react-scripts": "5.0.1",
+    "realm": "^11.10.2",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4",
+    "webpack": "^4.46.0"
+  },
+  "scripts": {
+    "start": "react-scripts start lint",
+    "build": "react-scripts build lint",
+    "test": "react-scripts test lint",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/base-64": "^1.0.0",
+    "eslint-plugin-react": "^7.33.2"
+  }
+}

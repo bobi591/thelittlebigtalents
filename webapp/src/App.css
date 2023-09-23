@@ -1,0 +1,95 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.leftAndRightView .linearView {
+  display: flex;
+  max-width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1%;
+}
+
+.leftAndRightView .picture {
+  width: 50%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+.leftAndRightView .text {
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 2vh;
+  font-size: 1.5vh;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  text-align: left;
+}
+
+.leftAndRightView .picture img {
+  width: 100%; 
+  height: auto;
+}
+
+.leftAndRightView .coloredBackgroundLine {
+  background-color: rgb(228, 228, 228);
+  margin-top: 2.5%;
+  padding-top: 2vh;
+}
+
+.leftAndRightView .backgroundLine {
+  margin-top: 2.5%;
+}
+
+.textWithGalleryBottomView {
+  display: block;
+  max-width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1%;
+  margin-top: 2.5%;
+  line-height: 2vh;
+  font-size: 1.5vh;
+}
+
+.textWithGalleryBottomView .gallery {
+  height: 55vh;
+  width: 100%; 
+  left: 0%; 
+  position: relative;
+}
+
+.textWithGalleryBottomView .gallery img {
+  object-fit: cover; 
+  height: 55vh;
+  width: 100vw;
+}
+
+.pageTitle {
+  padding-top: 2vh;
+}
+

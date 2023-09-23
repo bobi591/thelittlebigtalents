@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.carousel-overlay {
+  backdrop-filter: blur(1px);
+  background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.0)) !important;
+  color:#fff;
+  position:absolute;
+  z-index:12;
+  top: 0%;
+  right: 0%;
+  width:30%;
+  height:100%;
+}
+
+.carousel-card {
+  background: rgba(0,0,0,0) !important;
+  top: 30%;
+  width:80%;
+  height:10%;
+  left: 10%;
+  position: absolute;
+  background: black;
+}
+
+.footerSocialIcon {
+  opacity: 100%;
+}
+
+.footerSocialIcon:hover {
+  opacity: 60%;
+}
+
+.uppercasetext {
+  text-transform: uppercase;
+}
+
+.boldtext {
+  font-weight: bold;
+}
+
+.dropdown-menu.show[aria-labelledby~="drop-left"]{
+  margin-left: 100%;
+  margin-top: -25%;
+}
+
+a#basic-nav-dropdown#drop-left.dropdown-toggle::after {
+  content: none !important;
+}
+
+.navlink-highlited:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.dropdown-menu.show .dropdown-toggle.nav-link::after {
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+}
