@@ -10,7 +10,10 @@ export default class Backend {
     private static getAxiosConfig(endpoint: string) : AxiosRequestConfig {
         return {
             url: process.env.REACT_APP_BACKEND_API_ENDPOINT! + endpoint,
-            method: 'GET'
+            method: 'GET',
+            params: {
+                code: process.env.REACT_APP_BACKEND_API_KEY
+            }
         }
     }
 
@@ -38,6 +41,7 @@ export default class Backend {
         try {
             const axiosConfig = this.getAxiosConfig("getInformationPageData");
             axiosConfig.params = {
+                ...axiosConfig.params,
                 pageName: pageName
             }
             const response = await axios(axiosConfig);
@@ -52,6 +56,7 @@ export default class Backend {
         try {
             const axiosConfig = this.getAxiosConfig("getInformationPageGalleryBottomData");
             axiosConfig.params = {
+                ...axiosConfig.params,
                 pageName: pageName
             }
             const response = await axios(axiosConfig);
