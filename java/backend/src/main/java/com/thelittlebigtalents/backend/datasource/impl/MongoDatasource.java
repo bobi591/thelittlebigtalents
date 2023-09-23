@@ -9,11 +9,9 @@ import com.mongodb.client.MongoCollection;
 import com.thelittlebigtalents.backend.Configuration;
 import com.thelittlebigtalents.backend.datasource.EmptyResultException;
 import com.thelittlebigtalents.backend.datasource.api.QueryableDatasource;
-
+import com.thelittlebigtalents.backend.model.api.PersistableDocument;
 import java.util.LinkedList;
 import java.util.List;
-
-import com.thelittlebigtalents.backend.model.api.PersistableDocument;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
