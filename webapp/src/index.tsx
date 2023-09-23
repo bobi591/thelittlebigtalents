@@ -3,13 +3,16 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import InformationPage from './components/pages/InformationPage';
-import InformationPageGalleryBottom from './components/pages/InformationPageGalleryBottom';
-import NotFoundPage from './components/pages/NotFoundPage';
-import MaintenancePage from './components/pages/MaintenancePage';
+import './App.css'
 import ErrorCollector from './ErrorCollector';
-import HomePage from './components/pages/HomePage';
-import App from './App';
+import { Suspense, lazy } from 'react';
+
+const App = lazy(() => import('./App'))
+const HomePage = lazy(() => import('./components/pages/HomePage'))
+const MaintenancePage = lazy(() => import('./components/pages/MaintenancePage'))
+const NotFoundPage = lazy(() => import('./components/pages/NotFoundPage'))
+const InformationPageGalleryBottom = lazy(() => import('./components/pages/InformationPageGalleryBottom'))
+const InformationPage = lazy(() => import('./components/pages/InformationPage'))
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -28,15 +31,17 @@ else {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='anonymous'/>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet"/>
       </head>
-      <BrowserRouter>
-      <Routes>
-        <Route path='*' element={<NotFoundPage/>}></Route>
-        <Route path='/' element={<App pageToShow={<HomePage/>}/>}></Route>
-        <Route path='/achievements' element={<App pageToShow={<InformationPage pageName={'Постижения'}/>}/>}></Route>
-        <Route path='/summerclasses' element={<App pageToShow={<InformationPageGalleryBottom pageName={'Летни Уроци'}/>}/>}></Route>
-        <Route path='/maintenance' element={<MaintenancePage errorMessage={'test'}/>}></Route>
-      </Routes>
-      </BrowserRouter>
+      <Suspense>
+        <BrowserRouter>
+          <Routes>
+            <Route path='*' element={<NotFoundPage/>}></Route>
+            <Route path='/' element={<App pageToShow={<HomePage/>}/>}></Route>
+            <Route path='/achievements' element={<App pageToShow={<InformationPage pageName={'Постижения'}/>}/>}></Route>
+            <Route path='/summerclasses' element={<App pageToShow={<InformationPageGalleryBottom pageName={'Летни Уроци'}/>}/>}></Route>
+            <Route path='/maintenance' element={<MaintenancePage errorMessage={'test'}/>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
     </div>
   )
 }

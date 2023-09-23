@@ -18,7 +18,7 @@ export default class NavbarComponent extends React.Component {
         navbarData: undefined,
     }
 
-    componentDidMount(): void {
+    async componentDidMount() {
         Backend.getNavbar().then(value => this.setState({
             navbarData: value,
         })).catch((error) => ErrorCollector.addError(error));

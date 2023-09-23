@@ -20,7 +20,7 @@ export default class InformationPageGalleryBottom extends React.Component<PagePr
         pageData: undefined,
     }
 
-    componentDidMount(): void {
+    async componentDidMount() {
         Backend.getInformationPageGalleryBottomData(this.props.pageName).then(value => this.setState({
             pageData: value,
         })).catch((error) => ErrorCollector.addError(error));

@@ -13,7 +13,7 @@ export default class FooterComponent extends Component {
         footerData: undefined,
     }
 
-    componentDidMount(): void {
+    async componentDidMount() {
         Backend.getFooter().then(value => this.setState({
             footerData: value,
         })).catch((error) => ErrorCollector.addError(error));

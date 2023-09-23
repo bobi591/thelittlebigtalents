@@ -20,7 +20,7 @@ export default class InformationPage extends React.Component<PageProps> {
         pageData: undefined,
     }
 
-    componentDidMount(): void {
+    async componentDidMount() {
         Backend.getInformationPageData(this.props.pageName).then(value => this.setState({
             pageData: value,
         })).catch((error) => ErrorCollector.addError(error));
