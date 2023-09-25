@@ -7,6 +7,17 @@ import ErrorCollector from "../ErrorCollector";
 
 export default class Backend {
 
+    private static postAxiosConfig(endpoint: string, body: any) {
+        return {
+            url: process.env.REACT_APP_BACKEND_API_ENDPOINT! + endpoint,
+            method: 'POST',
+            params: {
+                code: process.env.REACT_APP_BACKEND_API_KEY
+            },
+            data: body
+        }
+    }
+
     private static getAxiosConfig(endpoint: string) : AxiosRequestConfig {
         return {
             url: process.env.REACT_APP_BACKEND_API_ENDPOINT! + endpoint,
@@ -64,6 +75,17 @@ export default class Backend {
         }
         catch(error) {
             ErrorCollector.addError(String(error));
+        }
+    }
+
+    public static async sendJsonToValidation(request:any) : Promise<string | undefined> {
+        try {
+            const axiosConfig = this.postAxiosConfig("validateJson", request);
+            const response = await axios(axiosConfig);
+            return response.data;
+        }
+        catch(error: any) {
+            ErrorCollector.addError(String(error.response.data));
         }
     }
 }

@@ -1,4 +1,5 @@
 export default class InformationPageGalleryBottomData {
+    className!: string;
     pageName: string;
     text: string;
     galleryImgSrcs: [string];

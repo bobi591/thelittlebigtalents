@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import ErrorCollector from './ErrorCollector';
 import { Suspense, lazy } from 'react';
+import DataEditorPage from './components/pages/DataEditorPage';
 
 const App = lazy(() => import('./App'))
 const HomePage = lazy(() => import('./components/pages/HomePage'))
@@ -38,7 +39,7 @@ else {
             <Route path='/' element={<App pageToShow={<HomePage/>}/>}></Route>
             <Route path='/achievements' element={<App pageToShow={<InformationPage pageName={'Постижения'}/>}/>}></Route>
             <Route path='/summerclasses' element={<App pageToShow={<InformationPageGalleryBottom pageName={'Летни Уроци'}/>}/>}></Route>
-            <Route path='/maintenance' element={<MaintenancePage errorMessage={'test'}/>}></Route>
+            <Route path='/editor' element={<DataEditorPage/>}></Route>
           </Routes>
         </BrowserRouter>
       </Suspense>

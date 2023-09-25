@@ -1,4 +1,5 @@
 export class NavbarItem {
+    className!: string;
     name: string;
     href: string;
     childItems?: Array<NavbarItem>;

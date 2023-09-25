@@ -1,4 +1,5 @@
 export default class FooterData {
+    className!: string;
     contacts: Contacts;
     workingHours: WorkingHours;
     facebookUrl: string;
