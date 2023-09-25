@@ -6,11 +6,13 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.codecs.pojo.annotations.BsonIgnore;
 
 @Getter
 @Setter
 /** The InformationPage POJO. */
 public class InformationPage implements PersistableDocument {
+    @BsonIgnore private String className = this.getClass().getName();
     private String pageName;
     private List<InformationPageDataPart> data;
 

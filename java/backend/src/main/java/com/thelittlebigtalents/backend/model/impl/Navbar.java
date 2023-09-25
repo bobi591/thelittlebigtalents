@@ -6,12 +6,14 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.codecs.pojo.annotations.BsonIgnore;
 
 @Getter
 @Setter
 /** The Navbar POJO. */
 public class Navbar implements PersistableDocument {
-    public List<NavbarItem> content;
+    @BsonIgnore private String className = this.getClass().getName();
+    private List<NavbarItem> content;
 
     @NoArgsConstructor
     @Getter

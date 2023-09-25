@@ -1,6 +1,8 @@
 /* (C)2023 */
 package com.thelittlebigtalents.backend;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
@@ -13,11 +15,19 @@ import com.thelittlebigtalents.backend.model.impl.Footer;
 import com.thelittlebigtalents.backend.model.impl.InformationPage;
 import com.thelittlebigtalents.backend.model.impl.InformationPageGalleryBottom;
 import com.thelittlebigtalents.backend.model.impl.Navbar;
+import com.thelittlebigtalents.backend.validation.json.JsonValidationProcessor;
+import com.thelittlebigtalents.backend.validation.json.JsonValidationRequest;
 import java.util.Optional;
 import org.bson.conversions.Bson;
 
 /** Main point of Azure Functions for The Little Big Talents. */
 public class AzureFunctions {
+
+    public static final ObjectMapper OBJECT_MAPPER =
+            new ObjectMapper()
+                    .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true)
+                    .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, true);
+
     @FunctionName("getFooterData")
     public HttpResponseMessage getFooterData(
             @HttpTrigger(
@@ -131,6 +141,39 @@ public class AzureFunctions {
             return request.createResponseBuilder(HttpStatus.NOT_FOUND).build();
         } catch (Exception e) {
             return request.createResponseBuilder(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @FunctionName("validateJson")
+    public HttpResponseMessage validateJson(
+            @HttpTrigger(
+                            name = "validateJson",
+                            methods = {HttpMethod.POST},
+                            authLevel = AuthorizationLevel.FUNCTION)
+                    HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+        if (request.getBody().isEmpty()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).build();
+        }
+
+        try {
+            JsonValidationRequest jsonValidationRequest =
+                    OBJECT_MAPPER.readValue(request.getBody().get(), JsonValidationRequest.class);
+            JsonValidationProcessor jsonValidationProcessor =
+                    new JsonValidationProcessor(jsonValidationRequest);
+            if (jsonValidationProcessor.isValidJson()) {
+                return request.createResponseBuilder(HttpStatus.OK)
+                        .body("JSON Validation Passed! :)")
+                        .build();
+            } else {
+                return request.createResponseBuilder(HttpStatus.OK)
+                        .body("JSON Validation Not Passed! :(")
+                        .build();
+            }
+        } catch (Exception e) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                    .body("JSON Validation Not Passed! :( \nReason: " + e.getMessage())
+                    .build();
         }
     }
 }

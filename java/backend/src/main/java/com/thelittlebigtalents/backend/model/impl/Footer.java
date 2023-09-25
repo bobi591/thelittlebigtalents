@@ -6,12 +6,14 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.codecs.pojo.annotations.BsonIgnore;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
 @Getter
 @Setter
 /** The Footer POJO. */
 public class Footer implements PersistableDocument {
+    @BsonIgnore private String className = this.getClass().getName();
     private String facebookUrl;
     private String instagramUrl;
     private String tiktokUrl;
