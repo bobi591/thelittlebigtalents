@@ -60,10 +60,10 @@ export default class DataEditorPage extends React.Component {
             json: JSON.stringify(this.state.data)
         }).then((response) => {
             if(response === undefined) {
-                alert(ErrorCollector.getLatestError());
+                window.alert(ErrorCollector.getLatestError());
             }
             else {
-                alert(String(response));
+                window.alert(String(response));
             }
             this.setState({
                 ...this.state,
@@ -89,7 +89,7 @@ export default class DataEditorPage extends React.Component {
             })
             return;
         }
-        alert(ErrorCollector.getLatestError());
+        window.alert(ErrorCollector.getLatestError());
     }
 
     render() {
