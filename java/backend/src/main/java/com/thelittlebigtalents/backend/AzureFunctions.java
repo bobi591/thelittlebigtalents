@@ -11,10 +11,9 @@ import com.mongodb.client.model.Filters;
 import com.thelittlebigtalents.backend.datasource.EmptyResultException;
 import com.thelittlebigtalents.backend.datasource.api.QueryableDatasource;
 import com.thelittlebigtalents.backend.datasource.impl.MongoDatasourceFactory;
-import com.thelittlebigtalents.backend.model.impl.Footer;
-import com.thelittlebigtalents.backend.model.impl.InformationPage;
-import com.thelittlebigtalents.backend.model.impl.InformationPageGalleryBottom;
-import com.thelittlebigtalents.backend.model.impl.Navbar;
+import com.thelittlebigtalents.backend.model.impl.*;
+import com.thelittlebigtalents.backend.security.AuthenticationService;
+import com.thelittlebigtalents.backend.security.Session;
 import com.thelittlebigtalents.backend.validation.json.JsonValidationProcessor;
 import com.thelittlebigtalents.backend.validation.json.JsonValidationRequest;
 import java.util.Optional;
@@ -173,6 +172,31 @@ public class AzureFunctions {
         } catch (Exception e) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
                     .body("JSON Validation Not Passed! :( \nReason: " + e.getMessage())
+                    .build();
+        }
+    }
+
+    @FunctionName("createSession")
+    public HttpResponseMessage createSession(
+            @HttpTrigger(
+                            name = "createSession",
+                            methods = {HttpMethod.POST},
+                            authLevel = AuthorizationLevel.FUNCTION)
+                    HttpRequestMessage<Optional<User>> request,
+            final ExecutionContext context) {
+        context.getLogger().info("Java HTTP trigger processed a request.");
+        if (request.getBody().isEmpty()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                    .body("Missing or incomplete user information.")
+                    .build();
+        }
+        try {
+            AuthenticationService authenticationService = new AuthenticationService();
+            Session session = authenticationService.login(request.getBody().get());
+            return request.createResponseBuilder(HttpStatus.OK).body(session).build();
+        } catch (Exception e) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage())
                     .build();
         }
     }
