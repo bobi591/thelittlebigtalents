@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Dropdown, Col, Row, Container } from "react-bootstrap";
+import { Button, Dropdown, Col, Row, Container, Form } from "react-bootstrap";
 import Backend from "../../datasource/Backend";
 import '../../App.css'
 import {
@@ -15,7 +15,10 @@ export default class DataEditorPage extends React.Component {
             isValidating: false,
             selectedDataType: undefined,
             data: undefined,
-            originalData: undefined
+            originalData: undefined,
+            session: undefined,
+            inputUsername: undefined,
+            inputPassword: undefined
         }
     }
 
@@ -74,6 +77,21 @@ export default class DataEditorPage extends React.Component {
         });
     }
 
+    async onLoginClick() {
+        const result = await Backend.createSession({
+            username: this.state.inputUsername,
+            password: this.state.inputPassword
+        })
+        if(result !== undefined) {
+            this.setState({
+                ...this.state,
+                session: result
+            })
+            return;
+        }
+        alert(ErrorCollector.getLatestError());
+    }
+
     render() {
         let jsonEditor = <></>;
         if(this.state.data !== undefined) {
@@ -89,6 +107,34 @@ export default class DataEditorPage extends React.Component {
                     />
                 </div>
             </>;
+        }
+        if(this.state.session === undefined || this.state.session.expiry > Date.now()){
+            return(            
+                <Container className="dataEditorRoot" fluid="md">
+                    <div className='text-center title'>
+                        <h4>Малките Големи Таланти</h4>
+                    </div>
+                    <Row className="justify-content-md-center">
+                        <Col>
+                            <div className="editor">
+                                <Form>
+                                    <Form.Group className="mb-3" controlId="username">
+                                        <Form.Label>Username</Form.Label>
+                                        <Form.Control type="text" placeholder="username123" onChange={e => this.setState({...this.state, inputUsername: e.target.value})}/>
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="password">
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control type="password" onChange={e => this.setState({...this.state, inputPassword: e.target.value})}/>
+                                    </Form.Group>
+                                    <Button type="primary" onClick={async() => await this.onLoginClick()} 
+                                        disabled={this.state.inputPassword == undefined || this.state.inputUsername == undefined}
+                                    >Влез</Button>
+                                </Form>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            )
         }
         return(
             <Container className="dataEditorRoot" fluid="md">

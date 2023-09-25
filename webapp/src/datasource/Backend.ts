@@ -4,6 +4,8 @@ import NavbarData from "./models/NavbarData";
 import InformationPageData from "./models/InformationPageData";
 import InformationPageGalleryBottomData from "./models/InformationPageGalleryBottomData";
 import ErrorCollector from "../ErrorCollector";
+import User from "./security/User";
+import { Session } from "inspector";
 
 export default class Backend {
 
@@ -88,4 +90,15 @@ export default class Backend {
             ErrorCollector.addError(String(error.response.data));
         }
     }
+
+    public static async createSession(request: User) : Promise<Session | undefined> {
+        try {
+            const axiosConfig = this.postAxiosConfig("createSession", request);
+            const response = await axios(axiosConfig);
+            return response.data;
+        }
+        catch(error: any) {
+            ErrorCollector.addError(String(error.response.data));
+        }
+    } 
 }
