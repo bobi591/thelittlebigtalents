@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/azure/functions-action
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build & Deploy Backend Azure Functions
+name: Build and deploy Java project to Azure Function App - TheLittleBigTalents
 
 on:
   push:
@@ -11,8 +11,8 @@ on:
 
 env:
   AZURE_FUNCTIONAPP_NAME: TheLittleBigTalents # set this to your function app name on Azure
-  PACKAGE_DIRECTORY: './java/backend' # set this to the directory which contains pom.xml file
-  JAVA_VERSION: '17' # set this to the java version to use
+  PACKAGE_DIRECTORY: '.' # set this to the directory which contains pom.xml file
+  JAVA_VERSION: '11' # set this to the java version to use
 
 jobs:
   build-and-deploy:
@@ -38,6 +38,6 @@ jobs:
         with:
           app-name: 'TheLittleBigTalents'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_445A2C5D4D284A158933A9EF348749A9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D68B15F5DF0C4E82A7642382FA5230EB }}
           package: '${{ env.PACKAGE_DIRECTORY }}'
           respect-pom-xml: true
