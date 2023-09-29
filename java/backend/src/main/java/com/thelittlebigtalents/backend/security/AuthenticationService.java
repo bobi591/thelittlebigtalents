@@ -52,6 +52,12 @@ public class AuthenticationService {
         }
     }
 
+    /**
+     * Extends the session expiry with one minutes if the session is not yet expired.
+     * @param session the session received from the UI
+     * @return the session with extended expiry
+     * @throws AuthenticationException the session is already expired and is not renewable
+     */
     public Session renewSession(Session session) throws AuthenticationException {
         if (session.getSecondsExpiry() > Instant.now().getEpochSecond()) {
             return new Session(
