@@ -18,26 +18,22 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-root.render(
-  <div>
-    <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com"/> 
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='anonymous'/>
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet"/>
-    </head>
-    <Suspense>
-      <BrowserRouter>
-        <Routes>
-          <Route path='*' element={<NotFoundPage/>}></Route>
-          <Route path='/' element={<App pageToShow={<HomePage/>}/>}></Route>
-          <Route path='/achievements' element={<App pageToShow={<InformationPage pageName={'Постижения'}/>}/>}></Route>
-          <Route path='/summerclasses' element={<App pageToShow={<InformationPageGalleryBottom pageName={'Летни Уроци'}/>}/>}></Route>
-          <Route path='/editor' element={<DataEditorPage/>}></Route>
-        </Routes>
-      </BrowserRouter>
-    </Suspense>
-  </div>
-);
+root.render (
+  <Suspense>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='anonymous'/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet"/>
+    <BrowserRouter>
+      <Routes>
+        <Route path='*' element={<NotFoundPage/>}></Route>
+        <Route path='/' element={<App pageToShow={<HomePage/>}/>}></Route>
+        <Route path='/achievements' element={<App pageToShow={<InformationPage pageName={'Постижения'}/>}/>}></Route>
+        <Route path='/summerclasses' element={<App pageToShow={<InformationPageGalleryBottom pageName={'Летни Уроци'}/>}/>}></Route>
+        <Route path='/editor' element={<DataEditorPage/>}></Route>
+      </Routes>
+    </BrowserRouter>
+  </Suspense> 
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

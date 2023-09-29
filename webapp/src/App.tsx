@@ -40,9 +40,9 @@ export default class App extends React.Component<AppProps, ErrorBoundaryComponen
       return (
         <div className="App">
           <NavbarComponent/>
-          <body>
+          <div>
             {this.props.pageToShow}
-          </body>
+          </div>
           <FooterComponent/>
         </div>
       )

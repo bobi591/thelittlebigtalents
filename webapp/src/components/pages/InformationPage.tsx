@@ -1,12 +1,9 @@
 import React from "react";
 import PageProps from "./PageProps";
-import NavbarComponent from "../navbar/NavbarComponent";
 import InformationPageData from "../../datasource/models/InformationPageData";
 import Backend from "../../datasource/Backend";
 import { Col, Row } from "react-bootstrap";
-import FooterComponent from "../footer/FooterComponent";
 import ErrorBoundaryComponentState from "../ErrorBoundaryComponentState";
-import { error } from "console";
 
 type PageComponentState = {
     pageData?: InformationPageData;

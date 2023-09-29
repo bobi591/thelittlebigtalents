@@ -17,7 +17,8 @@ export default class DataEditorPage extends React.Component {
             originalData: undefined,
             session: undefined,
             inputUsername: undefined,
-            inputPassword: undefined
+            inputPassword: undefined,
+            error: undefined
         }
     }
 
@@ -67,27 +68,27 @@ export default class DataEditorPage extends React.Component {
         .catch(error => 
             window.alert(error)
         )
-
         this.setState({
             ...this.state,
             isValidating: true
         });
     }
 
-    async onLoginClick() {
-        try{
-            const result = await Backend.createSession({
-                username: this.state.inputUsername,
-                password: this.state.inputPassword
-            })
+    onLoginClick() {
+        Backend.createSession({
+            username: this.state.inputUsername,
+            password: this.state.inputPassword
+        })
+        .then((session) => {
             this.setState({
                 ...this.state,
-                session: result
+                session: session
             })
-        }
-        catch(error) {
-            window.alert(error)
-        }
+        })
+        .catch((error) => {
+                window.alert(error)
+            }
+        )
     }
 
     render() {
@@ -115,19 +116,19 @@ export default class DataEditorPage extends React.Component {
                     <Row className="justify-content-md-center">
                         <Col>
                             <div className="editor">
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="username">
-                                        <Form.Label>Username</Form.Label>
-                                        <Form.Control type="text" placeholder="username123" onChange={e => this.setState({...this.state, inputUsername: e.target.value})}/>
-                                    </Form.Group>
-                                    <Form.Group className="mb-3" controlId="password">
-                                        <Form.Label>Password</Form.Label>
-                                        <Form.Control type="password" onChange={e => this.setState({...this.state, inputPassword: e.target.value})}/>
-                                    </Form.Group>
-                                    <Button type="primary" onClick={async() => await this.onLoginClick()} 
+                                <div className="form">
+                                    <div className="mb-3" controlId="username">
+                                        <div className="label">Username</div>
+                                        <input className="form-control" type="text" placeholder="username123" onInput={e => this.setState({...this.state, inputUsername: e.target.value})}/>
+                                    </div>
+                                    <div className="mb-3" controlId="password">
+                                        <div className="label">Password</div>
+                                        <input className="form-control" type="password" onInput={e => this.setState({...this.state, inputPassword: e.target.value})}/>
+                                    </div>
+                                    <Button type="primary" onClick={async () => await this.onLoginClick()} 
                                         disabled={this.state.inputPassword == undefined || this.state.inputUsername == undefined}
                                     >Влез</Button>
-                                </Form>
+                                </div>
                             </div>
                         </Col>
                     </Row>

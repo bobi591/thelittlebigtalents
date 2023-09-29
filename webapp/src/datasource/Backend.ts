@@ -4,11 +4,12 @@ import NavbarData from "./models/NavbarData";
 import InformationPageData from "./models/InformationPageData";
 import InformationPageGalleryBottomData from "./models/InformationPageGalleryBottomData";
 import User from "./security/User";
-import { Session } from "inspector";
+import JSEncrypt from "jsencrypt";
+import Session from "./security/Session";
 
 export default class Backend {
 
-    private static postAxiosConfig(endpoint: string, body: any) {
+    private static postAxiosConfig(endpoint: string, body: string) {
         return {
             url: process.env.REACT_APP_BACKEND_API_ENDPOINT! + endpoint,
             method: 'POST',
@@ -60,14 +61,24 @@ export default class Backend {
     }
 
     public static async sendJsonToValidation(request:any) : Promise<string | undefined> {
-        const axiosConfig = this.postAxiosConfig("validateJson", request);
+        const axiosConfig = this.postAxiosConfig("validateJson", JSON.stringify(request));
         const response = await axios(axiosConfig);
         return response.data;
     }
 
     public static async createSession(request: User) : Promise<Session | undefined> {
-        const axiosConfig = this.postAxiosConfig("createSession", request);
-        const response = await axios(axiosConfig);
-        return response.data;
+        const data = JSON.stringify(request);
+        const jsencrypt = new JSEncrypt();
+        const publicKey = String(process.env.REACT_APP_SECURITY_PUBLIC_KEY!);
+        jsencrypt.setPublicKey(publicKey);
+        const encryptedData = jsencrypt.encrypt(data);
+        if(typeof encryptedData === "boolean") {
+            throw "The username and password combination encryption faced internal problem."
+        }
+        else {
+            const axiosConfig = this.postAxiosConfig("createSession", encryptedData);
+            const response = await axios(axiosConfig);
+            return response.data;
+        }
     } 
 }
