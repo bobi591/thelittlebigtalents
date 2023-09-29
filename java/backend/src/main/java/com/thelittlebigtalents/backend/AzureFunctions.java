@@ -182,7 +182,7 @@ public class AzureFunctions {
                             name = "createSession",
                             methods = {HttpMethod.POST},
                             authLevel = AuthorizationLevel.FUNCTION)
-                    HttpRequestMessage<Optional<User>> request,
+                    HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
         if (request.getBody().isEmpty()) {
@@ -192,7 +192,8 @@ public class AzureFunctions {
         }
         try {
             AuthenticationService authenticationService = new AuthenticationService();
-            Session session = authenticationService.login(request.getBody().get());
+            User user = authenticationService.decryptUserData(request.getBody().get());
+            Session session = authenticationService.login(user);
             return request.createResponseBuilder(HttpStatus.OK).body(session).build();
         } catch (Exception e) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
