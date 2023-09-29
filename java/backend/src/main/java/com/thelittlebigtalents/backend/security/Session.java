@@ -1,20 +1,28 @@
 /* (C)2023 */
 package com.thelittlebigtalents.backend.security;
 
-import java.time.Instant;
-
 /** The session object that is provided to the authenticated user. */
 public class Session {
-    private final Instant expiry;
-    private final String username;
+    private long secondsExpiry;
+    private String username;
 
-    public Session(Instant expiry, String username) {
-        this.expiry = expiry;
+    public Session() {}
+
+    public Session(long secondsExpiry, String username) {
+        this.secondsExpiry = secondsExpiry;
         this.username = username;
     }
 
-    public Instant getExpiry() {
-        return expiry;
+    public void setSecondsExpiry(long secondsExpiry) {
+        this.secondsExpiry = secondsExpiry;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public long getSecondsExpiry() {
+        return this.secondsExpiry;
     }
 
     public String getUsername() {

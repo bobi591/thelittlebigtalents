@@ -3,6 +3,8 @@ package com.thelittlebigtalents.backend;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
@@ -24,8 +26,10 @@ public class AzureFunctions {
 
     public static final ObjectMapper OBJECT_MAPPER =
             new ObjectMapper()
-                    .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true)
-                    .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, true);
+                    .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                    .enable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES)
+                    .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+                    .registerModule(new JavaTimeModule());
 
     @FunctionName("getFooterData")
     public HttpResponseMessage getFooterData(
@@ -192,9 +196,41 @@ public class AzureFunctions {
         }
         try {
             AuthenticationService authenticationService = new AuthenticationService();
-            User user = authenticationService.decryptUserData(request.getBody().get());
+            User user =
+                    authenticationService.decryptJsonString(User.class, request.getBody().get());
             Session session = authenticationService.login(user);
-            return request.createResponseBuilder(HttpStatus.OK).body(session).build();
+            return request.createResponseBuilder(HttpStatus.OK)
+                    .body(OBJECT_MAPPER.writeValueAsString(session))
+                    .build();
+        } catch (Exception e) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage())
+                    .build();
+        }
+    }
+
+    @FunctionName("refreshSession")
+    public HttpResponseMessage refreshSession(
+            @HttpTrigger(
+                            name = "refreshSession",
+                            methods = {HttpMethod.POST},
+                            authLevel = AuthorizationLevel.FUNCTION)
+                    HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+        context.getLogger().info("Java HTTP trigger processed a request.");
+        if (request.getBody().isEmpty()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                    .body("Missing session information.")
+                    .build();
+        }
+        try {
+            AuthenticationService authenticationService = new AuthenticationService();
+            Session receivedSession =
+                    authenticationService.decryptJsonString(Session.class, request.getBody().get());
+            Session newSession = authenticationService.renewSession(receivedSession);
+            return request.createResponseBuilder(HttpStatus.OK)
+                    .body(OBJECT_MAPPER.writeValueAsString(newSession))
+                    .build();
         } catch (Exception e) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
                     .body(e.getMessage())

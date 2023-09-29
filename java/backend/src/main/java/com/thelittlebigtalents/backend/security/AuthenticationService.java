@@ -43,7 +43,8 @@ public class AuthenticationService {
                                 eq("username", user.getUsername()),
                                 eq("password", DigestUtils.sha256Hex(user.getPassword()))));
             }
-            return new Session(Instant.now().plus(1, ChronoUnit.MINUTES), user.getUsername());
+            return new Session(
+                    Instant.now().plus(1, ChronoUnit.MINUTES).getEpochSecond(), user.getUsername());
         } catch (EmptyResultException e) {
             throw new AuthenticationException("The provided credentials are incorrect.");
         } catch (Exception e) {
@@ -51,10 +52,21 @@ public class AuthenticationService {
         }
     }
 
+    public Session renewSession(Session session) throws AuthenticationException {
+        if (session.getSecondsExpiry() > Instant.now().getEpochSecond()) {
+            return new Session(
+                    Instant.now().plus(1, ChronoUnit.MINUTES).getEpochSecond(),
+                    session.getUsername());
+        }
+        throw new AuthenticationException("The provided token is no longer renewable.");
+    }
+
     /**
-     * Decrypts the provided data to {@link User} object.
+     * Decrypts the provided encrypted JSON string data to class object.
      *
+     * @param <T> the type of the decrypted object
      * @param data the encrypted user data
+     * @param expectedClass the expected class of the decrypted object
      * @return the decrypted user object
      * @throws NoSuchAlgorithmException unavailable algorithm
      * @throws InvalidKeySpecException invalid key specification
@@ -63,12 +75,12 @@ public class AuthenticationService {
      * @throws IllegalBlockSizeException cipher block size unmatched
      * @throws BadPaddingException data not padded properly
      * @throws IOException the data is decrypted, but is not correct JSON representation of the
-     *     {@link User} object
+     *     object
      */
-    public User decryptUserData(String data)
+    public <T> T decryptJsonString(Class<T> expectedClass, String data)
             throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
-                    InvalidKeyException, IllegalBlockSizeException, BadPaddingException,
-                    IOException {
+                    IllegalBlockSizeException, BadPaddingException, IOException,
+                    InvalidKeyException {
         byte[] privateKeyBytes = Base64.getDecoder().decode(Configuration.getSecurityPrivateKey());
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
@@ -76,6 +88,6 @@ public class AuthenticationService {
         Cipher rsaCipher = Cipher.getInstance("RSA");
         rsaCipher.init(Cipher.DECRYPT_MODE, privateKey);
         byte[] decryptedBytes = rsaCipher.doFinal(Base64.getDecoder().decode(data));
-        return AzureFunctions.OBJECT_MAPPER.readValue(decryptedBytes, User.class);
+        return AzureFunctions.OBJECT_MAPPER.readValue(decryptedBytes, expectedClass);
     }
 }
