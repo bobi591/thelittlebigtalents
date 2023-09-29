@@ -5,7 +5,8 @@ import InformationPageData from "../../datasource/models/InformationPageData";
 import Backend from "../../datasource/Backend";
 import { Col, Row } from "react-bootstrap";
 import FooterComponent from "../footer/FooterComponent";
-import ErrorCollector from "../../ErrorCollector";
+import ErrorBoundaryComponentState from "../ErrorBoundaryComponentState";
+import { error } from "console";
 
 type PageComponentState = {
     pageData?: InformationPageData;
@@ -16,17 +17,25 @@ export default class InformationPage extends React.Component<PageProps> {
         super(props);
     }
 
-    state: PageComponentState = {
+    state: PageComponentState & ErrorBoundaryComponentState = {
         pageData: undefined,
+        error: undefined,
     }
 
     async componentDidMount() {
         Backend.getInformationPageData(this.props.pageName).then(value => this.setState({
+            ...this.state,
             pageData: value,
-        })).catch((error) => ErrorCollector.addError(error));
+        })).catch(error => this.setState({
+            ...this.state,
+            error: error
+        }));
     }
 
     render(): React.ReactNode {
+        if(this.state.error !== undefined) {
+            throw this.state.error;
+        }
         if(this.state.pageData != undefined) {
             return(
                 <>

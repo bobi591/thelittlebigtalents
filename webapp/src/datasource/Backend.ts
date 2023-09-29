@@ -3,7 +3,6 @@ import FooterData from "./models/FooterData";
 import NavbarData from "./models/NavbarData";
 import InformationPageData from "./models/InformationPageData";
 import InformationPageGalleryBottomData from "./models/InformationPageGalleryBottomData";
-import ErrorCollector from "../ErrorCollector";
 import User from "./security/User";
 import { Session } from "inspector";
 
@@ -31,74 +30,44 @@ export default class Backend {
     }
 
     public static async getFooter() : Promise<FooterData | undefined> {
-        try {
-            const response = await axios(this.getAxiosConfig("getFooterData"));
-            return response.data;
-        }
-        catch(error) {
-            ErrorCollector.addError(String(error));
-        }
+        const response = await axios(this.getAxiosConfig("getFooterData"));
+        return response.data;
     }
 
     public static async getNavbar() : Promise<NavbarData | undefined> {
-        try {
-            const response = await axios(this.getAxiosConfig("getNavbarData"));
-            return response.data;
-        }
-        catch(error) {
-            ErrorCollector.addError(String(error));
-        }
+        const response = await axios(this.getAxiosConfig("getNavbarData"));
+        return response.data;
     }
 
     public static async getInformationPageData(pageName:string) : Promise<InformationPageData | undefined> {
-        try {
-            const axiosConfig = this.getAxiosConfig("getInformationPageData");
-            axiosConfig.params = {
-                ...axiosConfig.params,
-                pageName: pageName
-            }
-            const response = await axios(axiosConfig);
-            return response.data;
+        const axiosConfig = this.getAxiosConfig("getInformationPageData");
+        axiosConfig.params = {
+            ...axiosConfig.params,
+            pageName: pageName
         }
-        catch(error) {
-            ErrorCollector.addError(String(error));
-        }
+        const response = await axios(axiosConfig);
+        return response.data;
     }
 
     public static async getInformationPageGalleryBottomData(pageName:string) : Promise<InformationPageGalleryBottomData | undefined> {
-        try {
-            const axiosConfig = this.getAxiosConfig("getInformationPageGalleryBottomData");
-            axiosConfig.params = {
-                ...axiosConfig.params,
-                pageName: pageName
-            }
-            const response = await axios(axiosConfig);
-            return response.data;
+        const axiosConfig = this.getAxiosConfig("getInformationPageGalleryBottomData");
+        axiosConfig.params = {
+            ...axiosConfig.params,
+            pageName: pageName
         }
-        catch(error) {
-            ErrorCollector.addError(String(error));
-        }
+        const response = await axios(axiosConfig);
+        return response.data;
     }
 
     public static async sendJsonToValidation(request:any) : Promise<string | undefined> {
-        try {
-            const axiosConfig = this.postAxiosConfig("validateJson", request);
-            const response = await axios(axiosConfig);
-            return response.data;
-        }
-        catch(error: any) {
-            ErrorCollector.addError(String(error.response.data));
-        }
+        const axiosConfig = this.postAxiosConfig("validateJson", request);
+        const response = await axios(axiosConfig);
+        return response.data;
     }
 
     public static async createSession(request: User) : Promise<Session | undefined> {
-        try {
-            const axiosConfig = this.postAxiosConfig("createSession", request);
-            const response = await axios(axiosConfig);
-            return response.data;
-        }
-        catch(error: any) {
-            ErrorCollector.addError(String(error.response.data));
-        }
+        const axiosConfig = this.postAxiosConfig("createSession", request);
+        const response = await axios(axiosConfig);
+        return response.data;
     } 
 }

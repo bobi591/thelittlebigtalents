@@ -1,26 +1,34 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 import FooterData from "../../datasource/models/FooterData";
 import Backend from "../../datasource/Backend";
-import ErrorCollector from "../../ErrorCollector";
+import ErrorBoundaryComponentState from "../ErrorBoundaryComponentState";
 
 type FooterComponentState = {
     footerData?: FooterData;
 }
 
 export default class FooterComponent extends Component {
-    state: FooterComponentState = {
+    state: FooterComponentState & ErrorBoundaryComponentState = {
         footerData: undefined,
+        error: undefined,
     }
 
     async componentDidMount() {
         Backend.getFooter().then(value => this.setState({
+            ...this.state,
             footerData: value,
-        })).catch((error) => ErrorCollector.addError(error));
+        })).catch(error => this.setState({
+            ...this.state,
+            error: error
+        }));
     }
 
     render(): React.ReactNode {
         const footerData = this.state.footerData;
+        if(this.state.error !== undefined) {
+            throw this.state.error;
+        }
         if(footerData != undefined) {
             return (
                 <footer>

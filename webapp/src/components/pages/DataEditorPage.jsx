@@ -5,7 +5,6 @@ import '../../App.css'
 import {
     JsonTree
 } from 'react-editable-json-tree'
-import ErrorCollector from "../../ErrorCollector";
 
 export default class DataEditorPage extends React.Component {
 
@@ -59,17 +58,15 @@ export default class DataEditorPage extends React.Component {
             className: this.state.data.className,
             json: JSON.stringify(this.state.data)
         }).then((response) => {
-            if(response === undefined) {
-                window.alert(ErrorCollector.getLatestError());
-            }
-            else {
-                window.alert(String(response));
-            }
+            window.alert(String(response));
             this.setState({
                 ...this.state,
                 isValidating: false
             })
         })
+        .catch(error => 
+            window.alert(error)
+        )
 
         this.setState({
             ...this.state,
@@ -78,18 +75,19 @@ export default class DataEditorPage extends React.Component {
     }
 
     async onLoginClick() {
-        const result = await Backend.createSession({
-            username: this.state.inputUsername,
-            password: this.state.inputPassword
-        })
-        if(result !== undefined) {
+        try{
+            const result = await Backend.createSession({
+                username: this.state.inputUsername,
+                password: this.state.inputPassword
+            })
             this.setState({
                 ...this.state,
                 session: result
             })
-            return;
         }
-        window.alert(ErrorCollector.getLatestError());
+        catch(error) {
+            window.alert(error)
+        }
     }
 
     render() {

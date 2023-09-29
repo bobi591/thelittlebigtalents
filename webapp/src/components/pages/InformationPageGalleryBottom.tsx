@@ -2,10 +2,8 @@ import React from "react";
 import PageProps from "./PageProps";
 import InformationPageGalleryBottomData from "../../datasource/models/InformationPageGalleryBottomData";
 import Backend from "../../datasource/Backend";
-import NavbarComponent from "../navbar/NavbarComponent";
 import { Carousel, Row } from "react-bootstrap";
-import FooterComponent from "../footer/FooterComponent";
-import ErrorCollector from "../../ErrorCollector";
+import ErrorBoundaryComponentState from "../ErrorBoundaryComponentState";
 
 type PageComponentState = {
     pageData?: InformationPageGalleryBottomData;
@@ -16,17 +14,25 @@ export default class InformationPageGalleryBottom extends React.Component<PagePr
         super(props);
     }
 
-    state: PageComponentState = {
+    state: PageComponentState & ErrorBoundaryComponentState = {
         pageData: undefined,
+        error: undefined,
     }
 
     async componentDidMount() {
         Backend.getInformationPageGalleryBottomData(this.props.pageName).then(value => this.setState({
+            ...this.state,
             pageData: value,
-        })).catch((error) => ErrorCollector.addError(error));
+        })).catch(error => this.setState({
+            ...this.state,
+            error: error
+        }));
     }
 
     render(): React.ReactNode {
+        if(this.state.error !== undefined) {
+            throw this.state.error;
+        }
         if(this.state.pageData != undefined) {
             return(
                 <>

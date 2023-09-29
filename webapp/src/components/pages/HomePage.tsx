@@ -1,8 +1,7 @@
 import React from 'react';
 import '../../App.css';
-import NavbarComponent from '../navbar/NavbarComponent';
-import FooterComponent from '../footer/FooterComponent';
 import { Button, Card, Carousel, Modal } from 'react-bootstrap';
+import ErrorBoundaryComponentState from '../ErrorBoundaryComponentState';
 
 type AppState = {
   showBookLessonModal: boolean;
@@ -10,8 +9,9 @@ type AppState = {
 
 export default class App extends React.Component {
 
-  state : AppState = {
-    showBookLessonModal: false
+  state : AppState & ErrorBoundaryComponentState = {
+    showBookLessonModal: false,
+    error: undefined
   }
 
   private showBookLessonModal(show: boolean) {

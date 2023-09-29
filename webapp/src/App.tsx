@@ -1,46 +1,42 @@
 import React from "react";
 import NavbarComponent from "./components/navbar/NavbarComponent";
 import FooterComponent from "./components/footer/FooterComponent";
-import ErrorCollector, { ErrorCollectionPair } from "./ErrorCollector";
 import MaintenancePage from "./components/pages/MaintenancePage";
+import ErrorBoundaryComponentState from "./components/ErrorBoundaryComponentState";
 
 export class AppProps {
   public pageToShow!: React.ReactNode;
 }
 
-export class AppState {
-  public errorMessage?: string;
-}
+/**
+ * This is main App Component which also acts as an Error Boundary.
+ */
+export default class App extends React.Component<AppProps, ErrorBoundaryComponentState> {
 
-export default class App extends React.Component<AppProps, AppState> {
-
-  state: AppState = {
-    errorMessage: undefined
+  state: ErrorBoundaryComponentState = {
+    error: undefined
   }
 
   constructor(props: AppProps) {
     super(props);
-    ErrorCollector.setErrorNotificationFunc({
-      function: this.notifyError,
-      instance: this
-    });
+  }
+
+  componentDidCatch(error: Error): void {
+      this.notifyError(error);
   }
 
   public notifyError(error: any): void {
     this.setState({
         ...this.state,
-        errorMessage: error,
+        error: error,
     })
   }
 
   render(): React.ReactNode {
-    const errorMessage = ErrorCollector.getLatestError();
-    if(errorMessage !== undefined) {
-      return(
-        <MaintenancePage errorMessage={errorMessage}/>
-      )
+    if(this.state.error !== undefined) {
+      return <MaintenancePage errorMessage={String(this.state.error)}/>
     }
-    else{
+    else {
       return (
         <div className="App">
           <NavbarComponent/>

@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import NavbarItemData from "../../datasource/models/NavbarData";
 import Backend from "../../datasource/Backend";
 import { Dropdown } from "react-bootstrap";
-import ErrorCollector from "../../ErrorCollector";
+import ErrorBoundaryComponentState from "../ErrorBoundaryComponentState";
 
 type NavbarComponentState = {
     navbarData?: NavbarItemData; 
@@ -14,17 +14,25 @@ type NavbarComponentState = {
 
 export default class NavbarComponent extends React.Component {
 
-    state: NavbarComponentState = {
+    state: NavbarComponentState & ErrorBoundaryComponentState = {
         navbarData: undefined,
+        error: undefined,
     }
 
     async componentDidMount() {
         Backend.getNavbar().then(value => this.setState({
+            ...this.state,
             navbarData: value,
-        })).catch((error) => ErrorCollector.addError(error));
+        })).catch(error => this.setState({
+            ...this.state,
+            error: error
+        }));
     }
 
     render(): React.ReactNode {
+        if(this.state.error !== undefined) {
+            throw this.state.error;
+        }
         if(this.state.navbarData != undefined) {
             return (
                 <Navbar expand="sm" className="bg-white" sticky="top">
