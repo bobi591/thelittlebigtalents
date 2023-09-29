@@ -80,5 +80,21 @@ export default class Backend {
             const response = await axios(axiosConfig);
             return response.data;
         }
-    } 
+    }
+
+    public static async refreshSession(session: Session) : Promise<Session | undefined> {
+        const data = JSON.stringify(session);
+        const jsencrypt = new JSEncrypt();
+        const publicKey = String(process.env.REACT_APP_SECURITY_PUBLIC_KEY!);
+        jsencrypt.setPublicKey(publicKey);
+        const encryptedData = jsencrypt.encrypt(data);
+        if(typeof encryptedData === "boolean") {
+            throw "The username and password combination encryption faced internal problem."
+        }
+        else {
+            const axiosConfig = this.postAxiosConfig("refreshSession", encryptedData);
+            const response = await axios(axiosConfig);
+            return response.data;
+        }
+    }
 }

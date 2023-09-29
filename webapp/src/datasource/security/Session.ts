@@ -1,8 +1,11 @@
 export default class Session {
+    sessionId: string;
     username: string;
-    expiry: Date;
-    constructor(username: string, expiry: Date) {
+    secondsExpiry: number;
+
+    constructor(sessionId:string, username: string, secondsExpiry: number) {
+        this.sessionId = sessionId;
         this.username = username;
-        this.expiry = expiry;
+        this.secondsExpiry = secondsExpiry;
     }
 }
