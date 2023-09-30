@@ -16,7 +16,7 @@ public class MongoDatasourceFactory {
      * This is a mechanism that caches into the memory clients and connections in order to avoid
      * expensive and time-consuming creation operations.
      */
-    private static ConcurrentHashMap<String, QueryableDatasource> queryableDatasourceCache =
+    static final ConcurrentHashMap<String, QueryableDatasource> DATASOURCE_CACHE =
             new ConcurrentHashMap<>();
 
     /**
@@ -34,11 +34,11 @@ public class MongoDatasourceFactory {
             QueryableDatasource<D, Bson> createMongoQueryableDatasource(
                     Class<D> persistableDocument, String databaseName, String collectionName) {
         String cacheKey = persistableDocument.getName();
-        if (!queryableDatasourceCache.containsKey(cacheKey)) {
-            queryableDatasourceCache.put(
+        if (!DATASOURCE_CACHE.containsKey(cacheKey)) {
+            DATASOURCE_CACHE.put(
                     cacheKey,
                     new MongoDatasource<>(persistableDocument, databaseName, collectionName, true));
         }
-        return queryableDatasourceCache.get(cacheKey);
+        return DATASOURCE_CACHE.get(cacheKey);
     }
 }

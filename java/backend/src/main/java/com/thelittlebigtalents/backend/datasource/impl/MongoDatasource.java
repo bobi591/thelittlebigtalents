@@ -30,6 +30,18 @@ class MongoDatasource<T extends PersistableDocument> implements QueryableDatasou
     private final Class<T> persistableDocument;
     private boolean isCached;
 
+    /** For unit tests */
+    MongoDatasource(
+            MongoClient mongoClient,
+            String databaseName,
+            String collectionName,
+            Class<T> persistableDocument) {
+        this.mongoClient = mongoClient;
+        this.databaseName = databaseName;
+        this.collectionName = collectionName;
+        this.persistableDocument = persistableDocument;
+    }
+
     /**
      * Constructor available for the Factory.
      *
