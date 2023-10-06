@@ -6,6 +6,7 @@ export type AppComponentProps = {
     footerData?: FooterData
     navbarData?: NavbarData
     pageToShow?: JSX.Element
+    isSubPageLoading?: boolean
 }
 
 export default interface ErrorBoundaryComponentState {

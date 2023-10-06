@@ -38,26 +38,29 @@ export class App extends React.Component<AppComponentProps> {
     }
 
     componentDidCatch(error: Error): void {
-        this.notifyError(error)
-    }
-
-    public notifyError(error: any): void {
-        this.setState({
-            ...this.state,
-            error: error,
-        })
+      AppStore.dispatch(provideError(error));
     }
 
     render(): React.ReactNode {
         const footerData = this.props.footerData
         const navbarData = this.props.navbarData
         const error = this.props.error
+        const loader = <div className="loader"></div>
 
         if (error !== undefined) {
             return <MaintenancePage errorMessage={String(error)} />
         }
         if (footerData == undefined || navbarData == undefined) {
-            return <div className="loader"></div>
+            return loader
+        }
+        if (this.props.isSubPageLoading) {
+            return (
+                <div className="App">
+                    <NavbarComponent navbarData={this.props.navbarData!} />
+                    {loader}
+                    <FooterComponent footerData={this.props.footerData!} />
+                </div>
+            )
         }
         return (
             <div className="App">

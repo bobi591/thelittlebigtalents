@@ -1,8 +1,9 @@
 import React from 'react'
 import { Carousel, Row } from 'react-bootstrap'
-import ErrorBoundaryComponentState from '../../AppComponentProps'
+import { isSubPageLoading, provideError } from '../../AppSlice'
 import Backend from '../../datasource/Backend'
 import InformationPageGalleryBottomData from '../../datasource/models/InformationPageGalleryBottomData'
+import { AppStore } from '../../ReduxStore'
 import PageProps from './PageProps'
 
 type PageComponentState = {
@@ -14,32 +15,29 @@ export default class InformationPageGalleryBottom extends React.Component<PagePr
         super(props)
     }
 
-    state: PageComponentState & ErrorBoundaryComponentState = {
+    state: PageComponentState = {
         pageData: undefined,
-        error: undefined,
     }
 
     async componentDidMount() {
-        Backend.getInformationPageGalleryBottomData(this.props.pageName)
-            .then((value) =>
-                this.setState({
-                    ...this.state,
-                    pageData: value,
-                })
+        AppStore.dispatch(isSubPageLoading(true))
+        try {
+            const retrievedPageData = await Backend.getInformationPageGalleryBottomData(
+                this.props.pageName
             )
-            .catch((error) =>
-                this.setState({
-                    ...this.state,
-                    error: error,
-                })
-            )
+            if (retrievedPageData === undefined) {
+                throw 'Empty page data.'
+            }
+            this.setState({ ...this.state, pageData: retrievedPageData })
+        } catch (error) {
+            AppStore.dispatch(provideError(error as Error))
+        } finally {
+            AppStore.dispatch(isSubPageLoading(false))
+        }
     }
 
     render(): React.ReactNode {
-        if (this.state.error !== undefined) {
-            throw this.state.error
-        }
-        if (this.state.pageData != undefined) {
+        if (this.state.pageData !== undefined) {
             return (
                 <>
                     <Row className="pageTitle">

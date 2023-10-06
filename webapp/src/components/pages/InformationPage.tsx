@@ -1,45 +1,41 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import ErrorBoundaryComponentState from '../../AppComponentProps'
+import { isSubPageLoading, provideError } from '../../AppSlice'
 import Backend from '../../datasource/Backend'
 import InformationPageData from '../../datasource/models/InformationPageData'
+import { AppStore } from '../../ReduxStore'
 import PageProps from './PageProps'
 
 type PageComponentState = {
     pageData?: InformationPageData
 }
 
-export default class InformationPage extends React.Component<PageProps> {
+export default class InformationPage extends React.Component<PageProps, PageComponentState> {
     constructor(props: PageProps) {
         super(props)
     }
 
-    state: PageComponentState & ErrorBoundaryComponentState = {
+    state: PageComponentState = {
         pageData: undefined,
-        error: undefined,
     }
 
     async componentDidMount() {
-        Backend.getInformationPageData(this.props.pageName)
-            .then((value) =>
-                this.setState({
-                    ...this.state,
-                    pageData: value,
-                })
-            )
-            .catch((error) =>
-                this.setState({
-                    ...this.state,
-                    error: error,
-                })
-            )
+        AppStore.dispatch(isSubPageLoading(true))
+        try {
+            const retrievedPageData = await Backend.getInformationPageData(this.props.pageName)
+            if (retrievedPageData === undefined) {
+                throw 'Empty page data.'
+            }
+            this.setState({ ...this.state, pageData: retrievedPageData })
+        } catch (error) {
+            AppStore.dispatch(provideError(error as Error))
+        } finally {
+            AppStore.dispatch(isSubPageLoading(false))
+        }
     }
 
     render(): React.ReactNode {
-        if (this.state.error !== undefined) {
-            throw this.state.error
-        }
-        if (this.state.pageData != undefined) {
+        if (this.state.pageData !== undefined) {
             return (
                 <>
                     <Row className="pageTitle">
