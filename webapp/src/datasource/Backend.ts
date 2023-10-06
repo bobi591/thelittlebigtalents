@@ -1,11 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios'
+import JSEncrypt from 'jsencrypt'
 import FooterData from './models/FooterData'
-import NavbarData from './models/NavbarData'
 import InformationPageData from './models/InformationPageData'
 import InformationPageGalleryBottomData from './models/InformationPageGalleryBottomData'
-import User from './security/User'
-import JSEncrypt from 'jsencrypt'
+import NavbarData from './models/NavbarData'
 import Session from './security/Session'
+import User from './security/User'
 
 export default class Backend {
     private static postAxiosConfig(endpoint: string, body: string) {

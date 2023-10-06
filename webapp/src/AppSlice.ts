@@ -1,8 +1,7 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AppComponentProps } from './AppComponentProps'
-import NavbarData from './datasource/models/NavbarData'
 import FooterData from './datasource/models/FooterData'
-import { ReactElement } from 'react'
+import NavbarData from './datasource/models/NavbarData'
 
 const initialAppState: AppComponentProps = {}
 

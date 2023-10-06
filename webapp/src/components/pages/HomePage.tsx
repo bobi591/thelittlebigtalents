@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../App.css'
 import { Button, Card, Carousel, Modal } from 'react-bootstrap'
+import '../../App.css'
 import ErrorBoundaryComponentState from '../../AppComponentProps'
 
 type AppState = {

@@ -1,9 +1,9 @@
 import React from 'react'
-import PageProps from './PageProps'
-import InformationPageGalleryBottomData from '../../datasource/models/InformationPageGalleryBottomData'
-import Backend from '../../datasource/Backend'
 import { Carousel, Row } from 'react-bootstrap'
 import ErrorBoundaryComponentState from '../../AppComponentProps'
+import Backend from '../../datasource/Backend'
+import InformationPageGalleryBottomData from '../../datasource/models/InformationPageGalleryBottomData'
+import PageProps from './PageProps'
 
 type PageComponentState = {
     pageData?: InformationPageGalleryBottomData

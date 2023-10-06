@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, Dropdown, Col, Row, Container } from 'react-bootstrap'
-import Backend from '../../datasource/Backend'
-import '../../App.css'
+import { Button, Col, Container, Dropdown, Row } from 'react-bootstrap'
 import { JsonTree } from 'react-editable-json-tree'
+import '../../App.css'
+import Backend from '../../datasource/Backend'
 
 export default class DataEditorPage extends React.Component {
     constructor(props) {

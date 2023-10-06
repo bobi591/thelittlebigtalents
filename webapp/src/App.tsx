@@ -1,22 +1,12 @@
 import React from 'react'
-import NavbarComponent from './components/navbar/NavbarComponent'
-import FooterComponent from './components/footer/FooterComponent'
-import MaintenancePage from './components/pages/MaintenancePage'
-import { Provider, connect } from 'react-redux'
-import {
-    AppStore,
-    useAppDispatch,
-    useAppSelector,
-    AppState,
-} from './ReduxStore'
-import Backend from './datasource/Backend'
-import {
-    provideError,
-    provideFooterData,
-    provideNavbarData,
-    providePageToShow,
-} from './AppSlice'
+import { connect } from 'react-redux'
 import { AppComponentProps } from './AppComponentProps'
+import { provideError, provideFooterData, provideNavbarData } from './AppSlice'
+import FooterComponent from './components/footer/FooterComponent'
+import NavbarComponent from './components/navbar/NavbarComponent'
+import MaintenancePage from './components/pages/MaintenancePage'
+import Backend from './datasource/Backend'
+import { AppState, AppStore } from './ReduxStore'
 
 /**
  * This is main App Component which also acts as an Error Boundary.

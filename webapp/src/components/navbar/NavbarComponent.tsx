@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react'
+import { Dropdown } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import NavbarItemData from '../../datasource/models/NavbarData'
-import Backend from '../../datasource/Backend'
-import { Dropdown } from 'react-bootstrap'
 import ErrorBoundaryComponentState from '../../AppComponentProps'
+import Backend from '../../datasource/Backend'
+import NavbarItemData from '../../datasource/models/NavbarData'
 
 type NavbarComponentState = {
     navbarData?: NavbarItemData

@@ -1,4 +1,3 @@
-import { ReactElement } from 'react'
 import FooterData from './datasource/models/FooterData'
 import NavbarData from './datasource/models/NavbarData'
 

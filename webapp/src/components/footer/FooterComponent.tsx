@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap'
-import FooterData from '../../datasource/models/FooterData'
 import Backend from '../../datasource/Backend'
+import FooterData from '../../datasource/models/FooterData'
 
 type FooterComponentProps = {
     footerData: FooterData

@@ -1,9 +1,9 @@
 import React from 'react'
-import PageProps from './PageProps'
-import InformationPageData from '../../datasource/models/InformationPageData'
-import Backend from '../../datasource/Backend'
 import { Col, Row } from 'react-bootstrap'
 import ErrorBoundaryComponentState from '../../AppComponentProps'
+import Backend from '../../datasource/Backend'
+import InformationPageData from '../../datasource/models/InformationPageData'
+import PageProps from './PageProps'
 
 type PageComponentState = {
     pageData?: InformationPageData
