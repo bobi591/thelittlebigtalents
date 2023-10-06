@@ -1,3 +1,3 @@
 export default class PageProps {
-    public pageName!: string;
+    public pageName!: string
 }

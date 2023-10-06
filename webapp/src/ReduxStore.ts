@@ -1,11 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import AppReducer from "./AppSlice";
+import { configureStore } from '@reduxjs/toolkit'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import AppReducer from './AppSlice'
 
 export const AppStore = configureStore({
     reducer: {
-        app: AppReducer
-    }
+        app: AppReducer,
+    },
 })
 
 export type AppState = ReturnType<typeof AppStore.getState>

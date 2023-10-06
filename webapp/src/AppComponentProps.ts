@@ -1,11 +1,11 @@
-import { ReactElement } from "react"
-import FooterData from "./datasource/models/FooterData"
-import NavbarData from "./datasource/models/NavbarData"
+import { ReactElement } from 'react'
+import FooterData from './datasource/models/FooterData'
+import NavbarData from './datasource/models/NavbarData'
 
 export type AppComponentProps = {
     error?: Error
-    footerData?: FooterData,
-    navbarData?: NavbarData,
+    footerData?: FooterData
+    navbarData?: NavbarData
     pageToShow?: JSX.Element
 }
 

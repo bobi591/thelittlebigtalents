@@ -1,11 +1,10 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AppComponentProps } from "./AppComponentProps";
-import NavbarData from "./datasource/models/NavbarData";
-import FooterData from "./datasource/models/FooterData";
-import { ReactElement } from "react";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { AppComponentProps } from './AppComponentProps'
+import NavbarData from './datasource/models/NavbarData'
+import FooterData from './datasource/models/FooterData'
+import { ReactElement } from 'react'
 
-const initialAppState: AppComponentProps = {
-}
+const initialAppState: AppComponentProps = {}
 
 export const AppSlice = createSlice({
     name: 'appSlice',
@@ -21,10 +20,15 @@ export const AppSlice = createSlice({
             state.error = action.payload
         },
         providePageToShow: (state, action: PayloadAction<JSX.Element>) => {
-            state.pageToShow = action.payload;
-        }
-    }
-});
+            state.pageToShow = action.payload
+        },
+    },
+})
 
-export const { provideNavbarData, provideFooterData, provideError, providePageToShow } = AppSlice.actions
+export const {
+    provideNavbarData,
+    provideFooterData,
+    provideError,
+    providePageToShow,
+} = AppSlice.actions
 export default AppSlice.reducer
