@@ -8,10 +8,6 @@ type FooterComponentProps = {
 }
 
 export default class FooterComponent extends Component<FooterComponentProps> {
-    constructor(props: FooterComponentProps) {
-        super(props)
-    }
-
     async componentDidMount() {
         Backend.getFooter()
             .then((value) =>
