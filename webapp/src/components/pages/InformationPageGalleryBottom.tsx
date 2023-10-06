@@ -22,9 +22,10 @@ export default class InformationPageGalleryBottom extends React.Component<PagePr
     async componentDidMount() {
         AppStore.dispatch(isSubPageLoading(true))
         try {
-            const retrievedPageData = await Backend.getInformationPageGalleryBottomData(
-                this.props.pageName
-            )
+            const retrievedPageData =
+                await Backend.getInformationPageGalleryBottomData(
+                    this.props.pageName
+                )
             if (retrievedPageData === undefined) {
                 throw 'Empty page data.'
             }

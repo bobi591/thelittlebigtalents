@@ -10,7 +10,10 @@ type PageComponentState = {
     pageData?: InformationPageData
 }
 
-export default class InformationPage extends React.Component<PageProps, PageComponentState> {
+export default class InformationPage extends React.Component<
+    PageProps,
+    PageComponentState
+> {
     constructor(props: PageProps) {
         super(props)
     }
@@ -22,7 +25,9 @@ export default class InformationPage extends React.Component<PageProps, PageComp
     async componentDidMount() {
         AppStore.dispatch(isSubPageLoading(true))
         try {
-            const retrievedPageData = await Backend.getInformationPageData(this.props.pageName)
+            const retrievedPageData = await Backend.getInformationPageData(
+                this.props.pageName
+            )
             if (retrievedPageData === undefined) {
                 throw 'Empty page data.'
             }

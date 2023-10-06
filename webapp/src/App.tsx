@@ -38,7 +38,7 @@ export class App extends React.Component<AppComponentProps> {
     }
 
     componentDidCatch(error: Error): void {
-      AppStore.dispatch(provideError(error));
+        AppStore.dispatch(provideError(error))
     }
 
     render(): React.ReactNode {
