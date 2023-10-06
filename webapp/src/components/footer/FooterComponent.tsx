@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap'
-import Backend from '../../datasource/Backend'
 import FooterData from '../../datasource/models/FooterData'
 
 type FooterComponentProps = {
@@ -8,22 +7,6 @@ type FooterComponentProps = {
 }
 
 export default class FooterComponent extends Component<FooterComponentProps> {
-    async componentDidMount() {
-        Backend.getFooter()
-            .then((value) =>
-                this.setState({
-                    ...this.state,
-                    footerData: value,
-                })
-            )
-            .catch((error) =>
-                this.setState({
-                    ...this.state,
-                    error: error,
-                })
-            )
-    }
-
     render(): React.ReactNode {
         const footerData = this.props.footerData
         return (

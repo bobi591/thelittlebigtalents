@@ -18,13 +18,19 @@ export class App extends React.Component<AppComponentProps> {
 
     async componentDidMount() {
         try {
-            const footerData = await Backend.getFooter()
-            const navbarData = await Backend.getNavbar()
-            if (footerData == undefined || navbarData == undefined) {
-                throw 'Emptry navbar or footer data.'
-            } else {
-                AppStore.dispatch(provideFooterData(footerData!))
-                AppStore.dispatch(provideNavbarData(navbarData!))
+            // If the Footer Data and Navbar Data are already loaded, there's no need to reload them again...
+            if (
+                this.props.footerData == undefined ||
+                this.props.navbarData == undefined
+            ) {
+                const footerData = await Backend.getFooter()
+                const navbarData = await Backend.getNavbar()
+                if (footerData == undefined || navbarData == undefined) {
+                    throw 'Emptry navbar or footer data.'
+                } else {
+                    AppStore.dispatch(provideFooterData(footerData!))
+                    AppStore.dispatch(provideNavbarData(navbarData!))
+                }
             }
         } catch (error) {
             AppStore.dispatch(provideError(error as Error))
@@ -51,11 +57,11 @@ export class App extends React.Component<AppComponentProps> {
             return <MaintenancePage errorMessage={String(error)} />
         }
         if (footerData == undefined || navbarData == undefined) {
-            return <p>Loading....</p>
+            return <div className="loader"></div>
         }
         return (
             <div className="App">
-                <NavbarComponent />
+                <NavbarComponent navbarData={this.props.navbarData!} />
                 <div>{this.props.pageToShow}</div>
                 <FooterComponent footerData={this.props.footerData!} />
             </div>
