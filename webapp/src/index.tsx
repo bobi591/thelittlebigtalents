@@ -7,6 +7,9 @@ import './App.css'
 import { Suspense, lazy } from 'react';
 import DataEditorPage from './components/pages/DataEditorPage';
 import AuthorizedApp from './AuthorizedApp';
+import { AppStore, useAppDispatch } from './ReduxStore';
+import { Provider } from 'react-redux';
+import { providePageToShow } from './AppSlice';
 
 const App = lazy(() => import('./App'))
 const HomePage = lazy(() => import('./components/pages/HomePage'))
@@ -24,15 +27,17 @@ root.render (
     <link rel="preconnect" href="https://fonts.googleapis.com"/> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='anonymous'/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet"/>
-    <BrowserRouter>
-      <Routes>
-        <Route path='*' element={<NotFoundPage/>}></Route>
-        <Route path='/' element={<App pageToShow={<HomePage/>}/>}></Route>
-        <Route path='/achievements' element={<App pageToShow={<InformationPage pageName={'Постижения'}/>}/>}></Route>
-        <Route path='/summerclasses' element={<App pageToShow={<InformationPageGalleryBottom pageName={'Летни Уроци'}/>}/>}></Route>
-        <Route path='/editor' element={<AuthorizedApp pageToShow={<DataEditorPage/>}/>}></Route>
-      </Routes>
-    </BrowserRouter>
+    <Provider store={AppStore}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='*' element={<NotFoundPage/>}></Route>
+          <Route path='/' element={<App pageToShow={<HomePage/>}/>}></Route>
+          <Route path='/achievements' element={<App pageToShow={<InformationPage pageName={'Постижения'}/>}/>}></Route>
+          <Route path='/summerclasses' element={<App pageToShow={<InformationPageGalleryBottom pageName={'Летни Уроци'}/>}/>}></Route>
+          <Route path='/editor' element={<AuthorizedApp pageToShow={<DataEditorPage/>}/>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </Suspense> 
 )
 

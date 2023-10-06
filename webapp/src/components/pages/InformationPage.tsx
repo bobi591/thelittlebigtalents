@@ -3,7 +3,7 @@ import PageProps from "./PageProps";
 import InformationPageData from "../../datasource/models/InformationPageData";
 import Backend from "../../datasource/Backend";
 import { Col, Row } from "react-bootstrap";
-import ErrorBoundaryComponentState from "../ErrorBoundaryComponentState";
+import ErrorBoundaryComponentState from "../../AppComponentProps";
 
 type PageComponentState = {
     pageData?: InformationPageData;

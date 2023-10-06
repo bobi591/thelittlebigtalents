@@ -1,8 +1,8 @@
 import { Component, ReactNode } from "react";
-import { AppProps } from "./App";
 import Session from "./datasource/security/Session";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Backend from "./datasource/Backend";
+import { AppComponentProps } from "./AppComponentProps";
 
 type AuthorizedAppState = {
     inputUsername?: string;
@@ -10,9 +10,9 @@ type AuthorizedAppState = {
     session?: Session;
 }
 
-export default class AuthorizedApp extends Component<AppProps, AuthorizedAppState> {
+export default class AuthorizedApp extends Component<AppComponentProps, AuthorizedAppState> {
 
-    constructor(props: AppProps) {
+    constructor(props: AppComponentProps) {
         super(props);
     }
 

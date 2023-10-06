@@ -3,7 +3,7 @@ import PageProps from "./PageProps";
 import InformationPageGalleryBottomData from "../../datasource/models/InformationPageGalleryBottomData";
 import Backend from "../../datasource/Backend";
 import { Carousel, Row } from "react-bootstrap";
-import ErrorBoundaryComponentState from "../ErrorBoundaryComponentState";
+import ErrorBoundaryComponentState from "../../AppComponentProps";
 
 type PageComponentState = {
     pageData?: InformationPageGalleryBottomData;

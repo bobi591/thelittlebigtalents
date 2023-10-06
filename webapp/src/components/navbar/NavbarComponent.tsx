@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import NavbarItemData from "../../datasource/models/NavbarData";
 import Backend from "../../datasource/Backend";
 import { Dropdown } from "react-bootstrap";
-import ErrorBoundaryComponentState from "../ErrorBoundaryComponentState";
+import ErrorBoundaryComponentState from "../../AppComponentProps";
 
 type NavbarComponentState = {
     navbarData?: NavbarItemData; 
