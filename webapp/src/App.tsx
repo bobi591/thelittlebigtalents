@@ -45,7 +45,9 @@ export class App extends React.Component<AppComponentProps> {
         const footerData = this.props.footerData
         const navbarData = this.props.navbarData
         const error = this.props.error
-        const loader = <div className="loader"></div>
+        const loader = <div className="loader">
+            <img src="/logo.png" width={'7%'} height={'7%'} />
+        </div>
 
         if (error !== undefined) {
             return <MaintenancePage errorMessage={String(error)} />
