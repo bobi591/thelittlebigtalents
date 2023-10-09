@@ -1,10 +1,10 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { isSubPageLoading, provideError } from '../../AppSlice'
-import Backend from '../../datasource/Backend'
-import InformationPageData from '../../datasource/models/InformationPageData'
-import { AppStore } from '../../ReduxStore'
-import PageProps from './PageProps'
+import { isSubPageLoading, provideError } from '../../../AppSlice'
+import Backend from '../../../datasource/Backend'
+import InformationPageData from '../../../datasource/models/InformationPageData'
+import { AppStore } from '../../../ReduxStore'
+import PageProps from '../PageProps'
 
 type PageComponentState = {
     pageData?: InformationPageData

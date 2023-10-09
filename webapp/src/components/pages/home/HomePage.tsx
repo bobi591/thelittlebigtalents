@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Card, Carousel, Modal } from 'react-bootstrap'
-import '../../App.css'
-import ErrorBoundaryComponentState from '../../AppComponentProps'
+import ErrorBoundaryComponentState from '../../../AppComponentProps'
 
 type AppState = {
     showBookLessonModal: boolean

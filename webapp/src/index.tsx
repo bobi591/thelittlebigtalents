@@ -5,19 +5,19 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import AuthorizedApp from './AuthorizedApp'
-import DataEditorPage from './components/pages/DataEditorPage'
+import DataEditorPage from './components/pages/dataeditor/DataEditorPage'
 import './index.css'
 import { AppStore } from './ReduxStore'
 import reportWebVitals from './reportWebVitals'
 
 const App = lazy(() => import('./App'))
-const HomePage = lazy(() => import('./components/pages/HomePage'))
-const MaintenancePage = lazy(() => import('./components/pages/MaintenancePage'))
-const NotFoundPage = lazy(() => import('./components/pages/NotFoundPage'))
+const HomePage = lazy(() => import('./components/pages/home/HomePage'))
+const MaintenancePage = lazy(() => import('./components/pages/maintenance/MaintenancePage'))
+const NotFoundPage = lazy(() => import('./components/pages/notfound/NotFoundPage'))
 const InformationPageGalleryBottom = lazy(
-    () => import('./components/pages/InformationPageGalleryBottom')
+    () => import('./components/pages/informationGalleryBottom/InformationPageGalleryBottom')
 )
-const InformationPage = lazy(() => import('./components/pages/InformationPage'))
+const InformationPage = lazy(() => import('./components/pages/information/InformationPage'))
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 

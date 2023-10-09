@@ -1,10 +1,10 @@
 import React from 'react'
 import { Carousel, Row } from 'react-bootstrap'
-import { isSubPageLoading, provideError } from '../../AppSlice'
-import Backend from '../../datasource/Backend'
-import InformationPageGalleryBottomData from '../../datasource/models/InformationPageGalleryBottomData'
-import { AppStore } from '../../ReduxStore'
-import PageProps from './PageProps'
+import { isSubPageLoading, provideError } from '../../../AppSlice'
+import Backend from '../../../datasource/Backend'
+import InformationPageGalleryBottomData from '../../../datasource/models/InformationPageGalleryBottomData'
+import { AppStore } from '../../../ReduxStore'
+import PageProps from '../PageProps'
 
 type PageComponentState = {
     pageData?: InformationPageGalleryBottomData

@@ -4,7 +4,7 @@ import { AppComponentProps } from './AppComponentProps'
 import { provideError, provideFooterData, provideNavbarData } from './AppSlice'
 import FooterComponent from './components/footer/FooterComponent'
 import NavbarComponent from './components/navbar/NavbarComponent'
-import MaintenancePage from './components/pages/MaintenancePage'
+import MaintenancePage from './components/pages/maintenance/MaintenancePage'
 import Backend from './datasource/Backend'
 import { AppState, AppStore } from './ReduxStore'
 
