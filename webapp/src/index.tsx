@@ -1,25 +1,38 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en.json'
 import { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import AuthorizedApp from './AuthorizedApp'
-import DataEditorPage from './components/pages/dataeditor/DataEditorPage'
+import AuthorizedApp from './components/authorized/AuthorizedApp'
+import DataEditorPage from './components/authorized/dataeditor/DataEditorPage'
 import './index.css'
 import { AppStore } from './ReduxStore'
 import reportWebVitals from './reportWebVitals'
 
 const App = lazy(() => import('./App'))
 const HomePage = lazy(() => import('./components/pages/home/HomePage'))
-const MaintenancePage = lazy(() => import('./components/pages/maintenance/MaintenancePage'))
-const NotFoundPage = lazy(() => import('./components/pages/notfound/NotFoundPage'))
-const InformationPageGalleryBottom = lazy(
-    () => import('./components/pages/informationGalleryBottom/InformationPageGalleryBottom')
+const MaintenancePage = lazy(
+    () => import('./components/pages/maintenance/MaintenancePage')
 )
-const InformationPage = lazy(() => import('./components/pages/information/InformationPage'))
+const NotFoundPage = lazy(
+    () => import('./components/pages/notfound/NotFoundPage')
+)
+const InformationPageGalleryBottom = lazy(
+    () =>
+        import(
+            './components/pages/informationGalleryBottom/InformationPageGalleryBottom'
+        )
+)
+const InformationPage = lazy(
+    () => import('./components/pages/information/InformationPage')
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
+TimeAgo.addDefaultLocale(en)
 
 root.render(
     <Suspense>

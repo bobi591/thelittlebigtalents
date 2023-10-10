@@ -91,12 +91,12 @@ a#basic-nav-dropdown#drop-left.dropdown-toggle::after {
     width: 10vh;
 }
 
-@keyframes pulse{
-    from{
-      box-shadow: 0 0 0 0 rgb(181, 136, 140);
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 0 0 rgb(181, 136, 140);
     }
 
-    to{
-      box-shadow: 0 0 0 20px rgba(201, 201, 48, 0.365);
+    to {
+        box-shadow: 0 0 0 20px rgba(201, 201, 48, 0.365);
     }
 }

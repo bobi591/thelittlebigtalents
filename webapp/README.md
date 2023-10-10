@@ -5,12 +5,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Environment variables
 
 ### How to use environment variables?
+
 Add your environment variables in the following format -> myEnvVariable='theValue123'
 
 ### Which environment variables do I need?
-* REACT_APP_BACKEND_API_KEY - Azure Functions API Key used to call the Azure Functions Backend (https://learn.microsoft.com/en-us/azure/azure-functions/security-concepts?tabs=v4)
-* REACT_APP_BACKEND_API_ENDPOINT - Azure Functions endpoint base URL (for example: 'https://myazurefunction.azurewebsites.net/api/')
-* REACT_APP_SECURITY_PUBLIC_KEY - The public key used for envryption of session and user info. The keys used are PKCS8 standard with RSA algorithm
+
+- REACT_APP_BACKEND_API_KEY - Azure Functions API Key used to call the Azure Functions Backend (https://learn.microsoft.com/en-us/azure/azure-functions/security-concepts?tabs=v4)
+- REACT_APP_BACKEND_API_ENDPOINT - Azure Functions endpoint base URL (for example: 'https://myazurefunction.azurewebsites.net/api/')
+- REACT_APP_SECURITY_PUBLIC_KEY - The public key used for envryption of session and user info. The keys used are PKCS8 standard with RSA algorithm
 
 ## Available Scripts
 
