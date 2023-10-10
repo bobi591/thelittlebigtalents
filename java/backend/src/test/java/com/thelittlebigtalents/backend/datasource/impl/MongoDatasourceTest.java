@@ -106,15 +106,19 @@ public class MongoDatasourceTest {
 
     @Test
     public void testGetAll() throws EmptyResultException {
+        FindIterable mockPreSortIterable = mock(FindIterable.class);
+        when(mockCollection.find()).thenReturn(mockPreSortIterable);
         FindIterable findIterable = mockFindIterable();
-        when(mockCollection.find()).thenReturn(findIterable);
+        when(mockPreSortIterable.sort(any(Bson.class))).thenReturn(findIterable);
         assertEquals(2, sut.getAll().size());
     }
 
     @Test
     public void testGetAll_NoResults() {
+        FindIterable mockPreSortIterable = mock(FindIterable.class);
+        when(mockCollection.find()).thenReturn(mockPreSortIterable);
         FindIterable findIterable = mockEmptyFindIterable();
-        when(mockCollection.find()).thenReturn(findIterable);
+        when(mockPreSortIterable.sort(any(Bson.class))).thenReturn(findIterable);
         try {
             sut.getAll();
         } catch (Exception e) {

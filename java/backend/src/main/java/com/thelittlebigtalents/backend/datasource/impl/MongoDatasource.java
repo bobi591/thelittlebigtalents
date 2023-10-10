@@ -1,6 +1,8 @@
 /* (C)2023 */
 package com.thelittlebigtalents.backend.datasource.impl;
 
+import static com.mongodb.client.model.Sorts.ascending;
+
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -111,11 +113,20 @@ class MongoDatasource<T extends PersistableDocument> implements QueryableDatasou
                 mongoClient
                         .getDatabase(databaseName)
                         .getCollection(collectionName, persistableDocument);
-        collection.find().forEach(result::add);
+        collection.find().sort(ascending("_id")).forEach(result::add);
         if (result.isEmpty()) {
             throw new EmptyResultException();
         }
         return result;
+    }
+
+    @Override
+    public void insert(T toInsert) {
+        MongoCollection<T> collection =
+                mongoClient
+                        .getDatabase(databaseName)
+                        .getCollection(collectionName, persistableDocument);
+        collection.insertOne(toInsert);
     }
 
     @Override

@@ -13,12 +13,15 @@ import com.mongodb.client.model.Filters;
 import com.thelittlebigtalents.backend.datasource.EmptyResultException;
 import com.thelittlebigtalents.backend.datasource.api.QueryableDatasource;
 import com.thelittlebigtalents.backend.datasource.impl.MongoDatasourceFactory;
+import com.thelittlebigtalents.backend.model.api.PersistableDocument;
 import com.thelittlebigtalents.backend.model.impl.*;
 import com.thelittlebigtalents.backend.security.AuthenticationService;
 import com.thelittlebigtalents.backend.security.Session;
 import com.thelittlebigtalents.backend.validation.json.JsonValidationProcessor;
 import com.thelittlebigtalents.backend.validation.json.JsonValidationRequest;
+import java.util.List;
 import java.util.Optional;
+import org.apache.commons.text.CaseUtils;
 import org.bson.conversions.Bson;
 
 /** Main point of Azure Functions for The Little Big Talents. */
@@ -44,8 +47,14 @@ public class AzureFunctions {
             try (QueryableDatasource<Footer, Bson> queryableDatasource =
                     MongoDatasourceFactory.createMongoQueryableDatasource(
                             Footer.class, "development", "footer")) {
+                // Get the latest element from stream
+                List<Footer> retrievedData = queryableDatasource.getAll();
                 return request.createResponseBuilder(HttpStatus.OK)
-                        .body(queryableDatasource.getAll().stream().findFirst().get())
+                        .body(
+                                retrievedData.stream()
+                                        .skip(retrievedData.size() - 1)
+                                        .findFirst()
+                                        .get())
                         .build();
             }
         } catch (EmptyResultException emptyResultException) {
@@ -68,8 +77,14 @@ public class AzureFunctions {
             try (QueryableDatasource<Navbar, Bson> queryableDatasource =
                     MongoDatasourceFactory.createMongoQueryableDatasource(
                             Navbar.class, "development", "navbar")) {
+                // Get the latest element from stream
+                List<Navbar> retrievedData = queryableDatasource.getAll();
                 return request.createResponseBuilder(HttpStatus.OK)
-                        .body(queryableDatasource.getAll().stream().findFirst().get())
+                        .body(
+                                retrievedData.stream()
+                                        .skip(retrievedData.size() - 1)
+                                        .findFirst()
+                                        .get())
                         .build();
             }
         } catch (EmptyResultException emptyResultException) {
@@ -173,6 +188,41 @@ public class AzureFunctions {
                         .body("JSON Validation Not Passed! :(")
                         .build();
             }
+        } catch (Exception e) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                    .body("JSON Validation Not Passed! :( \nReason: " + e.getMessage())
+                    .build();
+        }
+    }
+
+    @FunctionName("saveJson")
+    public HttpResponseMessage saveJson(
+            @HttpTrigger(
+                            name = "saveJson",
+                            methods = {HttpMethod.POST},
+                            authLevel = AuthorizationLevel.FUNCTION)
+                    HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+        if (request.getBody().isEmpty()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).build();
+        }
+        try {
+            JsonValidationRequest jsonValidationRequest =
+                    OBJECT_MAPPER.readValue(request.getBody().get(), JsonValidationRequest.class);
+            JsonValidationProcessor jsonValidationProcessor =
+                    new JsonValidationProcessor(jsonValidationRequest);
+            PersistableDocument parsedDocument =
+                    jsonValidationProcessor.createPersistableDocument();
+            try (QueryableDatasource datasource =
+                    MongoDatasourceFactory.createMongoQueryableDatasource(
+                            parsedDocument.getClass(),
+                            "development",
+                            CaseUtils.toCamelCase(
+                                    parsedDocument.getClass().getTypeName(), false))) {
+                datasource.insert(parsedDocument);
+            }
+            return request.createResponseBuilder(HttpStatus.OK)
+                    .body("JSON Validation Passed & Data is Saved! :)").build();
         } catch (Exception e) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
                     .body("JSON Validation Not Passed! :( \nReason: " + e.getMessage())

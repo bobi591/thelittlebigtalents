@@ -23,10 +23,14 @@ public interface QueryableDatasource<D extends PersistableDocument, Q> extends A
     List<D> get(Q query) throws EmptyResultException;
 
     /**
-     * Get all records from the datasource without query.
+     * Get all records from the datasource without query. <br>
+     * <b>The implementation should sort the records by ID in ascending order <i>(oldest to
+     * newest)</i>.</b>
      *
      * @return list of all records in a table or collection
      * @throws EmptyResultException when the returned result is empty
      */
     List<D> getAll() throws EmptyResultException;
+
+    void insert(D toInsert);
 }

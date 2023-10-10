@@ -18,7 +18,8 @@ public class JsonValidationProcessor {
     }
 
     /**
-     * Run JSON validation and indicates whether the JSON is valid or not.
+     * Run JSON validation and indicates whether the JSON is valid {@link PersistableDocument} or
+     * not.
      *
      * @return true if JSON is valid, false if not
      * @throws ValidationException an error during JSON validation, like missing data or bad request
@@ -38,6 +39,26 @@ public class JsonValidationProcessor {
                     this.objectMapper.readValue(
                             this.jsonValidationRequest.getJson(), requiredClass);
             return parsedObject instanceof PersistableDocument;
+        } catch (Exception e) {
+            throw new ValidationException(e.getMessage());
+        }
+    }
+
+    /**
+     * Validates the JSON using {@link JsonValidationProcessor#isValidJson()} and creates the {@link
+     * PersistableDocument} object.
+     *
+     * @return the parsed persistable document
+     * @throws ValidationException an error during JSON validation, like missing data or bad request
+     */
+    public PersistableDocument createPersistableDocument() throws ValidationException {
+        try {
+            isValidJson();
+            Class requiredClass = Class.forName(jsonValidationRequest.getClassName());
+            Object parsedObject =
+                    this.objectMapper.readValue(
+                            this.jsonValidationRequest.getJson(), requiredClass);
+            return (PersistableDocument) parsedObject;
         } catch (Exception e) {
             throw new ValidationException(e.getMessage());
         }
