@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type DataEditorPageState = {
-    isValidating: boolean
+    jsonEditorKey: number
     selectedDataType?: string
     data?: unknown
     originalData?: unknown
 }
 
 const initialState: DataEditorPageState = {
-    isValidating: false,
+    jsonEditorKey: 100,
     selectedDataType: undefined,
     data: undefined,
     originalData: undefined,
@@ -18,8 +18,8 @@ const DataEditorPageSlice = createSlice({
     name: 'dataEditorPageSlice',
     initialState: initialState,
     reducers: {
-        updateIsValidating(state, action: PayloadAction<boolean>) {
-            state.isValidating = action.payload
+        updateJsonEditorKey(state) {
+            state.jsonEditorKey = state.jsonEditorKey+1
         },
         updateSelectedDataType(state, action: PayloadAction<string>) {
             state.selectedDataType = action.payload
@@ -34,7 +34,7 @@ const DataEditorPageSlice = createSlice({
 })
 
 export const {
-    updateIsValidating,
+    updateJsonEditorKey,
     updateSelectedDataType,
     updateData,
     updateOriginalData,

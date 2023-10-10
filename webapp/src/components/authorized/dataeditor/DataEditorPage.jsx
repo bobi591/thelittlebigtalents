@@ -9,7 +9,7 @@ import { AppStore } from '../../../ReduxStore'
 import { showToast } from '../AuthorizedAppSlice'
 import {
     updateData,
-    updateIsValidating,
+    updateJsonEditorKey,
     updateOriginalData,
     updateSelectedDataType,
 } from './DataEditorPageSlice'
@@ -30,6 +30,7 @@ export class DataEditorPage extends React.Component {
             AppStore.dispatch(updateOriginalData(clone(retrievedData)))
             AppStore.dispatch(updateData(clone(retrievedData)))
         }
+        AppStore.dispatch(updateJsonEditorKey())
     }
 
     async onJsonDataUpdate(data) {
@@ -39,7 +40,6 @@ export class DataEditorPage extends React.Component {
 
     async onSaveClick() {
         try {
-            AppStore.dispatch(updateIsValidating(true))
             const validationResponse = await Backend.saveJson({
                 className: this.props.data.className,
                 json: JSON.stringify(this.props.data),
@@ -59,12 +59,13 @@ export class DataEditorPage extends React.Component {
                 })
             )
         } finally {
-            AppStore.dispatch(updateIsValidating(false))
+            AppStore.dispatch(updateJsonEditorKey())
         }
     }
 
     onResetClick() {
         AppStore.dispatch(updateData(clone(this.props.originalData)))
+        AppStore.dispatch(updateJsonEditorKey())
     }
 
     render() {
@@ -77,7 +78,7 @@ export class DataEditorPage extends React.Component {
                     <p>{modifiedData.className}</p>
                     <div className="editor">
                         <JsonEditor
-                            key={JSON.stringify(modifiedData)}
+                            key={this.props.jsonEditorKey}
                             data={modifiedData}
                             onChange={async (data) => {
                                 await this.onJsonDataUpdate(data)
@@ -150,7 +151,7 @@ export class DataEditorPage extends React.Component {
 
 export const mapStateToProps = (state) => {
     return {
-        isValidating: state.dataEditorPage.isValidating,
+        jsonEditorKey: state.dataEditorPage.jsonEditorKey,
         selectedDataType: state.dataEditorPage.selectedDataType,
         data: state.dataEditorPage.data,
         originalData: state.dataEditorPage.originalData,
@@ -159,7 +160,7 @@ export const mapStateToProps = (state) => {
 }
 
 export const mapDispatchToProps = () => ({
-    updateIsValidating,
+    updateJsonEditorKey,
     updateSelectedDataType,
     updateData,
     updateOriginalData,
