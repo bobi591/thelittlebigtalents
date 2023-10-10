@@ -76,6 +76,17 @@ export default class Backend {
         return response.data
     }
 
+    public static async saveJson(
+        request: any
+    ): Promise<string | undefined> {
+        const axiosConfig = this.postAxiosConfig(
+            'saveJson',
+            JSON.stringify(request)
+        )
+        const response = await axios(axiosConfig)
+        return response.data
+    }
+
     public static async createSession(
         request: User
     ): Promise<Session | undefined> {

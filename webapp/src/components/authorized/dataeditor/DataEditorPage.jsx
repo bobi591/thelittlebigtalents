@@ -37,10 +37,10 @@ export class DataEditorPage extends React.Component {
         AppStore.dispatch(updateData(clone(data)))
     }
 
-    async onValidateClick() {
+    async onSaveClick() {
         try {
             AppStore.dispatch(updateIsValidating(true))
-            const validationResponse = await Backend.sendJsonToValidation({
+            const validationResponse = await Backend.saveJson({
                 className: this.props.data.className,
                 json: JSON.stringify(this.props.data),
             })
@@ -50,6 +50,7 @@ export class DataEditorPage extends React.Component {
                     message: validationResponse,
                 })
             )
+            AppStore.dispatch(updateOriginalData(this.props.data))
         } catch (error) {
             AppStore.dispatch(
                 showToast({
@@ -95,13 +96,13 @@ export class DataEditorPage extends React.Component {
                     <Col>
                         <Button
                             variant="success"
-                            onClick={async () => await this.onValidateClick()}
+                            onClick={async () => await this.onSaveClick()}
                             disabled={
                                 JSON.stringify(modifiedData) ===
                                 JSON.stringify(originalData)
                             }
                         >
-                            Валидирай
+                            Запази
                         </Button>
                     </Col>
                     <Col>
