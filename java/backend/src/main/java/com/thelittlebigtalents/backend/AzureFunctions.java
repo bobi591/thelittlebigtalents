@@ -175,19 +175,10 @@ public class AzureFunctions {
         }
 
         try {
-            JsonValidationRequest jsonValidationRequest =
-                    OBJECT_MAPPER.readValue(request.getBody().get(), JsonValidationRequest.class);
-            JsonValidationProcessor jsonValidationProcessor =
-                    new JsonValidationProcessor(jsonValidationRequest);
-            if (jsonValidationProcessor.isValidJson()) {
-                return request.createResponseBuilder(HttpStatus.OK)
-                        .body("JSON Validation Passed! :)")
-                        .build();
-            } else {
-                return request.createResponseBuilder(HttpStatus.OK)
-                        .body("JSON Validation Not Passed! :(")
-                        .build();
-            }
+            convertJsonToPersistableDocument(request.getBody().get());
+            return request.createResponseBuilder(HttpStatus.OK)
+                    .body("JSON Validation Passed! :)")
+                    .build();
         } catch (Exception e) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
                     .body("JSON Validation Not Passed! :( \nReason: " + e.getMessage())
@@ -207,19 +198,14 @@ public class AzureFunctions {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST).build();
         }
         try {
-            JsonValidationRequest jsonValidationRequest =
-                    OBJECT_MAPPER.readValue(request.getBody().get(), JsonValidationRequest.class);
-            JsonValidationProcessor jsonValidationProcessor =
-                    new JsonValidationProcessor(jsonValidationRequest);
-            PersistableDocument parsedDocument =
-                    jsonValidationProcessor.createPersistableDocument();
+            PersistableDocument document =
+                    convertJsonToPersistableDocument(request.getBody().get());
             try (QueryableDatasource datasource =
                     MongoDatasourceFactory.createMongoQueryableDatasource(
-                            parsedDocument.getClass(),
+                            document.getClass(),
                             "development",
-                            CaseUtils.toCamelCase(
-                                    parsedDocument.getClass().getTypeName(), false))) {
-                datasource.insert(parsedDocument);
+                            CaseUtils.toCamelCase(document.getClass().getTypeName(), false))) {
+                datasource.insert(document);
             }
             return request.createResponseBuilder(HttpStatus.OK)
                     .body("JSON Validation Passed & Data is Saved! :)")
@@ -229,6 +215,46 @@ public class AzureFunctions {
                     .body("JSON Validation Not Passed! :( \nReason: " + e.getMessage())
                     .build();
         }
+    }
+
+    @FunctionName("updateJson")
+    public HttpResponseMessage updateJson(
+            @HttpTrigger(
+                            name = "updateJson",
+                            methods = {HttpMethod.POST},
+                            authLevel = AuthorizationLevel.FUNCTION)
+                    HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+        if (request.getBody().isEmpty()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).build();
+        }
+        try {
+            PersistableDocument document =
+                    convertJsonToPersistableDocument(request.getBody().get());
+            try (QueryableDatasource datasource =
+                    MongoDatasourceFactory.createMongoQueryableDatasource(
+                            document.getClass(),
+                            "development",
+                            CaseUtils.toCamelCase(document.getClass().getTypeName(), false))) {
+                datasource.update(document.getId(), document);
+            }
+            return request.createResponseBuilder(HttpStatus.OK)
+                    .body("JSON Validation Passed & Data is Saved! :)")
+                    .build();
+        } catch (Exception e) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                    .body("JSON Validation Not Passed! :( \nReason: " + e.getMessage())
+                    .build();
+        }
+    }
+
+    private PersistableDocument convertJsonToPersistableDocument(String requestBody)
+            throws Exception {
+        JsonValidationRequest jsonValidationRequest =
+                OBJECT_MAPPER.readValue(requestBody, JsonValidationRequest.class);
+        JsonValidationProcessor jsonValidationProcessor =
+                new JsonValidationProcessor(jsonValidationRequest);
+        return jsonValidationProcessor.createPersistableDocument();
     }
 
     @FunctionName("createSession")

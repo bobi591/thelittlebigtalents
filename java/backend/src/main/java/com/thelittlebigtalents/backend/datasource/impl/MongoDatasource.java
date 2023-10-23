@@ -8,6 +8,7 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 import com.thelittlebigtalents.backend.Configuration;
 import com.thelittlebigtalents.backend.datasource.EmptyResultException;
 import com.thelittlebigtalents.backend.datasource.api.QueryableDatasource;
@@ -18,6 +19,7 @@ import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 /**
  * Implementation of the MongoDB Datasource.
@@ -127,6 +129,15 @@ class MongoDatasource<T extends PersistableDocument> implements QueryableDatasou
                         .getDatabase(databaseName)
                         .getCollection(collectionName, persistableDocument);
         collection.insertOne(toInsert);
+    }
+
+    @Override
+    public void update(String id, T updatedDocument) {
+        MongoCollection<T> collection =
+                mongoClient
+                        .getDatabase(databaseName)
+                        .getCollection(collectionName, persistableDocument);
+        collection.replaceOne(Filters.eq("_id", new ObjectId(id)), updatedDocument);
     }
 
     @Override

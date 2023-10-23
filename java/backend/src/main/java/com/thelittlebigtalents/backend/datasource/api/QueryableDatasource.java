@@ -33,4 +33,6 @@ public interface QueryableDatasource<D extends PersistableDocument, Q> extends A
     List<D> getAll() throws EmptyResultException;
 
     void insert(D toInsert);
+
+    void update(String id, D updatedDocument);
 }
