@@ -222,7 +222,8 @@ public class AzureFunctions {
                 datasource.insert(parsedDocument);
             }
             return request.createResponseBuilder(HttpStatus.OK)
-                    .body("JSON Validation Passed & Data is Saved! :)").build();
+                    .body("JSON Validation Passed & Data is Saved! :)")
+                    .build();
         } catch (Exception e) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
                     .body("JSON Validation Not Passed! :( \nReason: " + e.getMessage())

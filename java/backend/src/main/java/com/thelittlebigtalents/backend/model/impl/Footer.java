@@ -1,7 +1,7 @@
 /* (C)2023 */
 package com.thelittlebigtalents.backend.model.impl;
 
-import com.thelittlebigtalents.backend.model.api.PersistableDocument;
+import com.thelittlebigtalents.backend.model.api.AbstractPersistableDocument;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import org.bson.codecs.pojo.annotations.BsonProperty;
 @Getter
 @Setter
 /** The Footer POJO. */
-public class Footer implements PersistableDocument {
+public class Footer extends AbstractPersistableDocument {
     @BsonIgnore private String className = this.getClass().getName();
     private String facebookUrl;
     private String instagramUrl;

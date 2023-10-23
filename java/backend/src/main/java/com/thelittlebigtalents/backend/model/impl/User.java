@@ -1,9 +1,9 @@
 /* (C)2023 */
 package com.thelittlebigtalents.backend.model.impl;
 
-import com.thelittlebigtalents.backend.model.api.PersistableDocument;
+import com.thelittlebigtalents.backend.model.api.AbstractPersistableDocument;
 
-public class User implements PersistableDocument {
+public class User extends AbstractPersistableDocument {
     private String username;
     private String password;
 
