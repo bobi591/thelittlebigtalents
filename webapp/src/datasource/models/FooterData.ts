@@ -1,5 +1,6 @@
-export default class FooterData {
-    className!: string
+import BaseModel from "./BaseModel"
+
+export default class FooterData extends BaseModel {
     contacts: Contacts
     workingHours: WorkingHours
     facebookUrl: string
@@ -7,6 +8,7 @@ export default class FooterData {
     tiktokUrl: string
     youtubeUrl: string
     constructor(
+        id: string,
         contacts: Contacts,
         workingHours: WorkingHours,
         facebookUrl: string,
@@ -14,6 +16,7 @@ export default class FooterData {
         tiktokUrl: string,
         youtubeUrl: string
     ) {
+        super(id)
         this.contacts = contacts
         this.workingHours = workingHours
         this.facebookUrl = facebookUrl

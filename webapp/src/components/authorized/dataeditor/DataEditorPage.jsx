@@ -14,22 +14,27 @@ import {
     updateSelectedDataType,
 } from './DataEditorPageSlice'
 
+const editPagesActions = {
+    'Navbar': Backend.getNavbar.bind(Backend),
+    'Footer': Backend.getFooter.bind(Backend),
+    'Постижения': Backend.getInformationPageData.bind(Backend),
+    'Летни Уроци': Backend.getInformationPageGalleryBottomData.bind(Backend),
+};
+
+
 export class DataEditorPage extends React.Component {
-    async onSelectDataType(dataType) {
-        if (dataType === 'Navbar') {
-            const retrievedData = await Backend.getNavbar()
-            AppStore.dispatch(updateSelectedDataType(dataType))
-            // Deep copy with Json Parse & Json Stringify
-            AppStore.dispatch(updateOriginalData(clone(retrievedData)))
-            AppStore.dispatch(updateData(clone(retrievedData)))
+    async onSelectDataType(dataType, asyncBackendFunction) {
+        let retrievedData;
+        if(dataType === 'Navbar' || dataType === 'Footer') {
+            retrievedData = await asyncBackendFunction()
         }
-        if (dataType === 'Footer') {
-            const retrievedData = await Backend.getFooter()
-            AppStore.dispatch(updateSelectedDataType(dataType))
-            // Deep copy with Json Parse & Json Stringify
-            AppStore.dispatch(updateOriginalData(clone(retrievedData)))
-            AppStore.dispatch(updateData(clone(retrievedData)))
+        else {
+            retrievedData = await asyncBackendFunction(dataType)
         }
+        AppStore.dispatch(updateSelectedDataType(dataType))
+        // Deep copy with Json Parse & Json Stringify
+        AppStore.dispatch(updateOriginalData(clone(retrievedData)))
+        AppStore.dispatch(updateData(clone(retrievedData)))
         AppStore.dispatch(updateJsonEditorKey())
     }
 
@@ -40,7 +45,7 @@ export class DataEditorPage extends React.Component {
 
     async onSaveClick() {
         try {
-            const validationResponse = await Backend.saveJson({
+            const validationResponse = await Backend.updateJson({
                 className: this.props.data.className,
                 json: JSON.stringify(this.props.data),
             })
@@ -88,6 +93,7 @@ export class DataEditorPage extends React.Component {
                 </>
             )
         }
+        const pages = Object.keys(editPagesActions);
         return (
             <Container className="dataEditorRoot" fluid="md">
                 <div className="text-center title">
@@ -115,20 +121,15 @@ export class DataEditorPage extends React.Component {
                                 Избери данни
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item
-                                    onClick={async () =>
-                                        await this.onSelectDataType('Navbar')
-                                    }
-                                >
-                                    Навигация
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                    onClick={async () =>
-                                        await this.onSelectDataType('Footer')
-                                    }
-                                >
-                                    Футер
-                                </Dropdown.Item>
+                            {
+                                pages.map(x => {
+                                    return(
+                                        <Dropdown.Item onClick={async () => await this.onSelectDataType(x, editPagesActions[x])}>
+                                            {x}
+                                        </Dropdown.Item>
+                                    )
+                                })
+                            }
                             </Dropdown.Menu>
                         </Dropdown>
                     </Col>

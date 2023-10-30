@@ -1,16 +1,19 @@
-export class NavbarItem {
-    className!: string
+import BaseModel from "./BaseModel"
+
+export class NavbarItem extends BaseModel {
     name: string
     href: string
     childItems?: Array<NavbarItem>
     hasDividerOnTop: boolean
 
     constructor(
+        id: string,
         name: string,
         href: string,
         hasDividerOnTop: boolean,
         elements?: Array<NavbarItem>
     ) {
+        super(id)
         this.name = name
         this.href = href
         this.hasDividerOnTop = hasDividerOnTop

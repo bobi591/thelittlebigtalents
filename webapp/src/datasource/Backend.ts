@@ -29,19 +29,19 @@ export default class Backend {
         }
     }
 
-    public static async getFooter(): Promise<FooterData | undefined> {
+    public static async getFooter(): Promise<FooterData> {
         const response = await axios(this.getAxiosConfig('getFooterData'))
         return response.data
     }
 
-    public static async getNavbar(): Promise<NavbarData | undefined> {
+    public static async getNavbar(): Promise<NavbarData> {
         const response = await axios(this.getAxiosConfig('getNavbarData'))
         return response.data
     }
 
     public static async getInformationPageData(
         pageName: string
-    ): Promise<InformationPageData | undefined> {
+    ): Promise<InformationPageData> {
         const axiosConfig = this.getAxiosConfig('getInformationPageData')
         axiosConfig.params = {
             ...axiosConfig.params,
@@ -53,7 +53,7 @@ export default class Backend {
 
     public static async getInformationPageGalleryBottomData(
         pageName: string
-    ): Promise<InformationPageGalleryBottomData | undefined> {
+    ): Promise<InformationPageGalleryBottomData> {
         const axiosConfig = this.getAxiosConfig(
             'getInformationPageGalleryBottomData'
         )
@@ -66,8 +66,8 @@ export default class Backend {
     }
 
     public static async sendJsonToValidation(
-        request: any
-    ): Promise<string | undefined> {
+        request: unknown
+    ): Promise<string> {
         const axiosConfig = this.postAxiosConfig(
             'validateJson',
             JSON.stringify(request)
@@ -76,11 +76,11 @@ export default class Backend {
         return response.data
     }
 
-    public static async saveJson(
-        request: any
-    ): Promise<string | undefined> {
+    public static async updateJson(
+        request: unknown
+    ): Promise<string> {
         const axiosConfig = this.postAxiosConfig(
-            'saveJson',
+            'updateJson',
             JSON.stringify(request)
         )
         const response = await axios(axiosConfig)
@@ -89,7 +89,7 @@ export default class Backend {
 
     public static async createSession(
         request: User
-    ): Promise<Session | undefined> {
+    ): Promise<Session> {
         const data = JSON.stringify(request)
         const jsencrypt = new JSEncrypt()
         const publicKey = String(process.env.REACT_APP_SECURITY_PUBLIC_KEY!)
@@ -109,7 +109,7 @@ export default class Backend {
 
     public static async refreshSession(
         session: Session
-    ): Promise<Session | undefined> {
+    ): Promise<Session> {
         const data = JSON.stringify(session)
         const jsencrypt = new JSEncrypt()
         const publicKey = String(process.env.REACT_APP_SECURITY_PUBLIC_KEY!)

@@ -1,9 +1,11 @@
-export default class InformationPageData {
-    className!: string
+import BaseModel from "./BaseModel"
+
+export default class InformationPageData extends BaseModel {
     pageName: string
     data: [InformationPageDataPart]
 
-    constructor(pageName: string, data: [InformationPageDataPart]) {
+    constructor(        id: string,pageName: string, data: [InformationPageDataPart]) {
+        super(id)
         this.pageName = pageName
         this.data = data
     }
