@@ -50,12 +50,12 @@ export default class InformationPage extends React.Component<
                         {this.state.pageData!.data.map((dataPart, index) => {
                             if (index % 2 === 0) {
                                 return (
-                                    <Row className="backgroundLine">
+                                    <Row className="backgroundLine" style={index==0 ? {paddingTop:'0'} : {}}>
                                         <Row className="linearView">
                                             <Col className="picture">
                                                 <img src={dataPart.imageSrc} />
                                             </Col>
-                                            <Col className="text right">
+                                            <Col className="text right" style={index==0 ? {marginTop:'0'} : {}}>
                                                 <Row>
                                                     <h4>Test</h4>
                                                 </Row>

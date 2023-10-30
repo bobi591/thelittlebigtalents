@@ -59,7 +59,7 @@ export default class InformationPageGalleryBottom extends React.Component<PagePr
                                         (imageSrc) => {
                                             return (
                                                 <Carousel.Item>
-                                                    <img src={imageSrc} />
+                                                    <img src={imageSrc} style={{width: '100%'}}/>
                                                 </Carousel.Item>
                                             )
                                         }
