@@ -112,7 +112,7 @@ public class AzureFunctions {
         try {
             try (QueryableDatasource<InformationPage, Bson> queryableDatasource =
                     MongoDatasourceFactory.createMongoQueryableDatasource(
-                            InformationPage.class, "development", "informationPage")) {
+                            InformationPage.class, "development", "page")) {
                 return request.createResponseBuilder(HttpStatus.OK)
                         .body(
                                 queryableDatasource.get(Filters.eq("pageName", pageName)).stream()
@@ -145,9 +145,7 @@ public class AzureFunctions {
         try {
             try (QueryableDatasource<InformationPageGalleryBottom, Bson> queryableDatasource =
                     MongoDatasourceFactory.createMongoQueryableDatasource(
-                            InformationPageGalleryBottom.class,
-                            "development",
-                            "informationPageGalleryBottom")) {
+                            InformationPageGalleryBottom.class, "development", "page")) {
                 return request.createResponseBuilder(HttpStatus.OK)
                         .body(
                                 queryableDatasource.get(Filters.eq("pageName", pageName)).stream()

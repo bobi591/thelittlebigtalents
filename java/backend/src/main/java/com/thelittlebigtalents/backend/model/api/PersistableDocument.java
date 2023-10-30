@@ -5,5 +5,7 @@ import com.thelittlebigtalents.backend.datasource.api.QueryableDatasource;
 
 /** Interface used for description of persistable objects in {@link QueryableDatasource}. */
 public interface PersistableDocument {
-    public String getId();
+    String getId();
+
+    String getClassName();
 }
