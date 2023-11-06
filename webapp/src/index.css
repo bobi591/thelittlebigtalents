@@ -54,6 +54,15 @@ body {
     margin-top: -25%;
 }
 
+#basic-navbar-nav {
+    font-weight: 500;
+}
+
+footer .lead {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
 a#basic-nav-dropdown#drop-left.dropdown-toggle::after {
     content: none !important;
 }

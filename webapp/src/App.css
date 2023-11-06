@@ -43,8 +43,7 @@
 
 .leftAndRightView .text {
     margin: 2.5vh;
-    line-height: 3vh;
-    font-size: 1.5vh;
+    font-weight: 400;
     padding-left: 2.5%;
     padding-right: 2.5%;
     text-align: left;
@@ -67,8 +66,6 @@
 .leftAndRightView {
     display: block;
     margin-bottom: 1%;
-    line-height: 3vh;
-    font-size: 1.5vh;
 }
 
 .textWithGalleryBottomView {
@@ -77,8 +74,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1%;
-    line-height: 3vh;
-    font-size: 1.5vh;
+    font-weight: 400;
 }
 
 .textWithGalleryBottomView .gallery {
