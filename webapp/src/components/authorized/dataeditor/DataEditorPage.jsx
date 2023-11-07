@@ -15,20 +15,18 @@ import {
 } from './DataEditorPageSlice'
 
 const editPagesActions = {
-    'Navbar': Backend.getNavbar.bind(Backend),
-    'Footer': Backend.getFooter.bind(Backend),
-    'Постижения': Backend.getInformationPageData.bind(Backend),
+    Navbar: Backend.getNavbar.bind(Backend),
+    Footer: Backend.getFooter.bind(Backend),
+    Постижения: Backend.getInformationPageData.bind(Backend),
     'Летни Уроци': Backend.getInformationPageGalleryBottomData.bind(Backend),
-};
-
+}
 
 export class DataEditorPage extends React.Component {
     async onSelectDataType(dataType, asyncBackendFunction) {
-        let retrievedData;
-        if(dataType === 'Navbar' || dataType === 'Footer') {
+        let retrievedData
+        if (dataType === 'Navbar' || dataType === 'Footer') {
             retrievedData = await asyncBackendFunction()
-        }
-        else {
+        } else {
             retrievedData = await asyncBackendFunction(dataType)
         }
         AppStore.dispatch(updateSelectedDataType(dataType))
@@ -93,7 +91,7 @@ export class DataEditorPage extends React.Component {
                 </>
             )
         }
-        const pages = Object.keys(editPagesActions);
+        const pages = Object.keys(editPagesActions)
         return (
             <Container className="dataEditorRoot" fluid="md">
                 <div className="text-center title">
@@ -121,15 +119,20 @@ export class DataEditorPage extends React.Component {
                                 Избери данни
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                            {
-                                pages.map(x => {
-                                    return(
-                                        <Dropdown.Item onClick={async () => await this.onSelectDataType(x, editPagesActions[x])}>
+                                {pages.map((x) => {
+                                    return (
+                                        <Dropdown.Item
+                                            onClick={async () =>
+                                                await this.onSelectDataType(
+                                                    x,
+                                                    editPagesActions[x]
+                                                )
+                                            }
+                                        >
                                             {x}
                                         </Dropdown.Item>
                                     )
-                                })
-                            }
+                                })}
                             </Dropdown.Menu>
                         </Dropdown>
                     </Col>

@@ -1,11 +1,36 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AppComponentProps } from './AppComponentProps'
+import Backend from './datasource/Backend'
 import FooterData from './datasource/models/FooterData'
 import NavbarData from './datasource/models/NavbarData'
 
 const initialAppState: AppComponentProps = {
     isSubPageLoading: false,
 }
+
+export const fetchInformationPageData = createAsyncThunk(
+    'appSlice/fetchInformationPageData',
+    async (pageName: string) => {
+        try {
+            return await Backend.getInformationPageData(pageName)
+        } catch (error) {
+            provideError(error as Error)
+            return undefined
+        }
+    }
+)
+
+export const fetchInformationPageGalleryBottomData = createAsyncThunk(
+    'appSlice/fetchInformationPageGalleryBottomData',
+    async (pageName: string) => {
+        try {
+            return await Backend.getInformationPageGalleryBottomData(pageName)
+        } catch (error) {
+            provideError(error as Error)
+            return undefined
+        }
+    }
+)
 
 export const AppSlice = createSlice({
     name: 'appSlice',
@@ -26,6 +51,21 @@ export const AppSlice = createSlice({
         isSubPageLoading: (state, action: PayloadAction<boolean>) => {
             state.isSubPageLoading = action.payload
         },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(fetchInformationPageData.fulfilled, (state, action) => {
+            isSubPageLoading(true)
+            state.informationPageData = action.payload
+            isSubPageLoading(false)
+        })
+        builder.addCase(
+            fetchInformationPageGalleryBottomData.fulfilled,
+            (state, action) => {
+                isSubPageLoading(true)
+                state.informationPageGalleryBottomData = action.payload
+                isSubPageLoading(false)
+            }
+        )
     },
 })
 

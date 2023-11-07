@@ -1,10 +1,10 @@
-import BaseModel from "./BaseModel"
+import BaseModel from './BaseModel'
 
 export default class InformationPageData extends BaseModel {
     pageName: string
     data: [InformationPageDataPart]
 
-    constructor(        id: string,pageName: string, data: [InformationPageDataPart]) {
+    constructor(id: string, pageName: string, data: [InformationPageDataPart]) {
         super(id)
         this.pageName = pageName
         this.data = data

@@ -39,7 +39,8 @@
     "build": "react-scripts build lint",
     "test": "react-scripts test lint",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
   },
   "eslintConfig": {
     "extends": [
@@ -61,6 +62,7 @@
   },
   "devDependencies": {
     "@types/base-64": "^1.0.0",
-    "eslint-plugin-react": "^7.33.2"
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.0.3"
   }
 }

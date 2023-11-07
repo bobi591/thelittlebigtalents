@@ -76,9 +76,7 @@ export default class Backend {
         return response.data
     }
 
-    public static async updateJson(
-        request: unknown
-    ): Promise<string> {
+    public static async updateJson(request: unknown): Promise<string> {
         const axiosConfig = this.postAxiosConfig(
             'updateJson',
             JSON.stringify(request)
@@ -87,9 +85,7 @@ export default class Backend {
         return response.data
     }
 
-    public static async createSession(
-        request: User
-    ): Promise<Session> {
+    public static async createSession(request: User): Promise<Session> {
         const data = JSON.stringify(request)
         const jsencrypt = new JSEncrypt()
         const publicKey = String(process.env.REACT_APP_SECURITY_PUBLIC_KEY!)
@@ -107,9 +103,7 @@ export default class Backend {
         }
     }
 
-    public static async refreshSession(
-        session: Session
-    ): Promise<Session> {
+    public static async refreshSession(session: Session): Promise<Session> {
         const data = JSON.stringify(session)
         const jsencrypt = new JSEncrypt()
         const publicKey = String(process.env.REACT_APP_SECURITY_PUBLIC_KEY!)

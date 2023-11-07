@@ -19,7 +19,7 @@ const DataEditorPageSlice = createSlice({
     initialState: initialState,
     reducers: {
         updateJsonEditorKey(state) {
-            state.jsonEditorKey = state.jsonEditorKey+1
+            state.jsonEditorKey = state.jsonEditorKey + 1
         },
         updateSelectedDataType(state, action: PayloadAction<string>) {
             state.selectedDataType = action.payload

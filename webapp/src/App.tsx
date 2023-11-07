@@ -1,3 +1,4 @@
+import { AsyncThunkAction } from '@reduxjs/toolkit'
 import React from 'react'
 import { connect } from 'react-redux'
 import { AppComponentProps } from './AppComponentProps'
@@ -11,8 +12,13 @@ import { AppState, AppStore } from './ReduxStore'
 /**
  * This is main App Component which also acts as an Error Boundary.
  */
-export class App extends React.Component<AppComponentProps> {
-    constructor(props: AppComponentProps) {
+
+type AppComponentPropsInputs = AppComponentProps & {
+    pageLoadAction?: AsyncThunkAction<any, string, any>
+}
+
+export class App extends React.Component<AppComponentPropsInputs> {
+    constructor(props: AppComponentPropsInputs) {
         super(props)
     }
 
@@ -25,6 +31,9 @@ export class App extends React.Component<AppComponentProps> {
             ) {
                 const footerData = await Backend.getFooter()
                 const navbarData = await Backend.getNavbar()
+                if (this.props.pageLoadAction !== undefined) {
+                    await AppStore.dispatch(this.props.pageLoadAction)
+                }
                 if (footerData == undefined || navbarData == undefined) {
                     throw 'Emptry navbar or footer data.'
                 } else {

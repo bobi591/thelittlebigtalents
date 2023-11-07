@@ -1,4 +1,4 @@
-import BaseModel from "./BaseModel"
+import BaseModel from './BaseModel'
 
 export default class FooterData extends BaseModel {
     contacts: Contacts

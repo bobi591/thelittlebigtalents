@@ -6,6 +6,10 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+import {
+    fetchInformationPageData,
+    fetchInformationPageGalleryBottomData,
+} from './AppSlice'
 import AuthorizedApp from './components/authorized/AuthorizedApp'
 import DataEditorPage from './components/authorized/dataeditor/DataEditorPage'
 import './index.css'
@@ -61,6 +65,9 @@ root.render(
                                 pageToShow={
                                     <InformationPage pageName={'Постижения'} />
                                 }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Постижения'
+                                )}
                             />
                         }
                     ></Route>
@@ -73,6 +80,9 @@ root.render(
                                         pageName={'Летни Уроци'}
                                     />
                                 }
+                                pageLoadAction={fetchInformationPageGalleryBottomData(
+                                    'Летни Уроци'
+                                )}
                             />
                         }
                     ></Route>
