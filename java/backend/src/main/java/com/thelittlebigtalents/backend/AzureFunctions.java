@@ -51,10 +51,11 @@ public class AzureFunctions {
                 List<Footer> retrievedData = queryableDatasource.getAll();
                 return request.createResponseBuilder(HttpStatus.OK)
                         .body(
-                                retrievedData.stream()
-                                        .skip(retrievedData.size() - 1)
-                                        .findFirst()
-                                        .get())
+                                OBJECT_MAPPER.writeValueAsString(
+                                        retrievedData.stream()
+                                                .skip(retrievedData.size() - 1)
+                                                .findFirst()
+                                                .get()))
                         .build();
             }
         } catch (EmptyResultException emptyResultException) {
@@ -81,10 +82,11 @@ public class AzureFunctions {
                 List<Navbar> retrievedData = queryableDatasource.getAll();
                 return request.createResponseBuilder(HttpStatus.OK)
                         .body(
-                                retrievedData.stream()
-                                        .skip(retrievedData.size() - 1)
-                                        .findFirst()
-                                        .get())
+                                OBJECT_MAPPER.writeValueAsString(
+                                        retrievedData.stream()
+                                                .skip(retrievedData.size() - 1)
+                                                .findFirst()
+                                                .get()))
                         .build();
             }
         } catch (EmptyResultException emptyResultException) {
@@ -115,9 +117,12 @@ public class AzureFunctions {
                             InformationPage.class, "development", "page")) {
                 return request.createResponseBuilder(HttpStatus.OK)
                         .body(
-                                queryableDatasource.get(Filters.eq("pageName", pageName)).stream()
-                                        .findFirst()
-                                        .get())
+                                OBJECT_MAPPER.writeValueAsString(
+                                        queryableDatasource
+                                                .get(Filters.eq("pageName", pageName))
+                                                .stream()
+                                                .findFirst()
+                                                .get()))
                         .build();
             }
         } catch (EmptyResultException emptyResultException) {
@@ -148,9 +153,12 @@ public class AzureFunctions {
                             InformationPageGalleryBottom.class, "development", "page")) {
                 return request.createResponseBuilder(HttpStatus.OK)
                         .body(
-                                queryableDatasource.get(Filters.eq("pageName", pageName)).stream()
-                                        .findFirst()
-                                        .get())
+                                OBJECT_MAPPER.writeValueAsString(
+                                        queryableDatasource
+                                                .get(Filters.eq("pageName", pageName))
+                                                .stream()
+                                                .findFirst()
+                                                .get()))
                         .build();
             }
         } catch (EmptyResultException emptyResultException) {
