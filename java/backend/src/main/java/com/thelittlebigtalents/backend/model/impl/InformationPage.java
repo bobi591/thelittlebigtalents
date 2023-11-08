@@ -12,6 +12,7 @@ import lombok.Setter;
 /** The InformationPage POJO. */
 public class InformationPage extends AbstractPersistableDocument {
     private String pageName;
+    private String headerVideoSrc;
     private List<InformationPageDataPart> data;
 
     @NoArgsConstructor
