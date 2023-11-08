@@ -87,6 +87,139 @@ root.render(
                         }
                     ></Route>
                     <Route
+                        path="/individual/vocals"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage
+                                        pageName={'Поп и джаз пеене'}
+                                    />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Поп и джаз пеене'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/individual/piano"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage pageName={'Пиано'} />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Пиано'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/individual/guitar"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage pageName={'Китара'} />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Китара'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/individual/drums"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage pageName={'Барабани'} />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Барабани'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/prep/highschool"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage
+                                        pageName={
+                                            'Подготвителни уроци за средно музикално училище'
+                                        }
+                                    />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Подготвителни уроци за средно музикално училище'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/prep/uppereducation"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage
+                                        pageName={
+                                            'Подготвителни уроци за висшо музикално училище'
+                                        }
+                                    />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Подготвителни уроци за висшо музикално училище'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/group/solfegetheory"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage
+                                        pageName={'Солфеж и музикална теория'}
+                                    />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Солфеж и музикална теория'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/group/piano"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage
+                                        pageName={'Пиано за най-малките'}
+                                    />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Пиано за най-малките'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/group/vocal"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage
+                                        pageName={'Вокална група'}
+                                    />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Вокална група'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
                         path="/editor"
                         element={
                             <AuthorizedApp pageToShow={<DataEditorPage />} />
