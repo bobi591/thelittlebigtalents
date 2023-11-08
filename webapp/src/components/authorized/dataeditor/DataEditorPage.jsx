@@ -55,7 +55,7 @@ export class DataEditorPage extends React.Component {
     async onSaveClick() {
         try {
             const validationResponse = await Backend.updateJson({
-                className: this.props.data.className,
+                className: this.props.data.typeName,
                 json: JSON.stringify(this.props.data),
             })
             AppStore.dispatch(
@@ -89,7 +89,7 @@ export class DataEditorPage extends React.Component {
         if (modifiedData !== undefined) {
             jsonEditor = (
                 <>
-                    <p>{modifiedData.className}</p>
+                    <p>{modifiedData.typeName}</p>
                     <div className="editor">
                         <JsonEditor
                             key={this.props.jsonEditorKey}
