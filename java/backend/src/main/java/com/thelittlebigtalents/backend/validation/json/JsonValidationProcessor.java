@@ -30,10 +30,6 @@ public class JsonValidationProcessor {
             throw new ValidationException("Invalid JSON Validation Request.");
         }
         try {
-            if (this.jsonValidationRequest.getJson().contains("\"\"")
-                    || this.jsonValidationRequest.getJson().contains("null")) {
-                throw new ValidationException("There is an empty (null) field.");
-            }
             Class requiredClass = Class.forName(jsonValidationRequest.getClassName());
             Object parsedObject =
                     this.objectMapper.readValue(
