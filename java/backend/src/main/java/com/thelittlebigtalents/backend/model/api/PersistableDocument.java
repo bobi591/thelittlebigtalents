@@ -7,5 +7,7 @@ import com.thelittlebigtalents.backend.datasource.api.QueryableDatasource;
 public interface PersistableDocument {
     String getId();
 
-    String getClassName();
+    String getTypeName();
+
+    void setTypeName(String typeName);
 }

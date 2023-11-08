@@ -10,22 +10,22 @@ public class AbstractPersistableDocument implements PersistableDocument {
     @BsonRepresentation(BsonType.OBJECT_ID)
     private String id;
 
-    private String className;
+    private String typeName;
 
     public String getId() {
         return id;
     }
 
     @Override
-    public String getClassName() {
-        return null;
+    public String getTypeName() {
+        return this.typeName;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }
