@@ -24,22 +24,18 @@ export class App extends React.Component<AppComponentPropsInputs> {
 
     async componentDidMount() {
         try {
-            // If the Footer Data and Navbar Data are already loaded, there's no need to reload them again...
-            if (
-                this.props.footerData == undefined ||
-                this.props.navbarData == undefined
-            ) {
-                const footerData = await Backend.getFooter()
-                const navbarData = await Backend.getNavbar()
-                if (this.props.pageLoadAction !== undefined) {
-                    await AppStore.dispatch(this.props.pageLoadAction)
-                }
-                if (footerData == undefined || navbarData == undefined) {
-                    throw 'Emptry navbar or footer data.'
-                } else {
-                    AppStore.dispatch(provideFooterData(footerData!))
-                    AppStore.dispatch(provideNavbarData(navbarData!))
-                }
+            const footerData = await Backend.getFooter()
+            const navbarData = await Backend.getNavbar()
+            if (this.props.pageLoadAction !== undefined) {
+                //Page load action used for fetching page data into the generic application's state
+                //Invokes the page load action only if provided...
+                await AppStore.dispatch(this.props.pageLoadAction)
+            }
+            if (footerData == undefined || navbarData == undefined) {
+                throw 'Emptry navbar or footer data.'
+            } else {
+                AppStore.dispatch(provideFooterData(footerData!))
+                AppStore.dispatch(provideNavbarData(navbarData!))
             }
         } catch (error) {
             AppStore.dispatch(provideError(error as Error))
