@@ -19,6 +19,15 @@ const editPagesActions = {
     Footer: Backend.getFooter.bind(Backend),
     Постижения: Backend.getInformationPageData.bind(Backend),
     'Летни Уроци': Backend.getInformationPageGalleryBottomData.bind(Backend),
+    'Поп и джаз пеене': Backend.getInformationPageData.bind(Backend),
+    'Пиано': Backend.getInformationPageData.bind(Backend),
+    'Китара': Backend.getInformationPageData.bind(Backend),
+    'Барабани': Backend.getInformationPageData.bind(Backend),
+    'Подготвителни уроци за средно музикално училище': Backend.getInformationPageData.bind(Backend),
+    'Подготвителни уроци за висшо музикално училище': Backend.getInformationPageData.bind(Backend),
+    'Солфеж и музикална теория': Backend.getInformationPageData.bind(Backend),
+    'Пиано за най-малките': Backend.getInformationPageData.bind(Backend),
+    'Вокална група': Backend.getInformationPageData.bind(Backend),
 }
 
 export class DataEditorPage extends React.Component {
