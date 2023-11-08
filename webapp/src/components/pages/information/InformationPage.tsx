@@ -13,7 +13,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
     render(): React.ReactNode {
         const pageHeader =
             this.props.pageData?.headerVideoSrc !== undefined ? (
-                <>
+                <div className='video-banner-container'>
                     <video
                         className="video-banner"
                         src={this.props.pageData?.headerVideoSrc}
@@ -22,7 +22,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                         muted={true}
                     />
                     <h4 className="video-banner-text">{this.props.pageName}</h4>
-                </>
+                </div>
             ) : (
                 <Row className="pageTitle">
                     <h4>{this.props.pageName}</h4>
