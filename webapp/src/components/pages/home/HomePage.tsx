@@ -21,15 +21,15 @@ export default class App extends React.Component {
             <Card className="carousel-card text-white border-0">
                 <Card.Body>
                     <Card.Title as="h4" className="uppercasetext boldtext">
-                        Прослушване за прием
+                        Добре дошли!
                     </Card.Title>
-                    <Card.Text>начинаещи и напреднали</Card.Text>
+                    <Card.Text>уроци за начинаещи и напреднали</Card.Text>
                     <Button
                         variant="light"
                         style={{ width: '20vmin', margin: '2%' }}
                         onClick={() => this.showBookLessonModal(true)}
                     >
-                        Запиши се сега
+                        Запиши урок
                     </Button>
                     <Button
                         variant="light"

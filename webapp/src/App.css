@@ -115,3 +115,28 @@
     border-radius: 0% !important;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.video-banner-container {
+    display: block;
+    width: 100%;
+    left: 0%;
+    position: relative;
+    padding-bottom: 4vh;
+}
+
+.video-banner {
+    position: relative;
+    object-fit: cover;
+    height: 30vh;
+    width: 100%;
+    z-index:-1;
+}
+
+.video-banner-text {
+    position: absolute;
+    z-index:1;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
