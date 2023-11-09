@@ -28,7 +28,7 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                                 <a href={footerData.facebookUrl}>
                                     <img
                                         className="footerSocialIcon"
-                                        src="social/facebook-50.png"
+                                        src="/social/facebook-50.png"
                                     />
                                 </a>
                             </Col>
@@ -36,7 +36,7 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                                 <a href={footerData.instagramUrl}>
                                     <img
                                         className="footerSocialIcon"
-                                        src="social/instagram-50.png"
+                                        src="/social/instagram-50.png"
                                     />
                                 </a>
                             </Col>
@@ -44,7 +44,7 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                                 <a href={footerData.tiktokUrl}>
                                     <img
                                         className="footerSocialIcon"
-                                        src="social/tiktok-50.png"
+                                        src="/social/tiktok-50.png"
                                     />
                                 </a>
                             </Col>
@@ -52,7 +52,7 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                                 <a href={footerData.youtubeUrl}>
                                     <img
                                         className="footerSocialIcon"
-                                        src="social/youtube-50.png"
+                                        src="/social/youtube-50.png"
                                     />
                                 </a>
                             </Col>
