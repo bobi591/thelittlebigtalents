@@ -116,7 +116,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.video-banner-container {
+.media-banner-container {
     display: block;
     width: 100%;
     left: 0%;
@@ -124,7 +124,7 @@
     padding-bottom: 4vh;
 }
 
-.video-banner {
+.media-banner {
     position: relative;
     object-fit: cover;
     height: 30vh;
@@ -132,7 +132,7 @@
     z-index:-1;
 }
 
-.video-banner-text {
+.media-banner-text {
     position: absolute;
     z-index:1;
     top: 50%;

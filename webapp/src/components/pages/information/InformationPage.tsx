@@ -5,6 +5,7 @@ import InformationPageData, {
     InformationPageDataPart,
 } from '../../../datasource/models/InformationPageData'
 import { AppState } from '../../../ReduxStore'
+import MediaBanner from '../../other/MediaBanner'
 import PageProps from '../PageProps'
 
 class InformationPage extends React.Component<PageProps<InformationPageData>> {
@@ -30,9 +31,6 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                     style={index == 0 ? { marginTop: '0' } : {}}
                 >
                     <Row>
-                        <h4>Test</h4>
-                    </Row>
-                    <Row>
                         <p>{dataPart.text}</p>
                     </Row>
                 </Col>
@@ -48,9 +46,6 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         if (isTextExisting) {
             result.push(
                 <Col className="text left">
-                    <Row>
-                        <h4>Test 2</h4>
-                    </Row>
                     <Row>
                         <p>{dataPart.text}</p>
                     </Row>
@@ -70,16 +65,10 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
     render(): React.ReactNode {
         const pageHeader =
             this.props.pageData?.headerVideoSrc !== undefined ? (
-                <div className="video-banner-container">
-                    <video
-                        className="video-banner"
-                        src={this.props.pageData?.headerVideoSrc}
-                        autoPlay={true}
-                        loop={true}
-                        muted={true}
-                    />
-                    <h4 className="video-banner-text">{this.props.pageName}</h4>
-                </div>
+                <MediaBanner
+                    mediaSrc={this.props.pageData.headerVideoSrc}
+                    text={this.props.pageName}
+                />
             ) : (
                 <Row className="pageTitle">
                     <h4>{this.props.pageName}</h4>
@@ -89,7 +78,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
             <>
                 <Row>{pageHeader}</Row>
                 <div className="leftAndRightView">
-                    {this.props.pageData!.data.map((dataPart, index) => {
+                    {this.props.pageData?.data.map((dataPart, index) => {
                         if (index % 2 === 0) {
                             return (
                                 <Row
