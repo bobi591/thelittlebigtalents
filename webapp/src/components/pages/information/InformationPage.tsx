@@ -1,7 +1,9 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import InformationPageData from '../../../datasource/models/InformationPageData'
+import InformationPageData, {
+    InformationPageDataPart,
+} from '../../../datasource/models/InformationPageData'
 import { AppState } from '../../../ReduxStore'
 import PageProps from '../PageProps'
 
@@ -10,10 +12,65 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         super(props)
     }
 
+    getInnerRightSideView(index: number, dataPart: InformationPageDataPart) {
+        const isImageExisting = dataPart.imageSrc !== undefined
+        const isTextExisting = dataPart.text !== undefined
+        const result = []
+        if (isImageExisting) {
+            result.push(
+                <Col className="picture">
+                    <img src={dataPart.imageSrc} />
+                </Col>
+            )
+        }
+        if (isTextExisting) {
+            result.push(
+                <Col
+                    className="text right"
+                    style={index == 0 ? { marginTop: '0' } : {}}
+                >
+                    <Row>
+                        <h4>Test</h4>
+                    </Row>
+                    <Row>
+                        <p>{dataPart.text}</p>
+                    </Row>
+                </Col>
+            )
+        }
+        return result
+    }
+
+    getInnerLeftSideView(dataPart: InformationPageDataPart) {
+        const isImageExisting = dataPart.imageSrc !== undefined
+        const isTextExisting = dataPart.text !== undefined
+        const result = []
+        if (isTextExisting) {
+            result.push(
+                <Col className="text left">
+                    <Row>
+                        <h4>Test 2</h4>
+                    </Row>
+                    <Row>
+                        <p>{dataPart.text}</p>
+                    </Row>
+                </Col>
+            )
+        }
+        if (isImageExisting) {
+            result.push(
+                <Col className="picture">
+                    <img src={dataPart.imageSrc} />
+                </Col>
+            )
+        }
+        return result
+    }
+
     render(): React.ReactNode {
         const pageHeader =
             this.props.pageData?.headerVideoSrc !== undefined ? (
-                <div className='video-banner-container'>
+                <div className="video-banner-container">
                     <video
                         className="video-banner"
                         src={this.props.pageData?.headerVideoSrc}
@@ -42,24 +99,10 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                                     }
                                 >
                                     <Row className="linearView">
-                                        <Col className="picture">
-                                            <img src={dataPart.imageSrc} />
-                                        </Col>
-                                        <Col
-                                            className="text right"
-                                            style={
-                                                index == 0
-                                                    ? { marginTop: '0' }
-                                                    : {}
-                                            }
-                                        >
-                                            <Row>
-                                                <h4>Test</h4>
-                                            </Row>
-                                            <Row>
-                                                <p>{dataPart.text}</p>
-                                            </Row>
-                                        </Col>
+                                        {this.getInnerRightSideView(
+                                            index,
+                                            dataPart
+                                        )}
                                     </Row>
                                 </Row>
                             )
@@ -67,17 +110,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                             return (
                                 <Row className="coloredBackgroundLine">
                                     <Row className="linearView">
-                                        <Col className="text left">
-                                            <Row>
-                                                <h4>Test 2</h4>
-                                            </Row>
-                                            <Row>
-                                                <p>{dataPart.text}</p>
-                                            </Row>
-                                        </Col>
-                                        <Col className="picture">
-                                            <img src={dataPart.imageSrc} />
-                                        </Col>
+                                        {this.getInnerLeftSideView(dataPart)}
                                     </Row>
                                 </Row>
                             )

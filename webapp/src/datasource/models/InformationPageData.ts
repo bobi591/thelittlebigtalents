@@ -12,7 +12,7 @@ export default class InformationPageData extends BaseModel {
     }
 }
 
-class InformationPageDataPart {
+export class InformationPageDataPart {
     imageSrc: string
     text: string
 
