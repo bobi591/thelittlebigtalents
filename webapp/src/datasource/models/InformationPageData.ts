@@ -2,7 +2,7 @@ import BaseModel from './BaseModel'
 
 export default class InformationPageData extends BaseModel {
     pageName: string
-    headerVideoSrc?: string
+    bannerMediaSrc?: string
     data: [InformationPageDataPart]
 
     constructor(id: string, pageName: string, data: [InformationPageDataPart]) {

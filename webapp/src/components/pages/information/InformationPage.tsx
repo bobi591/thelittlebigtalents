@@ -64,9 +64,9 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
 
     render(): React.ReactNode {
         const pageHeader =
-            this.props.pageData?.headerVideoSrc !== undefined ? (
+            this.props.pageData?.bannerMediaSrc !== undefined ? (
                 <MediaBanner
-                    mediaSrc={this.props.pageData.headerVideoSrc}
+                    mediaSrc={this.props.pageData.bannerMediaSrc}
                     text={this.props.pageName}
                 />
             ) : (
