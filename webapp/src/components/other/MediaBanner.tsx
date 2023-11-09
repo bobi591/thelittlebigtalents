@@ -7,21 +7,21 @@ type MediaBannerProps = {
 
 export default class MediaBanner extends React.Component<MediaBannerProps> {
     isImage(file: string) {
-        let isImage = false;
+        let isImage = false
         const imageFormats = ['.gif', '.jpg', '.jpeg', '.png']
         imageFormats.forEach((format) => {
             if (file.includes(format)) {
-                isImage=true
+                isImage = true
             }
         })
         return isImage
     }
     isVideo(file: string) {
         const videoFormats = ['.mpg', '.mp2', '.mpeg', '.mpe', '.mpv', '.mp4']
-        let isVideo = false;
+        let isVideo = false
         videoFormats.forEach((format) => {
             if (file.includes(format)) {
-                isVideo=true
+                isVideo = true
             }
         })
         return isVideo
