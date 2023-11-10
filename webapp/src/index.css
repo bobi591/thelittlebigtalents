@@ -35,6 +35,10 @@ body {
     }
 }
 
+.carousel-indicators button {
+    display: none;
+}
+
 .carousel-card {
     background: rgba(0, 0, 0, 0) !important;
     top: 30%;
