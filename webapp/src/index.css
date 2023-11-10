@@ -31,6 +31,10 @@ body {
     .carousel-overlay .carousel-card {
         top: 50%;
     }
+    #basic-navbar-nav {
+        font-weight: 550 !important;
+        font-size: 120% !important;
+    }
     .navbar-collapse.collapse.show{
         display: block;
         height: 100vh !important;
