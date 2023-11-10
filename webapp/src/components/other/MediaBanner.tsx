@@ -31,13 +31,15 @@ export default class MediaBanner extends React.Component<MediaBannerProps> {
         if (this.isVideo(this.props.mediaSrc)) {
             mediaComponent = (
                 <div className="media-banner-container">
-                    <video
-                        className="media-banner"
-                        src={this.props.mediaSrc}
-                        autoPlay={true}
-                        loop={true}
-                        muted={true}
-                    />
+                    <div className="media-banner-container-overlay">
+                        <video
+                            className="media-banner"
+                            src={this.props.mediaSrc}
+                            autoPlay={true}
+                            loop={true}
+                            muted={true}
+                        />
+                    </div>
                     <h4 className="media-banner-text">{this.props.text}</h4>
                 </div>
             )
@@ -45,7 +47,12 @@ export default class MediaBanner extends React.Component<MediaBannerProps> {
         if (this.isImage(this.props.mediaSrc)) {
             mediaComponent = (
                 <div className="media-banner-container">
-                    <img className="media-banner" src={this.props.mediaSrc} />
+                    <div className="media-banner-container-overlay">
+                        <img
+                            className="media-banner"
+                            src={this.props.mediaSrc}
+                        />
+                    </div>
                     <h4 className="media-banner-text">{this.props.text}</h4>
                 </div>
             )

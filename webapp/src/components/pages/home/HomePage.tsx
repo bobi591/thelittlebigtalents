@@ -26,15 +26,12 @@ export default class App extends React.Component {
                     <Card.Text>уроци за начинаещи и напреднали</Card.Text>
                     <Button
                         variant="light"
-                        style={{margin: '2%' }}
+                        style={{ margin: '2%' }}
                         onClick={() => this.showBookLessonModal(true)}
                     >
                         Запиши урок
                     </Button>
-                    <Button
-                        variant="light"
-                        style={{margin: '2%' }}
-                    >
+                    <Button variant="light" style={{ margin: '2%' }}>
                         Обади се
                     </Button>
                 </Card.Body>
