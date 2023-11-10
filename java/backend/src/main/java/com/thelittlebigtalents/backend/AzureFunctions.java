@@ -13,12 +13,15 @@ import com.mongodb.client.model.Filters;
 import com.thelittlebigtalents.backend.datasource.EmptyResultException;
 import com.thelittlebigtalents.backend.datasource.api.QueryableDatasource;
 import com.thelittlebigtalents.backend.datasource.impl.MongoDatasourceFactory;
+import com.thelittlebigtalents.backend.metadata.pages.PagesMetadata;
+import com.thelittlebigtalents.backend.model.api.BasePageDocument;
 import com.thelittlebigtalents.backend.model.api.PersistableDocument;
 import com.thelittlebigtalents.backend.model.impl.*;
 import com.thelittlebigtalents.backend.security.AuthenticationService;
 import com.thelittlebigtalents.backend.security.Session;
 import com.thelittlebigtalents.backend.validation.json.JsonValidationProcessor;
 import com.thelittlebigtalents.backend.validation.json.JsonValidationRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.apache.commons.text.CaseUtils;
@@ -310,6 +313,28 @@ public class AzureFunctions {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
                     .body(e.getMessage())
                     .build();
+        }
+    }
+
+    @FunctionName("getPagesMetadata")
+    public HttpResponseMessage getPagesMetadata(
+            @HttpTrigger(
+                            name = "getMetadataMap",
+                            methods = {HttpMethod.GET},
+                            authLevel = AuthorizationLevel.FUNCTION)
+                    HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+        context.getLogger().info("Java HTTP trigger processed a request.");
+        try (QueryableDatasource<BasePageDocument, ?> datasource =
+                MongoDatasourceFactory.createMongoQueryableDatasource(
+                        BasePageDocument.class, "development", "page")) {
+            List<PagesMetadata> result = new ArrayList<>();
+            datasource
+                    .getAll()
+                    .forEach(e -> result.add(new PagesMetadata(e.getPageName(), e.getTypeName())));
+            return request.createResponseBuilder(HttpStatus.OK).body(result).build();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
