@@ -23,15 +23,43 @@ body {
     height: 100%;
 }
 
-@media only screen and (max-device-width: 640px) {
+@media only screen and (max-device-width: 640px) and (max-device-width: 768px) {
     .carousel-overlay {
         width: 100%;
+        background: rgba(0, 0, 0, 0.3) !important;
     }
-}
-    
-@media only screen and (max-device-width: 768px) {
-    .carousel-overlay {
-        width: 100%;
+    .carousel-overlay .carousel-card {
+        top: 50%;
+    }
+    .navbar-collapse.collapse.show{
+        display: block;
+        height: 100vh !important;
+        overflow: hidden;
+        margin-top: 10%;
+    }
+    .nav-item .dropdown-menu {
+        border: none;
+        border-radius: none !important;
+        box-shadow: none;
+        text-align: center;
+    }
+    .navbar .collapsing {
+        -webkit-transition: none;
+        transition: none;
+        display: none;
+    }
+    .dropdown-menu.show[aria-labelledby~='drop-left'] {
+        margin-left: 0px !important;
+        margin-top: 0px !important;
+    }
+    .dropdown-menu.show .dropdown-toggle.nav-link::after {
+        transform: rotate(0) !important;
+    }
+    .leftAndRightView .linearView {
+        max-width: 100% !important;
+    }
+    footer .container {
+        width: 100% !important;
     }
 }
 
