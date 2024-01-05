@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import InformationPageGalleryBottomData from '../../../datasource/models/InformationPageGalleryBottomData'
 import { AppState } from '../../../ReduxStore'
 import PageProps from '../PageProps'
+import AzureBlobStorage from '../../../datasource/AzureBlobStorage'
 
 class InformationPageGalleryBottom extends React.Component<
     PageProps<InformationPageGalleryBottomData>
@@ -25,12 +26,12 @@ class InformationPageGalleryBottom extends React.Component<
                                 interval={5000}
                                 wrap={true}
                             >
-                                {this.props.pageData!.galleryImgSrcs.map(
-                                    (imageSrc) => {
+                                {this.props.pageData!.galleryImagesBlobNames.map(
+                                    (imageBlobName) => {
                                         return (
                                             <Carousel.Item>
                                                 <img
-                                                    src={imageSrc}
+                                                    src={AzureBlobStorage.getBlobUrl(imageBlobName)}
                                                     style={{ width: '100%' }}
                                                 />
                                             </Carousel.Item>

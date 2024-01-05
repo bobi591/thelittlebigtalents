@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap'
 import FooterData from '../../datasource/models/FooterData'
+import AzureBlobStorage from '../../datasource/AzureBlobStorage'
 
 type FooterComponentProps = {
     footerData: FooterData
@@ -28,7 +29,7 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                                 <a href={footerData.facebookUrl}>
                                     <img
                                         className="footerSocialIcon"
-                                        src="/social/facebook-50.png"
+                                        src={AzureBlobStorage.getBlobUrl("facebook-50.png")}
                                     />
                                 </a>
                             </Col>
@@ -36,7 +37,7 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                                 <a href={footerData.instagramUrl}>
                                     <img
                                         className="footerSocialIcon"
-                                        src="/social/instagram-50.png"
+                                        src={AzureBlobStorage.getBlobUrl("instagram-50.png")}
                                     />
                                 </a>
                             </Col>
@@ -44,7 +45,7 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                                 <a href={footerData.tiktokUrl}>
                                     <img
                                         className="footerSocialIcon"
-                                        src="/social/tiktok-50.png"
+                                        src={AzureBlobStorage.getBlobUrl("tiktok-50.png")}
                                     />
                                 </a>
                             </Col>
@@ -52,7 +53,7 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                                 <a href={footerData.youtubeUrl}>
                                     <img
                                         className="footerSocialIcon"
-                                        src="/social/youtube-50.png"
+                                        src={AzureBlobStorage.getBlobUrl("youtube-50.png")}
                                     />
                                 </a>
                             </Col>

@@ -1,4 +1,5 @@
 import React from 'react'
+import AzureBlobStorage from '../../../datasource/AzureBlobStorage'
 
 export class MaintenancePageProps {
     public errorMessage!: string
@@ -23,7 +24,7 @@ export default class MaintenancePage extends React.Component<MaintenancePageProp
                 <p>
                     <small>{this.props.errorMessage}</small>
                 </p>
-                <img src="/maintenance.png" />
+                <img src={AzureBlobStorage.getBlobUrl("maintenance.png")} />
             </div>
         )
     }

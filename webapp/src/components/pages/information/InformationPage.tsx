@@ -7,6 +7,7 @@ import InformationPageData, {
 import { AppState } from '../../../ReduxStore'
 import MediaBanner from '../../other/MediaBanner'
 import PageProps from '../PageProps'
+import AzureBlobStorage from '../../../datasource/AzureBlobStorage'
 
 class InformationPage extends React.Component<PageProps<InformationPageData>> {
     constructor(props: PageProps<InformationPageData>) {
@@ -14,13 +15,13 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
     }
 
     getInnerRightSideView(index: number, dataPart: InformationPageDataPart) {
-        const isImageExisting = dataPart.imageSrc !== undefined
+        const isImageExisting = dataPart.imageBlobName !== undefined
         const isTextExisting = dataPart.text !== undefined
         const result = []
         if (isImageExisting) {
             result.push(
                 <Col className="picture">
-                    <img src={dataPart.imageSrc} />
+                    <img src={AzureBlobStorage.getBlobUrl(dataPart.imageBlobName)} />
                 </Col>
             )
         }
@@ -40,7 +41,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
     }
 
     getInnerLeftSideView(dataPart: InformationPageDataPart) {
-        const isImageExisting = dataPart.imageSrc !== undefined
+        const isImageExisting = dataPart.imageBlobName !== undefined
         const isTextExisting = dataPart.text !== undefined
         const result = []
         if (isTextExisting) {
@@ -55,7 +56,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         if (isImageExisting) {
             result.push(
                 <Col className="picture">
-                    <img src={dataPart.imageSrc} />
+                    <img src={AzureBlobStorage.getBlobUrl(dataPart.imageBlobName)} />
                 </Col>
             )
         }
@@ -64,9 +65,9 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
 
     render(): React.ReactNode {
         const pageHeader =
-            this.props.pageData?.bannerMediaSrc !== undefined ? (
+            this.props.pageData?.bannerBlobName !== undefined ? (
                 <MediaBanner
-                    mediaSrc={this.props.pageData.bannerMediaSrc}
+                    mediaSrc={AzureBlobStorage.getBlobUrl(this.props.pageData.bannerBlobName)}
                     text={this.props.pageName}
                 />
             ) : (

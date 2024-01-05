@@ -11,14 +11,14 @@ import lombok.Setter;
 @Setter
 /** The InformationPage POJO. */
 public class InformationPage extends BasePageDocument {
-    private String bannerMediaSrc;
+    private String bannerBlobName;
     private List<InformationPageDataPart> data;
 
     @NoArgsConstructor
     @Getter
     @Setter
     public static class InformationPageDataPart {
-        private String imageSrc;
+        private String imageBlobName;
         private String text;
     }
 }

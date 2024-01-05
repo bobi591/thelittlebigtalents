@@ -11,5 +11,5 @@ import lombok.Setter;
 /** The InformationPageGalleryBottom POJO. */
 public class InformationPageGalleryBottom extends BasePageDocument {
     private String text;
-    private List<String> galleryImgSrcs;
+    private List<String> galleryImagesBlobNames;
 }

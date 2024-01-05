@@ -2,7 +2,7 @@ import BaseModel from './BaseModel'
 
 export default class InformationPageData extends BaseModel {
     pageName: string
-    bannerMediaSrc?: string
+    bannerBlobName?: string
     data: [InformationPageDataPart]
 
     constructor(id: string, pageName: string, data: [InformationPageDataPart]) {
@@ -13,11 +13,11 @@ export default class InformationPageData extends BaseModel {
 }
 
 export class InformationPageDataPart {
-    imageSrc: string
+    imageBlobName: string
     text: string
 
-    constructor(imageSrc: string, text: string) {
-        this.imageSrc = imageSrc
+    constructor(imageBlobName: string, text: string) {
+        this.imageBlobName = imageBlobName
         this.text = text
     }
 }
