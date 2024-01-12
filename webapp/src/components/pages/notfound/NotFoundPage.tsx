@@ -13,7 +13,7 @@ export default class NotFoundPage extends React.Component {
             >
                 <h3>Упс... нещо се обърка!</h3>
                 <p>Страницата която се опитвате да посетите не съществува.</p>
-                <img src={AzureBlobStorage.getBlobUrl("error.png")} />
+                <img src={AzureBlobStorage.getBlobUrl('error.png')} />
             </div>
         )
     }

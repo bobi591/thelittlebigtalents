@@ -1,10 +1,10 @@
 import React from 'react'
 import { Carousel, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import AzureBlobStorage from '../../../datasource/AzureBlobStorage'
 import InformationPageGalleryBottomData from '../../../datasource/models/InformationPageGalleryBottomData'
 import { AppState } from '../../../ReduxStore'
 import PageProps from '../PageProps'
-import AzureBlobStorage from '../../../datasource/AzureBlobStorage'
 
 class InformationPageGalleryBottom extends React.Component<
     PageProps<InformationPageGalleryBottomData>
@@ -31,7 +31,9 @@ class InformationPageGalleryBottom extends React.Component<
                                         return (
                                             <Carousel.Item>
                                                 <img
-                                                    src={AzureBlobStorage.getBlobUrl(imageBlobName)}
+                                                    src={AzureBlobStorage.getBlobUrl(
+                                                        imageBlobName
+                                                    )}
                                                     style={{ width: '100%' }}
                                                 />
                                             </Carousel.Item>

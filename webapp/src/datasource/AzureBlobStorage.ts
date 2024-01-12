@@ -15,22 +15,25 @@ export default class AzureBlobStorage {
                     process.env.REACT_APP_AZURE_APP_REGISTRATION_TENANT_ID!,
             })
         )
-        this.blobsUrlCache = new Map<string, string>();
+        this.blobsUrlCache = new Map<string, string>()
     }
 
     private getBlobUrl(blobName: string): string {
-        if(!this.blobsUrlCache.has(blobName)) {
+        if (!this.blobsUrlCache.has(blobName)) {
             const containerClient = this.storageClient.getContainerClient(
                 process.env.REACT_APP_AZURE_BLOB_CONTAINER!
             )
-            this.blobsUrlCache.set(blobName, containerClient.getBlobClient(blobName).url)
+            this.blobsUrlCache.set(
+                blobName,
+                containerClient.getBlobClient(blobName).url
+            )
         }
-        return this.blobsUrlCache.get(blobName)!;
+        return this.blobsUrlCache.get(blobName)!
     }
 
     private static readonly INSTANCE: AzureBlobStorage = new AzureBlobStorage()
 
     static getBlobUrl(blobName: string): string {
-        return AzureBlobStorage.INSTANCE.getBlobUrl(blobName);
+        return AzureBlobStorage.INSTANCE.getBlobUrl(blobName)
     }
 }

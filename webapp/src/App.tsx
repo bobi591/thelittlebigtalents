@@ -6,9 +6,9 @@ import { provideError, provideFooterData, provideNavbarData } from './AppSlice'
 import FooterComponent from './components/footer/FooterComponent'
 import NavbarComponent from './components/navbar/NavbarComponent'
 import MaintenancePage from './components/pages/maintenance/MaintenancePage'
+import AzureBlobStorage from './datasource/AzureBlobStorage'
 import Backend from './datasource/Backend'
 import { AppState, AppStore } from './ReduxStore'
-import AzureBlobStorage from './datasource/AzureBlobStorage'
 
 /**
  * This is main App Component which also acts as an Error Boundary.
@@ -53,7 +53,11 @@ export class App extends React.Component<AppComponentPropsInputs> {
         const error = this.props.error
         const loader = (
             <div className="loader">
-                <img src={AzureBlobStorage.getBlobUrl("logo.png")} width={'7%'} height={'7%'} />
+                <img
+                    src={AzureBlobStorage.getBlobUrl('logo.png')}
+                    width={'7%'}
+                    height={'7%'}
+                />
             </div>
         )
 

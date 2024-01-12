@@ -157,7 +157,9 @@ export class DataEditorPage extends React.Component {
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center">
-                    <Col>{jsonEditor}</Col>
+                    <Row className="pb-4">
+                        <Col>{jsonEditor}</Col>
+                    </Row>
                 </Row>
             </Container>
         )

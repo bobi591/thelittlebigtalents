@@ -24,7 +24,7 @@ export default class MaintenancePage extends React.Component<MaintenancePageProp
                 <p>
                     <small>{this.props.errorMessage}</small>
                 </p>
-                <img src={AzureBlobStorage.getBlobUrl("maintenance.png")} />
+                <img src={AzureBlobStorage.getBlobUrl('maintenance.png')} />
             </div>
         )
     }

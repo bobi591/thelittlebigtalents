@@ -1,13 +1,13 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import AzureBlobStorage from '../../../datasource/AzureBlobStorage'
 import InformationPageData, {
     InformationPageDataPart,
 } from '../../../datasource/models/InformationPageData'
 import { AppState } from '../../../ReduxStore'
 import MediaBanner from '../../other/MediaBanner'
 import PageProps from '../PageProps'
-import AzureBlobStorage from '../../../datasource/AzureBlobStorage'
 
 class InformationPage extends React.Component<PageProps<InformationPageData>> {
     constructor(props: PageProps<InformationPageData>) {
@@ -21,7 +21,11 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         if (isImageExisting) {
             result.push(
                 <Col className="picture">
-                    <img src={AzureBlobStorage.getBlobUrl(dataPart.imageBlobName)} />
+                    <img
+                        src={AzureBlobStorage.getBlobUrl(
+                            dataPart.imageBlobName
+                        )}
+                    />
                 </Col>
             )
         }
@@ -56,7 +60,11 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         if (isImageExisting) {
             result.push(
                 <Col className="picture">
-                    <img src={AzureBlobStorage.getBlobUrl(dataPart.imageBlobName)} />
+                    <img
+                        src={AzureBlobStorage.getBlobUrl(
+                            dataPart.imageBlobName
+                        )}
+                    />
                 </Col>
             )
         }
@@ -67,7 +75,9 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         const pageHeader =
             this.props.pageData?.bannerBlobName !== undefined ? (
                 <MediaBanner
-                    mediaSrc={AzureBlobStorage.getBlobUrl(this.props.pageData.bannerBlobName)}
+                    mediaSrc={AzureBlobStorage.getBlobUrl(
+                        this.props.pageData.bannerBlobName
+                    )}
                     text={this.props.pageName}
                 />
             ) : (

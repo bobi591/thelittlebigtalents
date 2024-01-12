@@ -83,7 +83,9 @@ export default class App extends React.Component {
                         <Carousel.Item>
                             <img
                                 className="carousel-picture"
-                                src={AzureBlobStorage.getBlobUrl("home-carousel-3.jpg")}
+                                src={AzureBlobStorage.getBlobUrl(
+                                    'home-carousel-3.jpg'
+                                )}
                                 style={{
                                     objectFit: 'cover',
                                     height: '80vh',
@@ -94,7 +96,9 @@ export default class App extends React.Component {
                         <Carousel.Item>
                             <img
                                 className="carousel-picture"
-                                src={AzureBlobStorage.getBlobUrl("home-carousel-1.jpg")}
+                                src={AzureBlobStorage.getBlobUrl(
+                                    'home-carousel-1.jpg'
+                                )}
                                 style={{
                                     objectFit: 'cover',
                                     height: '80vh',
@@ -105,7 +109,9 @@ export default class App extends React.Component {
                         <Carousel.Item>
                             <img
                                 className="carousel-picture"
-                                src={AzureBlobStorage.getBlobUrl("home-carousel-2.jpg")}
+                                src={AzureBlobStorage.getBlobUrl(
+                                    'home-carousel-2.jpg'
+                                )}
                                 style={{
                                     objectFit: 'cover',
                                     height: '80vh',

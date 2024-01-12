@@ -4,8 +4,8 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-import NavbarItemData from '../../datasource/models/NavbarData'
 import AzureBlobStorage from '../../datasource/AzureBlobStorage'
+import NavbarItemData from '../../datasource/models/NavbarData'
 
 type NavbarComponentProps = {
     navbarData: NavbarItemData
@@ -18,7 +18,11 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                 <Container>
                     <Container fluid>
                         <Navbar.Brand href="/">
-                            <img src={AzureBlobStorage.getBlobUrl("logo.png")} width={'7%'} height={'7%'} />
+                            <img
+                                src={AzureBlobStorage.getBlobUrl('logo.png')}
+                                width={'7%'}
+                                height={'7%'}
+                            />
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
