@@ -37,7 +37,9 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                 >
                     <Row>
                         <h5>{dataPart.heading}</h5>
-                        <div dangerouslySetInnerHTML={{ __html: dataPart.text }} />
+                        <div
+                            dangerouslySetInnerHTML={{ __html: dataPart.text }}
+                        />
                     </Row>
                 </Col>
             )
@@ -54,7 +56,9 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                 <Col className="text left">
                     <Row>
                         <h5>{dataPart.heading}</h5>
-                        <div dangerouslySetInnerHTML={{ __html: dataPart.text }} />
+                        <div
+                            dangerouslySetInnerHTML={{ __html: dataPart.text }}
+                        />
                     </Row>
                 </Col>
             )

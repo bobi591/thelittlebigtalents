@@ -14,10 +14,12 @@ export default class InformationPageData extends BaseModel {
 
 export class InformationPageDataPart {
     imageBlobName: string
+    heading: string
     text: string
 
-    constructor(imageBlobName: string, text: string) {
+    constructor(imageBlobName: string, heading: string, text: string) {
         this.imageBlobName = imageBlobName
+        this.heading = heading
         this.text = text
     }
 }

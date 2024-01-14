@@ -17,7 +17,11 @@ class InformationPageGalleryBottom extends React.Component<
                 </Row>
                 <div className="textWithGalleryBottomView">
                     <Row>
-                       <div dangerouslySetInnerHTML={{ __html: this.props.pageData!.text }} />
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: this.props.pageData!.text,
+                            }}
+                        />
                     </Row>
                     <Row>
                         <div className="gallery">
