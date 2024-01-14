@@ -19,6 +19,7 @@ public class InformationPage extends BasePageDocument {
     @Setter
     public static class InformationPageDataPart {
         private String imageBlobName;
+        private String heading;
         private String text;
     }
 }

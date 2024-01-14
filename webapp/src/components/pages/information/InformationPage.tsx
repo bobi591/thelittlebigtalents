@@ -36,7 +36,8 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                     style={index == 0 ? { marginTop: '0' } : {}}
                 >
                     <Row>
-                        <p>{dataPart.text}</p>
+                        <h5>{dataPart.heading}</h5>
+                        <div dangerouslySetInnerHTML={{ __html: dataPart.text }} />
                     </Row>
                 </Col>
             )
@@ -52,7 +53,8 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
             result.push(
                 <Col className="text left">
                     <Row>
-                        <p>{dataPart.text}</p>
+                        <h5>{dataPart.heading}</h5>
+                        <div dangerouslySetInnerHTML={{ __html: dataPart.text }} />
                     </Row>
                 </Col>
             )
