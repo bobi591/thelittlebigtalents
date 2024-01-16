@@ -8,33 +8,12 @@ import Backend from '../../../datasource/Backend'
 import { AppStore } from '../../../ReduxStore'
 import { showToast } from '../AuthorizedAppSlice'
 import {
+    fetchEditPageActions,
     updateData,
     updateJsonEditorKey,
     updateOriginalData,
     updateSelectedDataType,
 } from './DataEditorPageSlice'
-
-const editPagesActions = {
-    Navbar: Backend.getNavbar.bind(Backend),
-    Footer: Backend.getFooter.bind(Backend),
-    Постижения: Backend.getInformationPageData.bind(Backend),
-    'Летни Уроци': Backend.getInformationPageGalleryBottomData.bind(Backend),
-    'Поп и джаз пеене': Backend.getInformationPageData.bind(Backend),
-    Пиано: Backend.getInformationPageData.bind(Backend),
-    Китара: Backend.getInformationPageData.bind(Backend),
-    Барабани: Backend.getInformationPageData.bind(Backend),
-    'Подготвителни уроци за средно музикално училище':
-        Backend.getInformationPageData.bind(Backend),
-    'Подготвителни уроци за висшо музикално училище':
-        Backend.getInformationPageData.bind(Backend),
-    'Солфеж и музикална теория': Backend.getInformationPageData.bind(Backend),
-    'Пиано за най-малките': Backend.getInformationPageData.bind(Backend),
-    'Вокална група': Backend.getInformationPageData.bind(Backend),
-    'Музикални дисциплини': Backend.getInformationPageData.bind(Backend),
-    Екип: Backend.getInformationPageData.bind(Backend),
-    Мисия: Backend.getInformationPageData.bind(Backend),
-    Цени: Backend.getInformationPageData.bind(Backend),
-}
 
 export class DataEditorPage extends React.Component {
     async onSelectDataType(dataType, asyncBackendFunction) {
@@ -49,6 +28,10 @@ export class DataEditorPage extends React.Component {
         AppStore.dispatch(updateOriginalData(clone(retrievedData)))
         AppStore.dispatch(updateData(clone(retrievedData)))
         AppStore.dispatch(updateJsonEditorKey())
+    }
+
+    componentDidMount() {
+        AppStore.dispatch(fetchEditPageActions())
     }
 
     async onJsonDataUpdate(data) {
@@ -90,6 +73,9 @@ export class DataEditorPage extends React.Component {
         let jsonEditor = <></>
         const modifiedData = this.props.data
         const originalData = this.props.originalData
+
+        const { editPagesActions } = this.props
+
         if (modifiedData !== undefined) {
             jsonEditor = (
                 <>
@@ -106,7 +92,7 @@ export class DataEditorPage extends React.Component {
                 </>
             )
         }
-        const pages = Object.keys(editPagesActions)
+        const pages = editPagesActions ? [...editPagesActions.keys()] : []
         return (
             <Container className="dataEditorRoot" fluid="md">
                 <div className="text-center title">
@@ -140,7 +126,7 @@ export class DataEditorPage extends React.Component {
                                             onClick={async () =>
                                                 await this.onSelectDataType(
                                                     x,
-                                                    editPagesActions[x]
+                                                    editPagesActions.get(x)
                                                 )
                                             }
                                         >
@@ -172,6 +158,7 @@ export class DataEditorPage extends React.Component {
 
 export const mapStateToProps = (state) => {
     return {
+        editPagesActions: state.dataEditorPage.editPagesActions,
         jsonEditorKey: state.dataEditorPage.jsonEditorKey,
         selectedDataType: state.dataEditorPage.selectedDataType,
         data: state.dataEditorPage.data,

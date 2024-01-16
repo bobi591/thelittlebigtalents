@@ -4,6 +4,7 @@ import FooterData from './models/FooterData'
 import InformationPageData from './models/InformationPageData'
 import InformationPageGalleryBottomData from './models/InformationPageGalleryBottomData'
 import NavbarData from './models/NavbarData'
+import PageMetadata from './models/PageMetadata'
 import Session from './security/Session'
 import User from './security/User'
 
@@ -27,6 +28,11 @@ export default class Backend {
                 code: process.env.REACT_APP_BACKEND_API_KEY,
             },
         }
+    }
+
+    public static async getPagesMetadata(): Promise<[PageMetadata]> {
+        const response = await axios(this.getAxiosConfig('getPagesMetadata'))
+        return response.data
     }
 
     public static async getFooter(): Promise<FooterData> {
