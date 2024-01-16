@@ -35,7 +35,7 @@ body {
         font-weight: 550 !important;
         font-size: 120% !important;
     }
-    .navbar-collapse.collapse.show{
+    .navbar-collapse.collapse.show {
         display: block;
         height: 100vh !important;
         overflow: hidden;

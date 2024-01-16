@@ -220,6 +220,60 @@ root.render(
                         }
                     ></Route>
                     <Route
+                        path="/about/disciplines"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage
+                                        pageName={'Музикални дисциплини'}
+                                    />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Музикални дисциплини'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/about/team"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage pageName={'Екип'} />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Екип'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/about/mission"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage pageName={'Мисия'} />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Мисия'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/prices"
+                        element={
+                            <App
+                                pageToShow={
+                                    <InformationPage pageName={'Цени'} />
+                                }
+                                pageLoadAction={fetchInformationPageData(
+                                    'Цени'
+                                )}
+                            />
+                        }
+                    ></Route>
+                    <Route
                         path="/editor"
                         element={
                             <AuthorizedApp pageToShow={<DataEditorPage />} />

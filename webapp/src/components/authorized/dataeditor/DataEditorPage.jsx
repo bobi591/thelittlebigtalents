@@ -30,6 +30,10 @@ const editPagesActions = {
     'Солфеж и музикална теория': Backend.getInformationPageData.bind(Backend),
     'Пиано за най-малките': Backend.getInformationPageData.bind(Backend),
     'Вокална група': Backend.getInformationPageData.bind(Backend),
+    'Музикални дисциплини': Backend.getInformationPageData.bind(Backend),
+    Екип: Backend.getInformationPageData.bind(Backend),
+    Мисия: Backend.getInformationPageData.bind(Backend),
+    Цени: Backend.getInformationPageData.bind(Backend),
 }
 
 export class DataEditorPage extends React.Component {
