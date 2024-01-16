@@ -26,6 +26,10 @@
     }
 }
 
+.linearView h5 {
+    padding-bottom: 1%;
+}
+
 .leftAndRightView .linearView {
     display: flex;
     max-width: 55%;
