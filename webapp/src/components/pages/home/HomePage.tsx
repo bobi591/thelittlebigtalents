@@ -124,6 +124,28 @@ export default class App extends React.Component {
                 <div
                     className="d-flex-inlne justify-content-center"
                     style={{
+                        backgroundColor: 'rgb(243, 243, 243)',
+                        width: '100vw',
+                    }}
+                >
+                    <div
+                        className="justify-content-center p-5"
+                        style={{ width: '50%', margin: '0 auto' }}
+                    >
+                        <h5>Готови ли сте за Вашия Музикален Път?</h5>
+                        <p>
+                            Музикален Център "Малките Големи Таланти" е мястото,
+                            в което ние вярваме, че всяко дете е уникално, и
+                            музиката е ключът за разкриване на неговия
+                            потенциал. Ние създаваме образователна среда, в
+                            която уникалността на всеки ученик се цени и
+                            развива!
+                        </p>
+                    </div>
+                </div>
+                <div
+                    className="d-flex-inlne justify-content-center"
+                    style={{
                         width: '100vw',
                     }}
                 >
@@ -142,6 +164,7 @@ export default class App extends React.Component {
                         </p>
                     </div>
                 </div>
+
                 <div
                     className="d-flex-inlne justify-content-center"
                     style={{
