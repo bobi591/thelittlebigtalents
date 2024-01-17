@@ -17,6 +17,10 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
     getInnerRightSideView(index: number, dataPart: InformationPageDataPart) {
         const isImageExisting = dataPart.imageBlobName !== undefined
         const isTextExisting = dataPart.text !== undefined
+        const isHeaderExisting = dataPart.heading !== undefined
+        const headerElement = isHeaderExisting ? (
+            <h5>{dataPart.heading}</h5>
+        ) : null
         const result = []
         if (isImageExisting) {
             result.push(
@@ -36,7 +40,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                     style={index == 0 ? { marginTop: '0' } : {}}
                 >
                     <Row>
-                        <h5>{dataPart.heading}</h5>
+                        {headerElement}
                         <div
                             dangerouslySetInnerHTML={{ __html: dataPart.text }}
                         />
@@ -50,12 +54,16 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
     getInnerLeftSideView(dataPart: InformationPageDataPart) {
         const isImageExisting = dataPart.imageBlobName !== undefined
         const isTextExisting = dataPart.text !== undefined
+        const isHeaderExisting = dataPart.heading !== undefined
+        const headerElement = isHeaderExisting ? (
+            <h5>{dataPart.heading}</h5>
+        ) : null
         const result = []
         if (isTextExisting) {
             result.push(
                 <Col className="text left">
                     <Row>
-                        <h5>{dataPart.heading}</h5>
+                        {headerElement}
                         <div
                             dangerouslySetInnerHTML={{ __html: dataPart.text }}
                         />
