@@ -153,3 +153,21 @@
         rgba(0, 0, 0, 0)
     );
 }
+
+.homepage-information h5 {
+    padding-bottom: 1%;
+}
+
+.homepage-information {
+    width: '100vw';
+}
+
+.gray-background {
+    background-color: rgb(243, 243, 243);
+}
+
+.homepage-information-text {
+    width: 50%;
+    margin: 0 auto;
+    padding: 5%;
+}

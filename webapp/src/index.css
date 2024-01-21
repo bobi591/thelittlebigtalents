@@ -63,6 +63,15 @@ body {
     .leftAndRightView .linearView {
         max-width: 100% !important;
     }
+    .leftAndRightView .col {
+        flex: none !important;
+        padding-left: 0% !important;
+        padding-right: 0% !important;
+        width: 90% !important;
+    }
+    .homepage-information-text {
+        width: 100% !important;
+    }
     footer .container {
         width: 100% !important;
     }

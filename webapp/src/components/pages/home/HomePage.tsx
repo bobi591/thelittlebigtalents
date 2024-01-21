@@ -122,15 +122,10 @@ export default class App extends React.Component {
                     </Carousel>
                 </div>
                 <div
-                    className="d-flex-inlne justify-content-center"
-                    style={{
-                        backgroundColor: 'rgb(243, 243, 243)',
-                        width: '100vw',
-                    }}
+                    className="d-flex-inlne justify-content-center homepage-information gray-background"
                 >
                     <div
-                        className="justify-content-center p-5"
-                        style={{ width: '50%', margin: '0 auto' }}
+                        className="justify-content-center homepage-information-text"
                     >
                         <h5>Готови ли сте за Вашия Музикален Път?</h5>
                         <p>
@@ -144,14 +139,10 @@ export default class App extends React.Component {
                     </div>
                 </div>
                 <div
-                    className="d-flex-inlne justify-content-center"
-                    style={{
-                        width: '100vw',
-                    }}
+                    className="d-flex-inlne justify-content-center homepage-information"
                 >
                     <div
-                        className="justify-content-center p-5"
-                        style={{ width: '50%', margin: '0 auto' }}
+                        className="justify-content-center homepage-information-text"
                     >
                         <h5>Какво ни прави уникални?</h5>
                         <p>
@@ -166,15 +157,10 @@ export default class App extends React.Component {
                 </div>
 
                 <div
-                    className="d-flex-inlne justify-content-center"
-                    style={{
-                        backgroundColor: 'rgb(243, 243, 243)',
-                        width: '100vw',
-                    }}
+                    className="d-flex-inlne justify-content-center homepage-information gray-background"
                 >
                     <div
-                        className="justify-content-center p-5"
-                        style={{ width: '50%', margin: '0 auto' }}
+                        className="justify-content-center homepage-information-text"
                     >
                         <h5>Нашата история</h5>
                         <p>
