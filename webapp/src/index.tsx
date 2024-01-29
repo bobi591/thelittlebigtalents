@@ -11,6 +11,7 @@ import {
     fetchInformationPageGalleryBottomData,
 } from './AppSlice'
 import AuthorizedApp from './components/authorized/AuthorizedApp'
+import BookingsPage from './components/authorized/bookings/BookingsPage'
 import DataEditorPage from './components/authorized/dataeditor/DataEditorPage'
 import './index.css'
 import { AppStore } from './ReduxStore'
@@ -277,6 +278,12 @@ root.render(
                         path="/editor"
                         element={
                             <AuthorizedApp pageToShow={<DataEditorPage />} />
+                        }
+                    ></Route>
+                    <Route
+                        path="/bookings"
+                        element={
+                            <AuthorizedApp pageToShow={<BookingsPage />} />
                         }
                     ></Route>
                 </Routes>

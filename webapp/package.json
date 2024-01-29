@@ -5,6 +5,7 @@
   "dependencies": {
     "@azure/identity": "^4.0.0",
     "@azure/storage-blob": "^12.17.0",
+    "@inovua/reactdatagrid-community": "^5.10.2",
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

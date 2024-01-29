@@ -8,6 +8,18 @@ const initialAppState: AppComponentProps = {
     isSubPageLoading: false,
 }
 
+export const fetchBookings = createAsyncThunk(
+    'appSlice/fetchBookings',
+    async () => {
+        try {
+            return await Backend.getBookings()
+        } catch (error) {
+            provideError(error as Error)
+            return undefined
+        }
+    }
+)
+
 export const fetchInformationPageData = createAsyncThunk(
     'appSlice/fetchInformationPageData',
     async (pageName: string) => {

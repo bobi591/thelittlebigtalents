@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import JSEncrypt from 'jsencrypt'
+import Booking from './models/Booking'
 import FooterData from './models/FooterData'
 import InformationPageData from './models/InformationPageData'
 import InformationPageGalleryBottomData from './models/InformationPageGalleryBottomData'
@@ -91,6 +92,15 @@ export default class Backend {
         return response.data
     }
 
+    public static async createJson(request: unknown): Promise<string> {
+        const axiosConfig = this.postAxiosConfig(
+            'createJson',
+            JSON.stringify(request)
+        )
+        const response = await axios(axiosConfig)
+        return response.data
+    }
+
     public static async createSession(request: User): Promise<Session> {
         const data = JSON.stringify(request)
         const jsencrypt = new JSEncrypt()
@@ -125,5 +135,10 @@ export default class Backend {
             const response = await axios(axiosConfig)
             return response.data
         }
+    }
+
+    public static async getBookings(): Promise<[Booking]> {
+        const response = await axios(this.getAxiosConfig('getBookings'))
+        return response.data
     }
 }

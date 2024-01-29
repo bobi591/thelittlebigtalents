@@ -187,10 +187,10 @@ public class AzureFunctions {
         }
     }
 
-    @FunctionName("saveJson")
-    public HttpResponseMessage saveJson(
+    @FunctionName("createJson")
+    public HttpResponseMessage createJson(
             @HttpTrigger(
-                            name = "saveJson",
+                            name = "createJson",
                             methods = {HttpMethod.POST},
                             authLevel = AuthorizationLevel.FUNCTION)
                     HttpRequestMessage<Optional<String>> request,
@@ -205,7 +205,7 @@ public class AzureFunctions {
                     MongoDatasourceFactory.createMongoQueryableDatasource(
                             document.getClass(),
                             "development",
-                            CaseUtils.toCamelCase(document.getClass().getTypeName(), false))) {
+                            CaseUtils.toCamelCase(document.getClass().getSimpleName(), false))) {
                 datasource.insert(document);
             }
             return request.createResponseBuilder(HttpStatus.OK)
@@ -236,7 +236,7 @@ public class AzureFunctions {
                     MongoDatasourceFactory.createMongoQueryableDatasource(
                             document.getClass(),
                             "development",
-                            CaseUtils.toCamelCase(document.getClass().getTypeName(), false))) {
+                            CaseUtils.toCamelCase(document.getClass().getSimpleName(), false))) {
                 datasource.update(document.getId(), document);
             }
             return request.createResponseBuilder(HttpStatus.OK)
@@ -332,6 +332,25 @@ public class AzureFunctions {
             datasource
                     .getAll()
                     .forEach(e -> result.add(new PagesMetadata(e.getPageName(), e.getTypeName())));
+            return request.createResponseBuilder(HttpStatus.OK).body(result).build();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FunctionName("getBookings")
+    public HttpResponseMessage getBookings(
+            @HttpTrigger(
+                            name = "getMetadataMap",
+                            methods = {HttpMethod.GET},
+                            authLevel = AuthorizationLevel.FUNCTION)
+                    HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+        context.getLogger().info("Java HTTP trigger processed a request.");
+        try (QueryableDatasource<Booking, ?> datasource =
+                MongoDatasourceFactory.createMongoQueryableDatasource(
+                        Booking.class, "development", "booking")) {
+            List<Booking> result = datasource.getAll();
             return request.createResponseBuilder(HttpStatus.OK).body(result).build();
         } catch (Exception e) {
             throw new RuntimeException(e);

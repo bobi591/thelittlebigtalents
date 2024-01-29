@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button, Card, Carousel, Modal } from 'react-bootstrap'
+import { Button, Card, Carousel, Form, Modal } from 'react-bootstrap'
 import ErrorBoundaryComponentState from '../../../AppComponentProps'
 import AzureBlobStorage from '../../../datasource/AzureBlobStorage'
+import Backend from '../../../datasource/Backend'
 
 type AppState = {
     showBookLessonModal: boolean
@@ -40,36 +41,135 @@ export default class App extends React.Component {
         </div>
     )
 
+    onBookLessonModalSubmit = async (
+        event: React.SyntheticEvent<HTMLFormElement>
+    ) => {
+        event.preventDefault()
+        const { currentTarget } = event
+        const formElements =
+            currentTarget.elements as typeof currentTarget.elements & {
+                parentName: { value: string }
+                parentEmail: { value: string }
+                parentPhone: { value: string }
+                studentName: { value: string }
+                studentAge: { value: string }
+            }
+        await Backend.createJson({
+            className: 'com.thelittlebigtalents.backend.model.impl.Booking',
+            json: JSON.stringify({
+                parentName: formElements.parentName.value,
+                parentEmail: formElements.parentEmail.value,
+                parentPhone: formElements.parentPhone.value,
+                studentName: formElements.studentName.value,
+                studentAge: formElements.studentAge.value,
+                isContacted: false,
+                notes: 'Няма',
+            }),
+        })
+    }
+
     bookLessonModal = (
         <Modal
-            show={this.state.showBookLessonModal}
+            show
             onHide={() => this.showBookLessonModal(false)}
-            backdrop="static"
             keyboard={false}
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
         >
             <Modal.Header closeButton>
-                <Modal.Title>Modal title</Modal.Title>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Форма за записване
+                </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-                I will not close if you click outside me. Don not even try to
-                press escape key.
-            </Modal.Body>
-            <Modal.Footer>
-                <Button
-                    variant="secondary"
-                    onClick={() => this.showBookLessonModal(false)}
-                >
-                    Close
-                </Button>
-                <Button variant="primary">Understood</Button>
-            </Modal.Footer>
+            <Form onSubmit={this.onBookLessonModalSubmit}>
+                <Modal.Body>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Име на родител</Form.Label>
+                        <Form.Control
+                            id="parentName"
+                            required
+                            type="text"
+                            placeholder="име и фамилия"
+                            autoFocus
+                            autoComplete="off"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Моля въведете име на родител.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Имейл адрес</Form.Label>
+                        <Form.Control
+                            id="parentEmail"
+                            required
+                            type="email"
+                            placeholder="name@example.com"
+                            autoComplete="off"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Моля въведете имейл адрес.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Телефон</Form.Label>
+                        <Form.Control
+                            id="parentPhone"
+                            required
+                            type="tel"
+                            placeholder="012 345 6789"
+                            autoComplete="off"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Моля въведете телефон за връзка.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Име на ученик</Form.Label>
+                        <Form.Control
+                            id="studentName"
+                            required
+                            type="text"
+                            placeholder="име и фамилия на ученик"
+                            autoComplete="off"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Моля въведете име и фамилия на ученик.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Възраст на ученик</Form.Label>
+                        <Form.Control
+                            id="studentAge"
+                            required
+                            type="number"
+                            placeholder="възраст на ученик"
+                            autoComplete="off"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Моля въведете възраст на ученик.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button
+                        variant="secondary"
+                        onClick={() => this.showBookLessonModal(false)}
+                    >
+                        Отмяна
+                    </Button>
+                    <Button type="submit" variant="primary">
+                        Изпрати
+                    </Button>
+                </Modal.Footer>
+            </Form>
         </Modal>
     )
 
     render(): React.ReactNode {
+        const { showBookLessonModal } = this.state
         return (
             <>
-                {this.bookLessonModal}
+                {showBookLessonModal && this.bookLessonModal}
                 <div
                     style={{
                         height: '80vh',
@@ -121,29 +221,20 @@ export default class App extends React.Component {
                         </Carousel.Item>
                     </Carousel>
                 </div>
-                <div
-                    className="d-flex-inlne justify-content-center homepage-information gray-background"
-                >
-                    <div
-                        className="justify-content-center homepage-information-text"
-                    >
+                <div className="d-flex-inlne justify-content-center homepage-information gray-background">
+                    <div className="justify-content-center homepage-information-text">
                         <h5>Готови ли сте за Вашия Музикален Път?</h5>
                         <p>
-                            Музикален Център "Малките Големи Таланти" е мястото,
-                            в което ние вярваме, че всяко дете е уникално, и
-                            музиката е ключът за разкриване на неговия
-                            потенциал. Ние създаваме образователна среда, в
-                            която уникалността на всеки ученик се цени и
-                            развива!
+                            В Музикален Център "Малките Големи Таланти" вярваме,
+                            че всяко дете е уникално и музиката е ключът за
+                            разкриване на неговия потенциал. Ние създаваме
+                            образователна среда, в която уникалността на всеки
+                            ученик се цени и развива!
                         </p>
                     </div>
                 </div>
-                <div
-                    className="d-flex-inlne justify-content-center homepage-information"
-                >
-                    <div
-                        className="justify-content-center homepage-information-text"
-                    >
+                <div className="d-flex-inlne justify-content-center homepage-information">
+                    <div className="justify-content-center homepage-information-text">
                         <h5>Какво ни прави уникални?</h5>
                         <p>
                             Нашата програма не се ограничава само до
@@ -156,13 +247,9 @@ export default class App extends React.Component {
                     </div>
                 </div>
 
-                <div
-                    className="d-flex-inlne justify-content-center homepage-information gray-background"
-                >
-                    <div
-                        className="justify-content-center homepage-information-text"
-                    >
-                        <h5>Нашата история</h5>
+                <div className="d-flex-inlne justify-content-center homepage-information gray-background">
+                    <div className="justify-content-center homepage-information-text">
+                        <h5>Нашата история...</h5>
                         <p>
                             В края на 2018 година, се роди идеята за Музикален
                             Център "Малките Големи Таланти". Започнахме с малко
