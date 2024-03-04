@@ -57,9 +57,6 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                                                     elementsToDisplay.push(
                                                                         <NavDropdown
                                                                             className="navlink-highlited"
-                                                                            key={
-                                                                                'end'
-                                                                            }
                                                                             title={
                                                                                 navbarChildItem.name
                                                                             }

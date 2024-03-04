@@ -9,6 +9,7 @@ export type AppComponentProps = {
     navbarData?: NavbarData
     pageToShow?: JSX.Element
     isSubPageLoading?: boolean
+    isSubPageLoaded?: boolean
     informationPageData?: InformationPageData
     informationPageGalleryBottomData?: InformationPageGalleryBottomData
 }

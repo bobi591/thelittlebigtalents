@@ -7,6 +7,7 @@ import {
     Toast,
     ToastContainer,
 } from 'react-bootstrap'
+import { connect } from 'react-redux'
 import ReactTimeAgo from 'react-time-ago'
 import { provideError } from '../../AppSlice'
 import Backend from '../../datasource/Backend'
@@ -18,7 +19,6 @@ import {
     updateSession,
     updateUsername,
 } from './AuthorizedAppSlice'
-import { connect } from 'react-redux'
 
 export const AuthorizedApp = (props: AuthorizedAppState) => {
     const dispatch = useAppDispatch()

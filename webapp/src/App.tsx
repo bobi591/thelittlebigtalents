@@ -25,9 +25,15 @@ export class App extends React.Component<AppComponentPropsInputs> {
 
     async componentDidMount() {
         try {
-            const footerData = await Backend.getFooter()
-            const navbarData = await Backend.getNavbar()
-            if (this.props.pageLoadAction !== undefined) {
+            let footerData = this.props.footerData
+            if (!footerData) {
+                footerData = await Backend.getFooter()
+            }
+            let navbarData = this.props.navbarData
+            if (!navbarData) {
+                navbarData = await Backend.getNavbar()
+            }
+            if (this.props.pageLoadAction && !this.props.isSubPageLoaded) {
                 //Page load action used for fetching page data into the generic application's state
                 //Invokes the page load action only if provided...
                 await AppStore.dispatch(this.props.pageLoadAction)
@@ -88,6 +94,8 @@ export class App extends React.Component<AppComponentPropsInputs> {
 
 const mapStateToProps = (state: AppState) => {
     return {
+        isSubPageLoaded: state.app.isSubPageLoaded,
+        isSubPageLoading: state.app.isSubPageLoading,
         footerData: state.app.footerData,
         navbarData: state.app.navbarData,
         error: state.app.error,

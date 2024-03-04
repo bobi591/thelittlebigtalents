@@ -6,6 +6,7 @@ import NavbarData from './datasource/models/NavbarData'
 
 const initialAppState: AppComponentProps = {
     isSubPageLoading: false,
+    isSubPageLoaded: false,
 }
 
 export const fetchBookings = createAsyncThunk(
@@ -63,19 +64,24 @@ export const AppSlice = createSlice({
         isSubPageLoading: (state, action: PayloadAction<boolean>) => {
             state.isSubPageLoading = action.payload
         },
+        isSubPageLoaded: (state, action: PayloadAction<boolean>) => {
+            state.isSubPageLoaded = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchInformationPageData.fulfilled, (state, action) => {
-            isSubPageLoading(true)
+            state.isSubPageLoading = true
             state.informationPageData = action.payload
-            isSubPageLoading(false)
+            state.isSubPageLoading = false
+            state.isSubPageLoaded = true
         })
         builder.addCase(
             fetchInformationPageGalleryBottomData.fulfilled,
             (state, action) => {
-                isSubPageLoading(true)
+                state.isSubPageLoading = true
                 state.informationPageGalleryBottomData = action.payload
-                isSubPageLoading(false)
+                state.isSubPageLoading = false
+                state.isSubPageLoaded = true
             }
         )
     },
@@ -87,5 +93,6 @@ export const {
     provideError,
     providePageToShow,
     isSubPageLoading,
+    isSubPageLoaded,
 } = AppSlice.actions
 export default AppSlice.reducer
