@@ -66,6 +66,7 @@ export default class App extends React.Component {
                 notes: 'Няма',
             }),
         })
+        this.showBookLessonModal(false)
     }
 
     bookLessonModal = (
@@ -221,7 +222,7 @@ export default class App extends React.Component {
                         </Carousel.Item>
                     </Carousel>
                 </div>
-                <div className="d-flex-inlne justify-content-center homepage-information gray-background">
+                <div className="d-flex-inlne justify-content-center homepage-information">
                     <div className="justify-content-center homepage-information-text">
                         <h5>Готови ли сте за Вашия Музикален Път?</h5>
                         <p>
@@ -233,20 +234,6 @@ export default class App extends React.Component {
                         </p>
                     </div>
                 </div>
-                <div className="d-flex-inlne justify-content-center homepage-information">
-                    <div className="justify-content-center homepage-information-text">
-                        <h5>Какво ни прави уникални?</h5>
-                        <p>
-                            Нашата програма не се ограничава само до
-                            техническите аспекти на музикалното обучение.
-                            Вярваме в индивидуалния подход и поощряваме
-                            творческото изразяване. Преподавателите ни не само
-                            предават знания, но и откриват и развиват уникалните
-                            музикални способности на всяко дете.
-                        </p>
-                    </div>
-                </div>
-
                 <div className="d-flex-inlne justify-content-center homepage-information gray-background">
                     <div className="justify-content-center homepage-information-text">
                         <h5>Нашата история...</h5>
