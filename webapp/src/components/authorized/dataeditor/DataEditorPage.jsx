@@ -1,11 +1,11 @@
 import clone from 'just-clone'
-import React from 'react'
+import { useEffect } from 'react'
 import { Button, Col, Container, Dropdown, Row } from 'react-bootstrap'
 import JsonEditor from 'react-json-editor-ui'
 import { connect } from 'react-redux'
 import { provideError } from '../../../AppSlice'
 import Backend from '../../../datasource/Backend'
-import { AppStore } from '../../../ReduxStore'
+import { useAppDispatch } from '../../../ReduxStore'
 import { showToast } from '../AuthorizedAppSlice'
 import {
     fetchEditPageActions,
@@ -15,148 +15,140 @@ import {
     updateSelectedDataType,
 } from './DataEditorPageSlice'
 
-export class DataEditorPage extends React.Component {
-    async onSelectDataType(dataType, asyncBackendFunction) {
+export const DataEditorPage = (props) => {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(fetchEditPageActions())
+    })
+
+    const onSelectDataType = async (dataType, asyncBackendFunction) => {
         let retrievedData
         if (dataType === 'Navbar' || dataType === 'Footer') {
             retrievedData = await asyncBackendFunction()
         } else {
             retrievedData = await asyncBackendFunction(dataType)
         }
-        AppStore.dispatch(updateSelectedDataType(dataType))
+        dispatch(updateSelectedDataType(dataType))
         // Deep copy with Json Parse & Json Stringify
-        AppStore.dispatch(updateOriginalData(clone(retrievedData)))
-        AppStore.dispatch(updateData(clone(retrievedData)))
-        AppStore.dispatch(updateJsonEditorKey())
+        dispatch(updateOriginalData(clone(retrievedData)))
+        dispatch(updateData(clone(retrievedData)))
+        dispatch(updateJsonEditorKey())
     }
 
-    componentDidMount() {
-        AppStore.dispatch(fetchEditPageActions())
-    }
-
-    async onJsonDataUpdate(data) {
+    const onJsonDataUpdate = async (data) => {
         //Avoid error 'unable to set value in readonly property'
-        AppStore.dispatch(updateData(clone(data)))
+        dispatch(updateData(clone(data)))
     }
 
-    async onSaveClick() {
+    const onSaveClick = async () => {
         try {
             const validationResponse = await Backend.updateJson({
-                className: this.props.data.typeName,
-                json: JSON.stringify(this.props.data),
+                className: props.data.typeName,
+                json: JSON.stringify(props.data),
             })
-            AppStore.dispatch(
+            dispatch(
                 showToast({
                     header: 'Успешна валидация 🥳',
                     message: validationResponse,
                 })
             )
-            AppStore.dispatch(updateOriginalData(this.props.data))
+            dispatch(updateOriginalData(props.data))
         } catch (error) {
-            AppStore.dispatch(
+            dispatch(
                 showToast({
                     header: 'Неуспешна валидация 😢',
                     message: error.response.data,
                 })
             )
         } finally {
-            AppStore.dispatch(updateJsonEditorKey())
+            dispatch(updateJsonEditorKey())
         }
     }
 
-    onResetClick() {
-        AppStore.dispatch(updateData(clone(this.props.originalData)))
-        AppStore.dispatch(updateJsonEditorKey())
+    const onResetClick = () => {
+        dispatch(updateData(clone(props.originalData)))
+        dispatch(updateJsonEditorKey())
     }
 
-    render() {
-        let jsonEditor = <></>
-        const modifiedData = this.props.data
-        const originalData = this.props.originalData
-
-        const { editPagesActions } = this.props
-
-        if (modifiedData !== undefined) {
-            jsonEditor = (
-                <>
-                    <p>{modifiedData.typeName}</p>
-                    <div className="editor">
-                        <JsonEditor
-                            key={this.props.jsonEditorKey}
-                            data={modifiedData}
-                            onChange={async (data) => {
-                                await this.onJsonDataUpdate(data)
-                            }}
-                        />
-                    </div>
-                </>
-            )
-        }
+    const getPages = () => {
+        const { editPagesActions } = props
         const pages = editPagesActions ? [...editPagesActions.keys()] : []
-        return (
-            <Container className="dataEditorRoot" fluid="md">
-                <div className="text-center title">
-                    <h4>Малките Големи Таланти - Промяна на данни</h4>
-                </div>
-                <Row className="justify-content-md-center text-center buttonGroup">
-                    <Col>
-                        <Button
-                            variant="success"
-                            onClick={async () => await this.onSaveClick()}
-                            disabled={
-                                JSON.stringify(modifiedData) ===
-                                JSON.stringify(originalData)
-                            }
-                        >
-                            Запази
-                        </Button>
-                    </Col>
-                    <Col>
-                        <Dropdown>
-                            <Dropdown.Toggle
-                                variant="primary"
-                                id="dropdown-basic"
-                            >
-                                Избери данни
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                {pages.map((x) => {
-                                    return (
-                                        <Dropdown.Item
-                                            onClick={async () =>
-                                                await this.onSelectDataType(
-                                                    x,
-                                                    editPagesActions.get(x)
-                                                )
-                                            }
-                                        >
-                                            {x}
-                                        </Dropdown.Item>
-                                    )
-                                })}
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Col>
-                    <Col>
-                        <Button
-                            variant="warning"
-                            onClick={() => this.onResetClick()}
-                        >
-                            Нулирай
-                        </Button>
-                    </Col>
-                </Row>
-                <Row className="justify-content-md-center">
-                    <Row className="pb-4">
-                        <Col>{jsonEditor}</Col>
-                    </Row>
-                </Row>
-            </Container>
-        )
+        return pages
     }
+
+    return (
+        <Container className="dataEditorRoot" fluid="md">
+            <div className="text-center title">
+                <h4>Малките Големи Таланти - Промяна на данни</h4>
+            </div>
+            <Row className="justify-content-md-center text-center buttonGroup">
+                <Col>
+                    <Button
+                        variant="success"
+                        onClick={async () => await onSaveClick()}
+                        disabled={
+                            JSON.stringify(props.data) ===
+                            JSON.stringify(props.originalData)
+                        }
+                    >
+                        Запази
+                    </Button>
+                </Col>
+                <Col>
+                    <Dropdown>
+                        <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                            Избери данни
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {getPages().map((x) => {
+                                return (
+                                    <Dropdown.Item
+                                        onClick={async () =>
+                                            await onSelectDataType(
+                                                x,
+                                                props.editPagesActions.get(x)
+                                            )
+                                        }
+                                    >
+                                        {x}
+                                    </Dropdown.Item>
+                                )
+                            })}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </Col>
+                <Col>
+                    <Button variant="warning" onClick={() => onResetClick()}>
+                        Нулирай
+                    </Button>
+                </Col>
+            </Row>
+            <Row className="justify-content-md-center">
+                <Row className="pb-4">
+                    <Col>
+                        {props.data && (
+                            <>
+                                <p>{props.data.typeName}</p>
+                                <div className="editor">
+                                    <JsonEditor
+                                        key={props.jsonEditorKey}
+                                        data={props.data}
+                                        onChange={async (data) => {
+                                            await onJsonDataUpdate(data)
+                                        }}
+                                    />
+                                </div>
+                            </>
+                        )}
+                    </Col>
+                </Row>
+            </Row>
+        </Container>
+    )
 }
 
-export const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         editPagesActions: state.dataEditorPage.editPagesActions,
         jsonEditorKey: state.dataEditorPage.jsonEditorKey,
@@ -167,7 +159,7 @@ export const mapStateToProps = (state) => {
     }
 }
 
-export const mapDispatchToProps = () => ({
+const mapDispatchToProps = () => ({
     updateJsonEditorKey,
     updateSelectedDataType,
     updateData,
@@ -175,4 +167,6 @@ export const mapDispatchToProps = () => ({
     provideError,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DataEditorPage)
+const connector = connect(mapStateToProps, mapDispatchToProps)
+
+export default connector(DataEditorPage)
