@@ -5,7 +5,6 @@ import FooterData from './datasource/models/FooterData'
 import NavbarData from './datasource/models/NavbarData'
 
 const initialAppState: AppComponentProps = {
-    isSubPageLoading: false,
     isSubPageLoaded: false,
 }
 
@@ -61,26 +60,19 @@ export const AppSlice = createSlice({
         providePageToShow: (state, action: PayloadAction<JSX.Element>) => {
             state.pageToShow = action.payload
         },
-        isSubPageLoading: (state, action: PayloadAction<boolean>) => {
-            state.isSubPageLoading = action.payload
-        },
         isSubPageLoaded: (state, action: PayloadAction<boolean>) => {
             state.isSubPageLoaded = action.payload
         },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchInformationPageData.fulfilled, (state, action) => {
-            state.isSubPageLoading = true
             state.informationPageData = action.payload
-            state.isSubPageLoading = false
             state.isSubPageLoaded = true
         })
         builder.addCase(
             fetchInformationPageGalleryBottomData.fulfilled,
             (state, action) => {
-                state.isSubPageLoading = true
                 state.informationPageGalleryBottomData = action.payload
-                state.isSubPageLoading = false
                 state.isSubPageLoaded = true
             }
         )
@@ -92,7 +84,6 @@ export const {
     provideFooterData,
     provideError,
     providePageToShow,
-    isSubPageLoading,
     isSubPageLoaded,
 } = AppSlice.actions
 export default AppSlice.reducer

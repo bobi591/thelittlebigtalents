@@ -20,7 +20,7 @@ export const DataEditorPage = (props) => {
 
     useEffect(() => {
         dispatch(fetchEditPageActions())
-    })
+    }, [])
 
     const onSelectDataType = async (dataType, asyncBackendFunction) => {
         let retrievedData

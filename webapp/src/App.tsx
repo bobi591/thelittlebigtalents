@@ -54,8 +54,7 @@ export class App extends React.Component<AppComponentPropsInputs> {
     }
 
     render(): React.ReactNode {
-        const footerData = this.props.footerData
-        const navbarData = this.props.navbarData
+        const { footerData, navbarData, isSubPageLoaded } = this.props
         const error = this.props.error
         const loader = (
             <div className="loader">
@@ -73,15 +72,6 @@ export class App extends React.Component<AppComponentPropsInputs> {
         if (footerData == undefined || navbarData == undefined) {
             return loader
         }
-        if (this.props.isSubPageLoading) {
-            return (
-                <div className="App">
-                    <NavbarComponent navbarData={this.props.navbarData!} />
-                    {loader}
-                    <FooterComponent footerData={this.props.footerData!} />
-                </div>
-            )
-        }
         return (
             <div className="App">
                 <NavbarComponent navbarData={this.props.navbarData!} />
@@ -95,7 +85,6 @@ export class App extends React.Component<AppComponentPropsInputs> {
 const mapStateToProps = (state: AppState) => {
     return {
         isSubPageLoaded: state.app.isSubPageLoaded,
-        isSubPageLoading: state.app.isSubPageLoading,
         footerData: state.app.footerData,
         navbarData: state.app.navbarData,
         error: state.app.error,

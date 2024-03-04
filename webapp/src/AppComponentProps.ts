@@ -8,7 +8,6 @@ export type AppComponentProps = {
     footerData?: FooterData
     navbarData?: NavbarData
     pageToShow?: JSX.Element
-    isSubPageLoading?: boolean
     isSubPageLoaded?: boolean
     informationPageData?: InformationPageData
     informationPageGalleryBottomData?: InformationPageGalleryBottomData
