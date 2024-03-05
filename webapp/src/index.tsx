@@ -15,6 +15,7 @@ import {
 import AuthorizedApp from './components/authorized/AuthorizedApp'
 import BookingsPage from './components/authorized/bookings/BookingsPage'
 import DataEditorPage from './components/authorized/dataeditor/DataEditorPage'
+import LoadingOverlay from './components/overlays/loading/LoadingOverlay'
 import InformationPage from './components/pages/information/InformationPage'
 import InformationPageGalleryBottom from './components/pages/informationGalleryBottom/InformationPageGalleryBottom'
 import './index.css'
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
         path: '*',
     },
     {
-        element: <App />,
+        element: (
+            <LoadingOverlay>
+                <App />
+            </LoadingOverlay>
+        ),
         path: '/',
         loader: () => {
             return <HomePage />

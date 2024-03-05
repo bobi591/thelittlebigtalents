@@ -56,7 +56,7 @@ export const App = (props: PageWrapperProps) => {
         )
 
     return (
-        <div className="App">{isDataLoaded ? pageContent : loaderContent}</div>
+        <div className="App">{isDataLoaded ? pageContent : <></>}</div>
     )
 }
 
