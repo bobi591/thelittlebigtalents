@@ -45,11 +45,19 @@ const router = createBrowserRouter([
         ),
         path: '/',
         loader: () => {
-            return <HomePage />
+            return (
+                <OpacityTransitionOverlay>
+                    <HomePage />
+                </OpacityTransitionOverlay>
+            )
         },
     },
     {
-        element: <App />,
+        element: (
+            <LoadingOverlay>
+                <App />
+            </LoadingOverlay>
+        ),
         path: '/page/:pageId',
         loader: async ({ params }) => {
             const pageId = params.pageId as string

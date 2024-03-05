@@ -8,6 +8,7 @@ import { AppState } from './ReduxStore'
 
 const initialAppState: AppComponentProps = {
     isSubPageLoaded: false,
+    isLandingAnimationSeen: false,
 }
 
 export const fetchBookings = createAsyncThunk(
@@ -88,6 +89,9 @@ export const AppSlice = createSlice({
         isSubPageLoaded: (state, action: PayloadAction<boolean>) => {
             state.isSubPageLoaded = action.payload
         },
+        setLandingAnimationSeen: (state, action: PayloadAction<boolean>) => {
+            state.isLandingAnimationSeen = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchInformationPageData.fulfilled, (state, action) => {
@@ -114,5 +118,6 @@ export const {
     provideError,
     providePageToShow,
     isSubPageLoaded,
+    setLandingAnimationSeen,
 } = AppSlice.actions
 export default AppSlice.reducer

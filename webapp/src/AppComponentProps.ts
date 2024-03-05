@@ -13,6 +13,7 @@ export type AppComponentProps = {
     informationPageData?: InformationPageData
     informationPageGalleryBottomData?: InformationPageGalleryBottomData
     pagesMetadata?: Map<string, PageMetadata>
+    isLandingAnimationSeen?: boolean
 }
 
 export default interface ErrorBoundaryComponentState {
