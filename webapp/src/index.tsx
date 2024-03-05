@@ -5,6 +5,7 @@ import { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import PageWrapper from './App'
 import './App.css'
 import {
     fetchInformationPageData,
@@ -16,7 +17,6 @@ import BookingsPage from './components/authorized/bookings/BookingsPage'
 import DataEditorPage from './components/authorized/dataeditor/DataEditorPage'
 import InformationPage from './components/pages/information/InformationPage'
 import InformationPageGalleryBottom from './components/pages/informationGalleryBottom/InformationPageGalleryBottom'
-import PageWrapper from './components/pages/PageWrapper'
 import './index.css'
 import { AppStore } from './ReduxStore'
 import reportWebVitals from './reportWebVitals'
@@ -37,8 +37,11 @@ const router = createBrowserRouter([
         path: '*',
     },
     {
-        element: <App pageToShow={<HomePage />} />,
+        element: <App />,
         path: '/',
+        loader: () => {
+            return <HomePage />
+        },
     },
     {
         element: <PageWrapper />,
@@ -72,7 +75,7 @@ const router = createBrowserRouter([
                     }
                 }
             }
-            return <HomePage />
+            return null
         },
     },
     {
