@@ -3,6 +3,7 @@ import { AppComponentProps } from './AppComponentProps'
 import Backend from './datasource/Backend'
 import FooterData from './datasource/models/FooterData'
 import NavbarData from './datasource/models/NavbarData'
+import PageMetadata from './datasource/models/PageMetadata'
 import { AppState } from './ReduxStore'
 
 const initialAppState: AppComponentProps = {
@@ -47,19 +48,24 @@ export const fetchInformationPageGalleryBottomData = createAsyncThunk(
 
 export const fetchPagesMetadata = createAsyncThunk(
     'appSlice/fetchPagesMetadata',
-    async (_, { getState }) => {
+    async (_, { getState }): Promise<Map<string, PageMetadata> | undefined> => {
         const {
-            app: { pagesMetadata },
+            app: { pagesMetadata: pagesMetadataInState },
         } = getState() as AppState
-        if (!pagesMetadata || pagesMetadata.size === 0) {
+        if (!pagesMetadataInState || pagesMetadataInState.size === 0) {
             try {
-                return await Backend.getPagesMetadata()
+                const pagesMetadataArray = await Backend.getPagesMetadata()
+                const pagesMetadataNew = new Map()
+                pagesMetadataArray.forEach((x) =>
+                    pagesMetadataNew.set(x.url, x)
+                )
+                return pagesMetadataNew
             } catch (error) {
                 provideError(error as Error)
                 return undefined
             }
         }
-        return pagesMetadata
+        return pagesMetadataInState
     }
 )
 
@@ -97,9 +103,7 @@ export const AppSlice = createSlice({
         )
         builder.addCase(fetchPagesMetadata.fulfilled, (state, action) => {
             const { payload } = action
-            const map = new Map()
-            payload?.forEach((x) => map.set(x.url, x))
-            state.pagesMetadata = map
+            state.pagesMetadata = payload
         })
     },
 })

@@ -47,13 +47,15 @@ const router = createBrowserRouter([
         element: <PageWrapper />,
         path: '/page/:pageId',
         loader: async ({ params }) => {
+            const pageId = params.pageId as string
+
+            // Make sure pages metadata is loaded first
+            await AppStore.dispatch(fetchPagesMetadata())
+
+            // Then consume pages metadata from the state
             const {
                 app: { pagesMetadata },
             } = AppStore.getState()
-
-            const pageId = params.pageId as string
-
-            await AppStore.dispatch(fetchPagesMetadata())
 
             if (pagesMetadata) {
                 const pageMetadata = pagesMetadata.get(pageId)
