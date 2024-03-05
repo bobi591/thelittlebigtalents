@@ -10,18 +10,12 @@ public class PagesMetadata {
     private final String typeName;
     private final String url;
 
-    public PagesMetadata(String pageName, String typeName) {
+    public PagesMetadata(String pageName, String typeName, String url) {
         Translator translator = new Translator(Schemas.WIKIPEDIA);
         this.pageName = pageName;
         String[] splitClassName = typeName.split("\\.");
         this.typeName = splitClassName[splitClassName.length - 1];
-        String urlTypeName = this.typeName.replaceAll("[^A-Z]", "");
-        String tempUrl =
-                urlTypeName
-                        + "/"
-                        + UrlEscapers.urlPathSegmentEscaper()
-                                .escape(translator.translate(pageName.replace(" ", "")));
-        this.url = tempUrl.replace("shch", "sht");
+        this.url = url;
     }
 
     public String getPageName() {

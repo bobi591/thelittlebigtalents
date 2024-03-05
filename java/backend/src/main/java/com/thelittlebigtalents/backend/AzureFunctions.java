@@ -331,7 +331,7 @@ public class AzureFunctions {
             List<PagesMetadata> result = new ArrayList<>();
             datasource
                     .getAll()
-                    .forEach(e -> result.add(new PagesMetadata(e.getPageName(), e.getTypeName())));
+                    .forEach(e -> result.add(new PagesMetadata(e.getPageName(), e.getTypeName(), e.getUrl())));
             return request.createResponseBuilder(HttpStatus.OK).body(result).build();
         } catch (Exception e) {
             throw new RuntimeException(e);
