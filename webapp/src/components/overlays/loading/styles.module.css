@@ -19,6 +19,7 @@
     white-space: nowrap;
     cursor: pointer;
     line-height: 80px;
+    margin: auto;
   }
   
   .container {

@@ -16,6 +16,7 @@ import AuthorizedApp from './components/authorized/AuthorizedApp'
 import BookingsPage from './components/authorized/bookings/BookingsPage'
 import DataEditorPage from './components/authorized/dataeditor/DataEditorPage'
 import LoadingOverlay from './components/overlays/loading/LoadingOverlay'
+import { OpacityTransitionOverlay } from './components/overlays/transition/OpacityTransitionOverlay'
 import InformationPage from './components/pages/information/InformationPage'
 import InformationPageGalleryBottom from './components/pages/informationGalleryBottom/InformationPageGalleryBottom'
 import './index.css'
@@ -70,14 +71,22 @@ const router = createBrowserRouter([
                         await AppStore.dispatch(
                             fetchInformationPageData(pageName)
                         )
-                        return <InformationPage pageName={pageName} />
+                        return (
+                            <OpacityTransitionOverlay>
+                                <InformationPage pageName={pageName} />
+                            </OpacityTransitionOverlay>
+                        )
                     }
                     if (typeName === 'InformationPageGalleryBottom') {
                         await AppStore.dispatch(
                             fetchInformationPageGalleryBottomData(pageName)
                         )
                         return (
-                            <InformationPageGalleryBottom pageName={pageName} />
+                            <OpacityTransitionOverlay>
+                                <InformationPageGalleryBottom
+                                    pageName={pageName}
+                                />
+                            </OpacityTransitionOverlay>
                         )
                     }
                 }

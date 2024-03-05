@@ -78,16 +78,19 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                                                                             )
                                                                                         }
                                                                                         thirdLevelChildElementsToDisplay.push(
-                                                                                            <Link
+                                                                                            <NavDropdown.Item
                                                                                                 className="nav-link navlink-highlighted"
                                                                                                 to={
                                                                                                     navbardThirdLevelChild.href
+                                                                                                }
+                                                                                                as={
+                                                                                                    Link
                                                                                                 }
                                                                                             >
                                                                                                 {
                                                                                                     navbardThirdLevelChild.name
                                                                                                 }
-                                                                                            </Link>
+                                                                                            </NavDropdown.Item>
                                                                                         )
                                                                                         return thirdLevelChildElementsToDisplay
                                                                                     }
@@ -97,16 +100,19 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                                                     )
                                                                 } else {
                                                                     elementsToDisplay.push(
-                                                                        <Link
+                                                                        <NavDropdown.Item
                                                                             className="nav-link navlink-highlighted"
                                                                             to={
                                                                                 navbarChildItem.href
+                                                                            }
+                                                                            as={
+                                                                                Link
                                                                             }
                                                                         >
                                                                             {
                                                                                 navbarChildItem.name
                                                                             }
-                                                                        </Link>
+                                                                        </NavDropdown.Item>
                                                                     )
                                                                 }
                                                                 return elementsToDisplay
@@ -117,12 +123,13 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                             )
                                         } else {
                                             return (
-                                                <Link
+                                                <NavDropdown.Item
                                                     className="nav-link"
                                                     to={navbarItem.href}
+                                                    as={Link}
                                                 >
                                                     {navbarItem.name}
-                                                </Link>
+                                                </NavDropdown.Item>
                                             )
                                         }
                                     }

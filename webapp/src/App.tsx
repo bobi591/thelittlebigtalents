@@ -5,7 +5,6 @@ import { provideFooterData, provideNavbarData } from './AppSlice'
 import FooterComponent from './components/footer/FooterComponent'
 import NavbarComponent from './components/navbar/NavbarComponent'
 import NotFoundPage from './components/pages/notfound/NotFoundPage'
-import AzureBlobStorage from './datasource/AzureBlobStorage'
 import Backend from './datasource/Backend'
 import FooterData from './datasource/models/FooterData'
 import NavbarData from './datasource/models/NavbarData'
@@ -24,6 +23,7 @@ export const App = (props: PageWrapperProps) => {
     const isDataLoaded = Boolean(footerData) && Boolean(navbarData)
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         if (!isDataLoaded) {
             Backend.getFooter().then((data) =>
                 dispatch(provideFooterData(data))
@@ -32,17 +32,7 @@ export const App = (props: PageWrapperProps) => {
                 dispatch(provideNavbarData(data))
             )
         }
-    }, [])
-
-    const loaderContent = (
-        <div className="loader">
-            <img
-                src={AzureBlobStorage.getBlobUrl('logo.png')}
-                width={'7%'}
-                height={'7%'}
-            />
-        </div>
-    )
+    }, [pageToShow])
 
     const pageContent =
         pageToShow !== null ? (
@@ -55,9 +45,7 @@ export const App = (props: PageWrapperProps) => {
             <NotFoundPage />
         )
 
-    return (
-        <div className="App">{isDataLoaded ? pageContent : <></>}</div>
-    )
+    return <div className="App">{isDataLoaded ? pageContent : <></>}</div>
 }
 
 const mapStateToProps = (state: AppState) => {

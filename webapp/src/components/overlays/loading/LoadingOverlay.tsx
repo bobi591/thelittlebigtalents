@@ -1,6 +1,7 @@
 import { animated, useTransition } from '@react-spring/web'
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
+import { OpacityTransitionOverlay } from '../transition/OpacityTransitionOverlay'
 import styles from './styles.module.css'
 
 export default function LoadingOverlay(props: { children: ReactNode }) {
@@ -20,22 +21,16 @@ export default function LoadingOverlay(props: { children: ReactNode }) {
             { opacity: 1, height: 80, innerHeight: 80 },
             {
                 transform: 'perspective(600px) rotateX(180deg)',
-                color: '#d7b128',
+                color: '#c2b433',
             },
             { transform: 'perspective(600px) rotateX(0deg)' },
         ],
         leave: [
-            { color: '#c2b433' },
+            { color: '#d7b128' },
             { innerHeight: 0 },
             { opacity: 0, height: 0 },
         ],
         update: { color: '#d7284b' },
-    })
-
-    const childrenTransitions = useTransition(props.children, {
-      from: { opacity: 0 },
-      enter: { opacity: 1 },
-      config: { duration: 3000 },
     })
 
     const reset = useCallback(() => {
@@ -43,11 +38,12 @@ export default function LoadingOverlay(props: { children: ReactNode }) {
         ref.current = []
         set([])
         ref.current.push(
-            setTimeout(() => set(['Малките', 'Големи', 'Таланти']), 2000)
+            setTimeout(() => set(['Малките', 'Големи', 'Таланти']), 1000)
         )
-        ref.current.push(setTimeout(() => set(['Малките', 'Таланти']), 5000))
-        ref.current.push(setTimeout(() => set(['Големи', 'Таланти']), 8000))
-        ref.current.push(setTimeout(() => setHideOverlay(true), 13000))
+        ref.current.push(setTimeout(() => set(['Малките', 'Таланти']), 4000))
+        ref.current.push(setTimeout(() => set(['Големи', 'Таланти']), 7000))
+        ref.current.push(setTimeout(() => set([]), 9000))
+        ref.current.push(setTimeout(() => setHideOverlay(true), 10000))
     }, [])
 
     useEffect(() => {
@@ -78,11 +74,15 @@ export default function LoadingOverlay(props: { children: ReactNode }) {
         </div>
     )
 
-    const childrenWithTransition = childrenTransitions((style, item) => (
-      <animated.div style={{...style}}>
-        {item}
-      </animated.div>
-    ))
-
-    return <>{!hideOverlay ? landingAnimation : childrenWithTransition}</>
+    return (
+        <>
+            {!hideOverlay ? (
+                landingAnimation
+            ) : (
+                <OpacityTransitionOverlay>
+                    {props.children}
+                </OpacityTransitionOverlay>
+            )}
+        </>
+    )
 }
