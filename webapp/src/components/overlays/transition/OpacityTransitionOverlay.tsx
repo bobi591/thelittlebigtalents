@@ -5,7 +5,7 @@ export const OpacityTransitionOverlay = (props: { children: ReactNode }) => {
     const childrenTransitions = useTransition(props.children, {
         from: { opacity: 0.2 },
         enter: { opacity: 1 },
-        config: { duration: 500 },
+        config: { duration: 1000 },
     })
 
     const childrenWithTransition = childrenTransitions((style, item) => (

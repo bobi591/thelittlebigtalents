@@ -3,11 +3,27 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
 import { OpacityTransitionOverlay } from '../transition/OpacityTransitionOverlay'
 import styles from './styles.module.css'
+import { provideFooterData, provideNavbarData } from '../../../AppSlice'
+import Backend from '../../../datasource/Backend'
+import { AppState, useAppDispatch } from '../../../ReduxStore'
+import NavbarData from '../../../datasource/models/NavbarData'
+import FooterData from '../../../datasource/models/FooterData'
+import { connect } from 'react-redux'
 
-export default function LoadingOverlay(props: { children: ReactNode }) {
+type LoadingOverlayProps = {
+    children: ReactNode,
+    navbarData?: NavbarData,
+    footerData?: FooterData,
+}
+
+function LoadingOverlay(props: LoadingOverlayProps) {
+    const dispatch = useAppDispatch()
     const ref = useRef<ReturnType<typeof setTimeout>[]>([])
     const [items, set] = useState<string[]>([])
     const [hideOverlay, setHideOverlay] = useState<boolean>(false)
+
+    const { footerData, navbarData } = props
+    const isDataLoaded = Boolean(footerData) && Boolean(navbarData)
 
     const landingTransitions = useTransition(items, {
         from: {
@@ -48,6 +64,15 @@ export default function LoadingOverlay(props: { children: ReactNode }) {
 
     useEffect(() => {
         reset()
+        //Eager load of commonly used data
+        if (!isDataLoaded) {
+            Backend.getFooter().then((data) =>
+                dispatch(provideFooterData(data))
+            )
+            Backend.getNavbar().then((data) =>
+                dispatch(provideNavbarData(data))
+            )
+        }
         return () => ref.current.forEach(clearTimeout)
     }, [])
 
@@ -86,3 +111,17 @@ export default function LoadingOverlay(props: { children: ReactNode }) {
         </>
     )
 }
+
+const mapStateToProps = (state: AppState) => {
+    return {
+        footerData: state.app.footerData,
+        navbarData: state.app.navbarData,
+    }
+}
+
+const mapDispatchToProps = () => ({
+    provideFooterData,
+    provideNavbarData,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps())(LoadingOverlay)

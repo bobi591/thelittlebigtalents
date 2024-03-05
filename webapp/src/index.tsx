@@ -5,7 +5,6 @@ import { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import PageWrapper from './App'
 import './App.css'
 import {
     fetchInformationPageData,
@@ -50,7 +49,7 @@ const router = createBrowserRouter([
         },
     },
     {
-        element: <PageWrapper />,
+        element: <App />,
         path: '/page/:pageId',
         loader: async ({ params }) => {
             const pageId = params.pageId as string
