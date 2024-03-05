@@ -13,20 +13,32 @@ type NavbarComponentProps = {
 }
 
 export default class NavbarComponent extends React.Component<NavbarComponentProps> {
+    navbarTogglerId = 'navbar-toggler'
+    navbarId = 'basic-navbar-nav'
+    //This fix and handle is for mobile versions!
+    handleNavbarCollapse = () => {
+        const navbar = document.getElementById(this.navbarId)
+        navbar?.classList.remove('show')
+        const navbarToggler = document.getElementById(this.navbarTogglerId)
+        navbarToggler?.classList.add('collapsed')
+    }
     render(): React.ReactNode {
         return (
             <Navbar expand="sm" className="bg-white" sticky="top">
                 <Container>
                     <Container fluid>
-                        <Link to="/">
+                        <Link onClick={this.handleNavbarCollapse} to="/">
                             <img
                                 src={AzureBlobStorage.getBlobUrl('logo.png')}
                                 width={'7%'}
                                 height={'7%'}
                             />
                         </Link>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
+                        <Navbar.Toggle
+                            id={this.navbarTogglerId}
+                            aria-controls={this.navbarId}
+                        />
+                        <Navbar.Collapse id={this.navbarId}>
                             <Nav className="m-auto uppercasetext">
                                 {this.props.navbarData!.content.map(
                                     (navbarItem) => {
@@ -79,6 +91,10 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                                                                         }
                                                                                         thirdLevelChildElementsToDisplay.push(
                                                                                             <NavDropdown.Item
+                                                                                                onClick={
+                                                                                                    this
+                                                                                                        .handleNavbarCollapse
+                                                                                                }
                                                                                                 className="nav-link navlink-highlighted"
                                                                                                 to={
                                                                                                     navbardThirdLevelChild.href
@@ -101,6 +117,10 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                                                 } else {
                                                                     elementsToDisplay.push(
                                                                         <NavDropdown.Item
+                                                                            onClick={
+                                                                                this
+                                                                                    .handleNavbarCollapse
+                                                                            }
                                                                             className="nav-link navlink-highlighted"
                                                                             to={
                                                                                 navbarChildItem.href
@@ -124,6 +144,10 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                         } else {
                                             return (
                                                 <NavDropdown.Item
+                                                    onClick={
+                                                        this
+                                                            .handleNavbarCollapse
+                                                    }
                                                     className="nav-link"
                                                     to={navbarItem.href}
                                                     as={Link}
