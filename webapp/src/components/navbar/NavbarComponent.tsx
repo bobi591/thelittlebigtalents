@@ -17,10 +17,8 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
     navbarId = 'basic-navbar-nav'
     //This fix and handle is for mobile versions!
     handleNavbarCollapse = () => {
-        const navbar = document.getElementById(this.navbarId)
-        navbar?.classList.remove('show')
         const navbarToggler = document.getElementById(this.navbarTogglerId)
-        navbarToggler?.classList.add('collapsed')
+        navbarToggler?.click()
     }
     render(): React.ReactNode {
         return (
