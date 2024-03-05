@@ -34,7 +34,7 @@ export const AuthorizedApp = (props: AuthorizedAppState) => {
                 }
             }
         }, 50000)
-    })
+    }, [props.session])
 
     const isPopupToastEnabled = props.toastPopup !== undefined
     const isLoginDisabled =

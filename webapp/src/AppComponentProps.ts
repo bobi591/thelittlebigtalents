@@ -2,6 +2,7 @@ import FooterData from './datasource/models/FooterData'
 import InformationPageData from './datasource/models/InformationPageData'
 import InformationPageGalleryBottomData from './datasource/models/InformationPageGalleryBottomData'
 import NavbarData from './datasource/models/NavbarData'
+import PageMetadata from './datasource/models/PageMetadata'
 
 export type AppComponentProps = {
     error?: Error
@@ -11,6 +12,7 @@ export type AppComponentProps = {
     isSubPageLoaded?: boolean
     informationPageData?: InformationPageData
     informationPageGalleryBottomData?: InformationPageGalleryBottomData
+    pagesMetadata?: Map<string, PageMetadata>
 }
 
 export default interface ErrorBoundaryComponentState {

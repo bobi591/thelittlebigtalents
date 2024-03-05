@@ -3,6 +3,7 @@ import { AppComponentProps } from './AppComponentProps'
 import Backend from './datasource/Backend'
 import FooterData from './datasource/models/FooterData'
 import NavbarData from './datasource/models/NavbarData'
+import { AppState } from './ReduxStore'
 
 const initialAppState: AppComponentProps = {
     isSubPageLoaded: false,
@@ -44,6 +45,24 @@ export const fetchInformationPageGalleryBottomData = createAsyncThunk(
     }
 )
 
+export const fetchPagesMetadata = createAsyncThunk(
+    'appSlice/fetchPagesMetadata',
+    async (_, { getState }) => {
+        const {
+            app: { pagesMetadata },
+        } = getState() as AppState
+        if (!pagesMetadata || pagesMetadata.size === 0) {
+            try {
+                return await Backend.getPagesMetadata()
+            } catch (error) {
+                provideError(error as Error)
+                return undefined
+            }
+        }
+        return pagesMetadata
+    }
+)
+
 export const AppSlice = createSlice({
     name: 'appSlice',
     initialState: initialAppState,
@@ -76,6 +95,12 @@ export const AppSlice = createSlice({
                 state.isSubPageLoaded = true
             }
         )
+        builder.addCase(fetchPagesMetadata.fulfilled, (state, action) => {
+            const { payload } = action
+            const map = new Map()
+            payload?.forEach((x) => map.set(x.url, x))
+            state.pagesMetadata = map
+        })
     },
 })
 

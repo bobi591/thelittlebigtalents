@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import { Link } from 'react-router-dom'
 import AzureBlobStorage from '../../datasource/AzureBlobStorage'
 import NavbarItemData from '../../datasource/models/NavbarData'
 
@@ -17,13 +18,13 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
             <Navbar expand="sm" className="bg-white" sticky="top">
                 <Container>
                     <Container fluid>
-                        <Navbar.Brand href="/">
+                        <Link to="/">
                             <img
                                 src={AzureBlobStorage.getBlobUrl('logo.png')}
                                 width={'7%'}
                                 height={'7%'}
                             />
-                        </Navbar.Brand>
+                        </Link>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="m-auto uppercasetext">
@@ -56,7 +57,6 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                                                 ) {
                                                                     elementsToDisplay.push(
                                                                         <NavDropdown
-                                                                            className="navlink-highlited"
                                                                             title={
                                                                                 navbarChildItem.name
                                                                             }
@@ -78,16 +78,16 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                                                                             )
                                                                                         }
                                                                                         thirdLevelChildElementsToDisplay.push(
-                                                                                            <Nav.Link
-                                                                                                className="navlink-highlited"
-                                                                                                href={
+                                                                                            <Link
+                                                                                                className="nav-link navlink-highlighted"
+                                                                                                to={
                                                                                                     navbardThirdLevelChild.href
                                                                                                 }
                                                                                             >
                                                                                                 {
                                                                                                     navbardThirdLevelChild.name
                                                                                                 }
-                                                                                            </Nav.Link>
+                                                                                            </Link>
                                                                                         )
                                                                                         return thirdLevelChildElementsToDisplay
                                                                                     }
@@ -97,16 +97,16 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                                                     )
                                                                 } else {
                                                                     elementsToDisplay.push(
-                                                                        <Nav.Link
-                                                                            className="navlink-highlited"
-                                                                            href={
+                                                                        <Link
+                                                                            className="nav-link navlink-highlighted"
+                                                                            to={
                                                                                 navbarChildItem.href
                                                                             }
                                                                         >
                                                                             {
                                                                                 navbarChildItem.name
                                                                             }
-                                                                        </Nav.Link>
+                                                                        </Link>
                                                                     )
                                                                 }
                                                                 return elementsToDisplay
@@ -117,11 +117,12 @@ export default class NavbarComponent extends React.Component<NavbarComponentProp
                                             )
                                         } else {
                                             return (
-                                                <Nav.Link
-                                                    href={navbarItem.href}
+                                                <Link
+                                                    className="nav-link"
+                                                    to={navbarItem.href}
                                                 >
                                                     {navbarItem.name}
-                                                </Nav.Link>
+                                                </Link>
                                             )
                                         }
                                     }

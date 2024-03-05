@@ -124,7 +124,7 @@ a#basic-nav-dropdown#drop-left.dropdown-toggle::after {
     content: none !important;
 }
 
-.navlink-highlited:hover {
+.navlink-highlighted:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 

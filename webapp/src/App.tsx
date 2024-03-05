@@ -54,7 +54,7 @@ export class App extends React.Component<AppComponentPropsInputs> {
     }
 
     render(): React.ReactNode {
-        const { footerData, navbarData, isSubPageLoaded } = this.props
+        const { footerData, navbarData } = this.props
         const error = this.props.error
         const loader = (
             <div className="loader">
