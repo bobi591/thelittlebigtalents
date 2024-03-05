@@ -5,9 +5,10 @@ import { provideFooterData, provideNavbarData } from './AppSlice'
 import FooterComponent from './components/footer/FooterComponent'
 import NavbarComponent from './components/navbar/NavbarComponent'
 import NotFoundPage from './components/pages/notfound/NotFoundPage'
+import Backend from './datasource/Backend'
 import FooterData from './datasource/models/FooterData'
 import NavbarData from './datasource/models/NavbarData'
-import { AppState } from './ReduxStore'
+import { AppState, useAppDispatch } from './ReduxStore'
 
 type PageWrapperProps = {
     footerData?: FooterData
@@ -15,6 +16,7 @@ type PageWrapperProps = {
 }
 
 export const App = (props: PageWrapperProps) => {
+    const dispatch = useAppDispatch()
     const pageToShow = useLoaderData()
 
     const { footerData, navbarData } = props
@@ -22,6 +24,14 @@ export const App = (props: PageWrapperProps) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        if (!isDataLoaded) {
+            Backend.getFooter().then((data) =>
+                dispatch(provideFooterData(data))
+            )
+            Backend.getNavbar().then((data) =>
+                dispatch(provideNavbarData(data))
+            )
+        }
     }, [pageToShow])
 
     const pageContent =
