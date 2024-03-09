@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { connect } from 'react-redux'
 import { useLoaderData } from 'react-router-dom'
 import { provideFooterData, provideNavbarData } from './AppSlice'
@@ -15,12 +15,13 @@ type PageWrapperProps = {
     navbarData?: NavbarData
 }
 
-export const App = (props: PageWrapperProps) => {
+export const App = ({ footerData, navbarData,  }: PageWrapperProps) => {
     const dispatch = useAppDispatch()
     const pageToShow = useLoaderData()
 
-    const { footerData, navbarData } = props
-    const isDataLoaded = Boolean(footerData) && Boolean(navbarData)
+    const isDataLoaded = useMemo(() => {
+        return Boolean(footerData) && Boolean(navbarData)
+    }, [footerData, navbarData])
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -35,11 +36,11 @@ export const App = (props: PageWrapperProps) => {
     }, [pageToShow])
 
     const pageContent =
-        pageToShow !== null ? (
+        pageToShow !== null && isDataLoaded ? (
             <>
-                <NavbarComponent navbarData={props.navbarData!} />
+                <NavbarComponent navbarData={navbarData!} />
                 {pageToShow}
-                <FooterComponent footerData={props.footerData!} />
+                <FooterComponent footerData={footerData!} />
             </>
         ) : (
             <NotFoundPage />
