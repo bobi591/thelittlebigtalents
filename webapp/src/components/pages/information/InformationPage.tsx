@@ -27,11 +27,13 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         if (isImageExisting) {
             result.push(
                 <Col className="picture">
-                    <img
-                        src={AzureBlobStorage.getBlobUrl(
-                            dataPart.imageBlobName
-                        )}
-                    />
+                    <Row>
+                        <img
+                            src={AzureBlobStorage.getBlobUrl(
+                                dataPart.imageBlobName
+                            )}
+                        />
+                    </Row>
                 </Col>
             )
         }
@@ -76,11 +78,13 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         if (isImageExisting) {
             result.push(
                 <Col className="picture">
-                    <img
-                        src={AzureBlobStorage.getBlobUrl(
-                            dataPart.imageBlobName
-                        )}
-                    />
+                    <Row>
+                        <img
+                            src={AzureBlobStorage.getBlobUrl(
+                                dataPart.imageBlobName
+                            )}
+                        />
+                    </Row>
                 </Col>
             )
         }

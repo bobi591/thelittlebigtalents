@@ -26,36 +26,47 @@
     }
 }
 
+nav .bg-white {
+    backdrop-filter: blur(20px);
+}
+
 .linearView h5 {
+    text-align: center;
     padding-bottom: 1%;
 }
 
 .leftAndRightView .linearView {
     display: flex;
-    max-width: 55%;
+    max-width: 70%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1%;
+    align-content: center;
+    align-items: center;
+    text-align: left;
+    font-weight: 400;
 }
 
 .leftAndRightView .picture {
-    margin: auto;
-    width: 50%;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
+
 }
 
 .leftAndRightView .text {
-    margin: 2.5vh;
-    font-weight: 400;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-    text-align: left;
+
 }
 
 .leftAndRightView .picture img {
-    width: 100%;
-    height: auto;
+    max-height: 30%;
+    opacity: 0.9;
+}
+
+.leftAndRightView .picture img:hover {
+    opacity: 1;
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    cursor: pointer;
 }
 
 .leftAndRightView .coloredBackgroundLine {

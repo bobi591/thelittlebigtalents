@@ -187,7 +187,7 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                             <Col>
                                 <p style={{ fontSize: '1rem' }}>
                                     <small>
-                                        <i>Created by Boris Georgiev 2023</i>
+                                        <i>Created by Boris Georgiev 2024</i>
                                     </small>
                                 </p>
                             </Col>
