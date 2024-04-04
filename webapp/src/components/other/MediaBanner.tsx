@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 type MediaBannerProps = {
     mediaSrc: string
     text: string
 }
 
-export default class MediaBanner extends React.Component<MediaBannerProps> {
-    isImage(file: string) {
+const MediaBanner: React.FC<MediaBannerProps> = ({mediaSrc, text}) => {
+
+    const isImage = useCallback((file: string) => {
         let isImage = false
         const imageFormats = ['.gif', '.jpg', '.jpeg', '.png']
         imageFormats.forEach((format) => {
@@ -15,8 +16,9 @@ export default class MediaBanner extends React.Component<MediaBannerProps> {
             }
         })
         return isImage
-    }
-    isVideo(file: string) {
+    }, [])
+
+    const isVideo = useCallback((file: string) => {
         const videoFormats = ['.mpg', '.mp2', '.mpeg', '.mpe', '.mpv', '.mp4']
         let isVideo = false
         videoFormats.forEach((format) => {
@@ -25,38 +27,32 @@ export default class MediaBanner extends React.Component<MediaBannerProps> {
             }
         })
         return isVideo
-    }
-    render(): React.ReactNode {
-        let mediaComponent
-        if (this.isVideo(this.props.mediaSrc)) {
-            mediaComponent = (
-                <div className="media-banner-container">
-                    <div className="media-banner-container-overlay">
-                        <video
-                            className="media-banner"
-                            src={this.props.mediaSrc}
-                            autoPlay={true}
-                            loop={true}
-                            muted={true}
-                        />
-                    </div>
-                    <h4 className="media-banner-text">{this.props.text}</h4>
+    }, [])
+
+    const mediaComponent = useMemo(() => {
+        const media = isVideo(mediaSrc) ? <video
+                className="media-banner"
+                src={mediaSrc}
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                preload='auto'
+            /> : <img
+            loading='eager'
+            className="media-banner"
+            src={mediaSrc}
+        />
+        return (
+            <div className="media-banner-container">
+                <div className="media-banner-container-overlay">
+                    {media}
                 </div>
-            )
-        }
-        if (this.isImage(this.props.mediaSrc)) {
-            mediaComponent = (
-                <div className="media-banner-container">
-                    <div className="media-banner-container-overlay">
-                        <img
-                            className="media-banner"
-                            src={this.props.mediaSrc}
-                        />
-                    </div>
-                    <h4 className="media-banner-text">{this.props.text}</h4>
-                </div>
-            )
-        }
-        return mediaComponent
-    }
+                <h4 className="media-banner-text">{text}</h4>
+            </div>
+        )
+    }, [mediaSrc, text])
+
+    return mediaComponent
 }
+
+export default MediaBanner
