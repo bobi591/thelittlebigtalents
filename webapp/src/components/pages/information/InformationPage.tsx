@@ -14,6 +14,8 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         super(props)
     }
 
+    isMobile = window.innerWidth <= 1024
+
     getInnerRightSideView(index: number, dataPart: InformationPageDataPart) {
         const isImageExisting = dataPart.imageBlobName !== undefined
         const isTextExisting = dataPart.text !== undefined
@@ -87,7 +89,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
 
     render(): React.ReactNode {
         const pageHeader =
-            this.props.pageData?.bannerBlobName !== undefined ? (
+            this.props.pageData?.bannerBlobName !== undefined && !this.isMobile ? (
                 <MediaBanner
                     mediaSrc={AzureBlobStorage.getBlobUrl(
                         this.props.pageData.bannerBlobName

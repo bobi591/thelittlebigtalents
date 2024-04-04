@@ -131,7 +131,7 @@
 .media-banner {
     position: relative;
     object-fit: cover;
-    height: 30vh;
+    height: 40vh;
     width: 100%;
     z-index: -1;
 }
@@ -146,6 +146,8 @@
 }
 
 .media-banner-container-overlay {
+    height: 40vh;
+    width: 100%;
     background: linear-gradient(
         rgba(0, 0, 0, 0.35),
         rgba(0, 0, 0, 0.35),

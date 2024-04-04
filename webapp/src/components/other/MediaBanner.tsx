@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
+import { OpacityTransitionOverlay } from '../overlays/transition/OpacityTransitionOverlay'
 
 type MediaBannerProps = {
     mediaSrc: string
@@ -6,6 +7,8 @@ type MediaBannerProps = {
 }
 
 const MediaBanner: React.FC<MediaBannerProps> = ({mediaSrc, text}) => {
+
+    const [isMediaBannerLoaded, setIsMediaBannerLoaded] = useState(false)
 
     const isImage = useCallback((file: string) => {
         let isImage = false
@@ -37,15 +40,17 @@ const MediaBanner: React.FC<MediaBannerProps> = ({mediaSrc, text}) => {
                 loop={true}
                 muted={true}
                 preload='auto'
+                onLoadedData={() => setIsMediaBannerLoaded(true)}
             /> : <img
             loading='eager'
             className="media-banner"
             src={mediaSrc}
+            onLoadedData={() => setIsMediaBannerLoaded(true)}
         />
         return (
             <div className="media-banner-container">
-                <div className="media-banner-container-overlay">
-                    {media}
+                <div className={isMediaBannerLoaded ? 'media-banner-container-overlay' : ''}>
+                    <OpacityTransitionOverlay duration={650}>{media}</OpacityTransitionOverlay>
                 </div>
                 <h4 className="media-banner-text">{text}</h4>
             </div>
