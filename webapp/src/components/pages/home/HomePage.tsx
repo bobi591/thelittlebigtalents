@@ -185,19 +185,6 @@ export default class App extends React.Component {
                             <img
                                 className="carousel-picture"
                                 src={AzureBlobStorage.getBlobUrl(
-                                    'home-carousel-3.jpg'
-                                )}
-                                style={{
-                                    objectFit: 'cover',
-                                    height: '80vh',
-                                    width: '100vw',
-                                }}
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="carousel-picture"
-                                src={AzureBlobStorage.getBlobUrl(
                                     'home-carousel-1.jpg'
                                 )}
                                 style={{
@@ -212,6 +199,32 @@ export default class App extends React.Component {
                                 className="carousel-picture"
                                 src={AzureBlobStorage.getBlobUrl(
                                     'home-carousel-2.jpg'
+                                )}
+                                style={{
+                                    objectFit: 'cover',
+                                    height: '80vh',
+                                    width: '100vw',
+                                }}
+                            />
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="carousel-picture"
+                                src={AzureBlobStorage.getBlobUrl(
+                                    'home-carousel-3.jpg'
+                                )}
+                                style={{
+                                    objectFit: 'cover',
+                                    height: '80vh',
+                                    width: '100vw',
+                                }}
+                            />
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="carousel-picture"
+                                src={AzureBlobStorage.getBlobUrl(
+                                    'home-carousel-4.jpg'
                                 )}
                                 style={{
                                     objectFit: 'cover',
