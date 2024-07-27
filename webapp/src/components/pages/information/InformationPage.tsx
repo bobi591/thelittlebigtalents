@@ -123,9 +123,11 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
 
     getMobileVIew(): React.ReactNode {
         return this.props.pageData?.data.map((dataPart, index) => {
+            const backgroundLineClassName =
+                index % 2 == 0 ? 'backgroundLine' : 'coloredBackgroundLine'
             return (
                 <div
-                    className="backgroundLine"
+                    className={backgroundLineClassName}
                     style={index == 0 ? { paddingTop: '0' } : {}}
                 >
                     <div className="linearView mobile">

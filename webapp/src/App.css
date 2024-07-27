@@ -43,6 +43,10 @@ nav .bg-white {
     padding-bottom: 2.5%;
 }
 
+.linearView.mobile.colored {
+    background-color: rgb(243, 243, 243);
+}
+
 .linearView.mobile .row {
     display: contents;
     padding: 2.5%;
@@ -86,7 +90,7 @@ nav .bg-white {
     cursor: pointer;
 }
 
-.leftAndRightView .coloredBackgroundLine {
+.coloredBackgroundLine {
     padding-top: 2vh;
     background-color: rgb(243, 243, 243);
 }
@@ -95,7 +99,7 @@ nav .bg-white {
     margin-right: 0px !important;
 }
 
-.leftAndRightView .backgroundLine {
+.backgroundLine {
     padding-top: 2vh;
 }
 
