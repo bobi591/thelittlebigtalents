@@ -45,7 +45,8 @@
     "test": "react-scripts test lint",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
+    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
+    "fix-code": "npm run lint && npm run pretty"
   },
   "eslintConfig": {
     "extends": [
