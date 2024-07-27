@@ -91,6 +91,10 @@ nav .bg-white {
     background-color: rgb(243, 243, 243);
 }
 
+.backgroundLine.mobile {
+    margin-right: 0px !important;
+}
+
 .leftAndRightView .backgroundLine {
     padding-top: 2vh;
 }

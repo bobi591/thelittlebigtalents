@@ -124,14 +124,14 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
     getMobileVIew(): React.ReactNode {
         return this.props.pageData?.data.map((dataPart, index) => {
             return (
-                <Row
+                <div
                     className="backgroundLine"
                     style={index == 0 ? { paddingTop: '0' } : {}}
                 >
-                    <Row className="linearView mobile">
+                    <div className="linearView mobile">
                         {this.getMobileLineView(dataPart)}
-                    </Row>
-                </Row>
+                    </div>
+                </div>
             )
         })
     }
@@ -179,13 +179,13 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                     text={this.props.pageName}
                 />
             ) : (
-                <Row className="pageTitle">
+                <div className="pageTitle">
                     <h4>{this.props.pageName}</h4>
-                </Row>
+                </div>
             )
         return (
             <>
-                <Row>{pageHeader}</Row>
+                {pageHeader}
                 {this.isMobile ? this.getMobileVIew() : this.getComputerView()}
             </>
         )
