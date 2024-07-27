@@ -13,14 +13,14 @@ type NavbarComponentProps = {
 }
 
 export default class NavbarComponent extends React.Component<NavbarComponentProps> {
-    isMobile = window.innerWidth <= 1024;
+    isMobile = window.innerWidth <= 1024
 
     navbarTogglerId = 'navbar-toggler'
     navbarId = 'basic-navbar-nav'
 
     //This fix and handle is for mobile versions!
     handleNavbarCollapse = () => {
-        if(this.isMobile) {
+        if (this.isMobile) {
             const navbarToggler = document.getElementById(this.navbarTogglerId)
             navbarToggler?.click()
         }

@@ -1,5 +1,12 @@
 import { animated, useTransition } from '@react-spring/web'
-import { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import {
+    ReactNode,
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from 'react'
 
 import { connect } from 'react-redux'
 import {
@@ -20,7 +27,12 @@ type LoadingOverlayProps = {
     isLandingAnimationSeen?: boolean
 }
 
-function LoadingOverlay({ footerData, navbarData, isLandingAnimationSeen, children }: LoadingOverlayProps) {
+function LoadingOverlay({
+    footerData,
+    navbarData,
+    isLandingAnimationSeen,
+    children,
+}: LoadingOverlayProps) {
     const dispatch = useAppDispatch()
     const ref = useRef<ReturnType<typeof setTimeout>[]>([])
     const [items, set] = useState<string[] | ReactNode>([])

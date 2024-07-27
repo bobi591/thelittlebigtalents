@@ -15,7 +15,7 @@ type PageWrapperProps = {
     navbarData?: NavbarData
 }
 
-export const App = ({ footerData, navbarData,  }: PageWrapperProps) => {
+export const App = ({ footerData, navbarData }: PageWrapperProps) => {
     const dispatch = useAppDispatch()
     const pageToShow = useLoaderData()
 

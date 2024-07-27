@@ -160,9 +160,9 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                                                                 | number
                                                                 | boolean
                                                                 | React.ReactElement<
-                                                                      any,
+                                                                      unknown,
                                                                       | string
-                                                                      | React.JSXElementConstructor<any>
+                                                                      | React.JSXElementConstructor<unknown>
                                                                   >
                                                                 | Iterable<React.ReactNode>
                                                                 | React.ReactPortal

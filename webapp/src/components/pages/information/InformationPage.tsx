@@ -16,6 +16,36 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
 
     isMobile = window.innerWidth <= 1024
 
+    getMobileLineView(dataPart: InformationPageDataPart) {
+        const isImageExisting = dataPart.imageBlobName !== undefined
+        const isTextExisting = dataPart.text !== undefined
+        const isHeaderExisting = dataPart.heading !== undefined
+        const headerElement = isHeaderExisting ? (
+            <h5>{dataPart.heading}</h5>
+        ) : null
+        const result = []
+        if (isImageExisting) {
+            result.push(
+                <Row className="picture">
+                    <img
+                        src={AzureBlobStorage.getBlobUrl(
+                            dataPart.imageBlobName
+                        )}
+                    />
+                </Row>
+            )
+        }
+        if (isTextExisting) {
+            result.push(
+                <Row>
+                    {headerElement}
+                    <div dangerouslySetInnerHTML={{ __html: dataPart.text }} />
+                </Row>
+            )
+        }
+        return result
+    }
+
     getInnerRightSideView(index: number, dataPart: InformationPageDataPart) {
         const isImageExisting = dataPart.imageBlobName !== undefined
         const isTextExisting = dataPart.text !== undefined
@@ -91,9 +121,57 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         return result
     }
 
+    getMobileVIew(): React.ReactNode {
+        return this.props.pageData?.data.map((dataPart, index) => {
+            return (
+                <Row
+                    className="backgroundLine"
+                    style={index == 0 ? { paddingTop: '0' } : {}}
+                >
+                    <Row className="linearView mobile">
+                        {this.getMobileLineView(dataPart)}
+                    </Row>
+                </Row>
+            )
+        })
+    }
+
+    getComputerView(): React.ReactNode {
+        return (
+            <div className="leftAndRightView">
+                {this.props.pageData?.data.map((dataPart, index) => {
+                    if (index % 2 === 0) {
+                        return (
+                            <Row
+                                className="backgroundLine"
+                                style={index == 0 ? { paddingTop: '0' } : {}}
+                            >
+                                <Row className="linearView">
+                                    {this.getInnerRightSideView(
+                                        index,
+                                        dataPart
+                                    )}
+                                </Row>
+                            </Row>
+                        )
+                    } else {
+                        return (
+                            <Row className="coloredBackgroundLine">
+                                <Row className="linearView">
+                                    {this.getInnerLeftSideView(dataPart)}
+                                </Row>
+                            </Row>
+                        )
+                    }
+                })}
+            </div>
+        )
+    }
+
     render(): React.ReactNode {
         const pageHeader =
-            this.props.pageData?.bannerBlobName !== undefined && !this.isMobile ? (
+            this.props.pageData?.bannerBlobName !== undefined &&
+            !this.isMobile ? (
                 <MediaBanner
                     mediaSrc={AzureBlobStorage.getBlobUrl(
                         this.props.pageData.bannerBlobName
@@ -108,35 +186,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
         return (
             <>
                 <Row>{pageHeader}</Row>
-                <div className="leftAndRightView">
-                    {this.props.pageData?.data.map((dataPart, index) => {
-                        if (index % 2 === 0) {
-                            return (
-                                <Row
-                                    className="backgroundLine"
-                                    style={
-                                        index == 0 ? { paddingTop: '0' } : {}
-                                    }
-                                >
-                                    <Row className="linearView">
-                                        {this.getInnerRightSideView(
-                                            index,
-                                            dataPart
-                                        )}
-                                    </Row>
-                                </Row>
-                            )
-                        } else {
-                            return (
-                                <Row className="coloredBackgroundLine">
-                                    <Row className="linearView">
-                                        {this.getInnerLeftSideView(dataPart)}
-                                    </Row>
-                                </Row>
-                            )
-                        }
-                    })}
-                </div>
+                {this.isMobile ? this.getMobileVIew() : this.getComputerView()}
             </>
         )
     }
