@@ -49,7 +49,7 @@ const MediaBanner: React.FC<MediaBannerProps> = ({mediaSrc, text}) => {
         />
         return (
             <div className="media-banner-container">
-                <div className={isMediaBannerLoaded ? 'media-banner-container-overlay' : ''}>
+                <div>
                     <OpacityTransitionOverlay duration={650}>{media}</OpacityTransitionOverlay>
                 </div>
                 <h4 className="media-banner-text">{text}</h4>

@@ -58,14 +58,14 @@ function LoadingOverlay({ footerData, navbarData, isLandingAnimationSeen, childr
         ref.current.forEach(clearTimeout)
         ref.current = []
         set([])
-        ref.current.push(setTimeout(() => set(['Малките', 'Таланти']), 1000))
-        ref.current.push(setTimeout(() => set(['Големи', 'Таланти']), 5000))
-        ref.current.push(setTimeout(() => set([]), 9000))
+        ref.current.push(setTimeout(() => set(['Малките', 'Таланти']), 500))
+        ref.current.push(setTimeout(() => set(['Големи', 'Таланти']), 2000))
+        ref.current.push(setTimeout(() => set([]), 4000))
         ref.current.push(
             setTimeout(() => {
                 setHideOverlay(true)
                 setLandingAnimationSeen(true)
-            }, 10000)
+            }, 4500)
         )
     }, [])
 
