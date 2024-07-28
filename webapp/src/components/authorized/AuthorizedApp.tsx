@@ -57,7 +57,7 @@ export const AuthorizedApp = (props: AuthorizedAppState) => {
     }
 
     return isSessionExpired ? (
-        <Container className="dataEditorRoot" fluid="md">
+        <Container className="data-editor-root" fluid="md">
             <div className="text-center title">
                 <h4>Малките Големи Таланти</h4>
             </div>

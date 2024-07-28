@@ -12,10 +12,10 @@ class InformationPageGalleryBottom extends React.Component<
     render(): React.ReactNode {
         return (
             <>
-                <Row className="pageTitle">
+                <Row className="page-title">
                     <h4>{this.props.pageName}</h4>
                 </Row>
-                <div className="textWithGalleryBottomView">
+                <div className="text-gallery-view-bottom">
                     <Row>
                         <div
                             dangerouslySetInnerHTML={{

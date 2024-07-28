@@ -124,13 +124,13 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
     getMobileVIew(): React.ReactNode {
         return this.props.pageData?.data.map((dataPart, index) => {
             const backgroundLineClassName =
-                index % 2 == 0 ? 'backgroundLine' : 'coloredBackgroundLine'
+                index % 2 == 0 ? 'background-line' : 'colored-background-line'
             return (
                 <div
                     className={backgroundLineClassName}
                     style={index == 0 ? { paddingTop: '0' } : {}}
                 >
-                    <div className="linearView mobile">
+                    <div className="linear-view mobile">
                         {this.getMobileLineView(dataPart)}
                     </div>
                 </div>
@@ -140,15 +140,15 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
 
     getComputerView(): React.ReactNode {
         return (
-            <div className="leftAndRightView">
+            <div className="zigzag-view">
                 {this.props.pageData?.data.map((dataPart, index) => {
                     if (index % 2 === 0) {
                         return (
                             <Row
-                                className="backgroundLine"
+                                className="background-line"
                                 style={index == 0 ? { paddingTop: '0' } : {}}
                             >
-                                <Row className="linearView">
+                                <Row className="linear-view">
                                     {this.getInnerRightSideView(
                                         index,
                                         dataPart
@@ -158,8 +158,8 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                         )
                     } else {
                         return (
-                            <Row className="coloredBackgroundLine">
-                                <Row className="linearView">
+                            <Row className="colored-background-line">
+                                <Row className="linear-view">
                                     {this.getInnerLeftSideView(dataPart)}
                                 </Row>
                             </Row>
@@ -181,7 +181,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                     text={this.props.pageName}
                 />
             ) : (
-                <div className="pageTitle">
+                <div className="page-title">
                     <h4>{this.props.pageName}</h4>
                 </div>
             )

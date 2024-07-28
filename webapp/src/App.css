@@ -30,12 +30,12 @@ nav .bg-white {
     backdrop-filter: blur(20px);
 }
 
-.linearView h5 {
+.linear-view h5 {
     text-align: center;
     padding-bottom: 1%;
 }
 
-.linearView.mobile {
+.linear-view.mobile {
     text-align: center;
     width: 95%;
     padding: 0;
@@ -43,20 +43,20 @@ nav .bg-white {
     padding-bottom: 2.5%;
 }
 
-.linearView.mobile.colored {
+.linear-view.mobile.colored {
     background-color: rgb(243, 243, 243);
 }
 
-.linearView.mobile .row {
+.linear-view.mobile .row {
     display: contents;
     padding: 2.5%;
 }
 
-.linearView.mobile .picture img {
+.linear-view.mobile .picture img {
     margin-bottom: 2.5%;
 }
 
-.leftAndRightView .linearView {
+.zigzag-view .linear-view {
     display: flex;
     max-width: 70%;
     margin-left: auto;
@@ -68,20 +68,20 @@ nav .bg-white {
     font-weight: 400;
 }
 
-.leftAndRightView .picture {
+.zigzag-view .picture {
 
 }
 
-.leftAndRightView .text {
+.zigzag-view .text {
 
 }
 
-.leftAndRightView .picture img {
+.zigzag-view .picture img {
     max-height: 30%;
     opacity: 0.9;
 }
 
-.leftAndRightView .picture img:hover {
+.zigzag-view .picture img:hover {
     opacity: 1;
     -webkit-transition: opacity 1s ease;
     -moz-transition: opacity 1s ease;
@@ -90,25 +90,25 @@ nav .bg-white {
     cursor: pointer;
 }
 
-.coloredBackgroundLine {
+.colored-background-line {
     padding-top: 2vh;
     background-color: rgb(243, 243, 243);
 }
 
-.backgroundLine.mobile {
+.background-line.mobile {
     margin-right: 0px !important;
 }
 
-.backgroundLine {
+.background-line {
     padding-top: 2vh;
 }
 
-.leftAndRightView {
+.zigzag-view {
     display: block;
     margin-bottom: 1%;
 }
 
-.textWithGalleryBottomView {
+.text-gallery-view-bottom {
     display: block;
     max-width: 55%;
     margin-left: auto;
@@ -117,35 +117,39 @@ nav .bg-white {
     font-weight: 400;
 }
 
-.textWithGalleryBottomView .gallery {
+.text-gallery-view-bottom .gallery {
     height: 55vh;
     width: 100%;
     left: 0%;
     position: relative;
 }
 
-.textWithGalleryBottomView .gallery img {
+.text-gallery-view-bottom .gallery img {
     object-fit: cover;
     height: 55vh;
     width: 100vw;
 }
 
-.pageTitle {
+.page-title {
     padding-top: 2vh;
     padding-bottom: 4vh;
     margin: auto;
 }
 
-.dataEditorRoot .buttonGroup {
+.data-editor-root {
+    width: 50%;
+}
+
+.data-editor-root .buttonGroup {
     padding-top: 5%;
     padding-bottom: 5%;
 }
 
-.dataEditorRoot .title {
+.data-editor-root .title {
     padding-top: 2%;
 }
 
-.dataEditorRoot .editor {
+.data-editor-root .editor {
     padding: 1%;
     border: 2px solid grey;
     border-radius: 5px;

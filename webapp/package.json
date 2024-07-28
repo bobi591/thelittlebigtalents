@@ -20,6 +20,7 @@
     "bootstrap": "^5.3.1",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
+    "draft-js": "^0.11.7",
     "javascript-time-ago": "^2.5.9",
     "jsencrypt": "^3.3.2",
     "just-clone": "^6.2.0",

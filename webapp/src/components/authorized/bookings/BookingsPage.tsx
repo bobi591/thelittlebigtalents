@@ -130,7 +130,7 @@ export const BookingsPage = () => {
     ]
     return (
         bookings && (
-            <Container className="dataEditorRoot" fluid="lg">
+            <Container className="data-editor-root" fluid="lg">
                 <div className="text-center title">
                     <h4>Малките Големи Таланти - Форма за записване</h4>
                 </div>

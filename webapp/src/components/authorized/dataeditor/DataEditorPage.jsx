@@ -78,7 +78,7 @@ export const DataEditorPage = (props) => {
     }
 
     return (
-        <Container className="dataEditorRoot" fluid="md">
+        <Container className="data-editor-root" fluid="md">
             <div className="text-center title">
                 <h4>Малките Големи Таланти - Промяна на данни</h4>
             </div>

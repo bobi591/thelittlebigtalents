@@ -60,10 +60,10 @@ body {
     .dropdown-menu.show .dropdown-toggle.nav-link::after {
         transform: rotate(0) !important;
     }
-    .leftAndRightView .linearView {
+    .zigzag-view .linear-view {
         max-width: 100% !important;
     }
-    .leftAndRightView .col {
+    .zigzag-view .col {
         flex: none !important;
         padding-left: 0% !important;
         padding-right: 0% !important;
