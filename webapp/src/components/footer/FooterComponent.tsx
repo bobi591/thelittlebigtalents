@@ -15,12 +15,12 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                 <Container>
                     <Row>
                         <Col>
-                            <h5
-                                className="uppercasetext boldtext"
+                            <h1
+                                className="uppercasetext boldtext h5"
                                 style={{ margin: '3%' }}
                             >
                                 Музикален Център "Малките Големи Таланти"
-                            </h5>
+                            </h1>
                         </Col>
                     </Row>
                     <Container style={{ width: '50%', marginBottom: '3%' }}>

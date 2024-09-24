@@ -13,7 +13,7 @@ class InformationPageGalleryBottom extends React.Component<
         return (
             <>
                 <Row className="page-title">
-                    <h4>{this.props.pageName}</h4>
+                    <h1 className='h4'>{this.props.pageName}</h1>
                 </Row>
                 <div className="text-gallery-view-bottom">
                     <Row>

@@ -182,7 +182,7 @@ class InformationPage extends React.Component<PageProps<InformationPageData>> {
                 />
             ) : (
                 <div className="page-title">
-                    <h4>{this.props.pageName}</h4>
+                    <h1 className='h4'>{this.props.pageName}</h1>
                 </div>
             )
         return (

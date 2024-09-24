@@ -33,7 +33,7 @@ const MediaBanner: React.FC<MediaBannerProps> = ({ mediaSrc, text }) => {
                         {media}
                     </div>
                 </OpacityTransitionOverlay>
-                <h4 className="media-banner-text">{text}</h4>
+                <h1 className="media-banner-text h4">{text}</h1>
             </div>
         )
     }, [mediaSrc, text, isVideo])
