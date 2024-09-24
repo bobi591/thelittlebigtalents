@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
 import { lazy, Suspense } from 'react'
-import ReactDOM from 'react-dom/client'
+import { hydrate, render } from 'react-dom';
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
@@ -21,6 +21,7 @@ import InformationPageGalleryBottom from './components/pages/informationGalleryB
 import './index.css'
 import { AppStore } from './ReduxStore'
 import reportWebVitals from './reportWebVitals'
+import React from 'react'
 
 const App = lazy(() => import('./App'))
 const HomePage = lazy(() => import('./components/pages/home/HomePage'))
@@ -28,7 +29,7 @@ const NotFoundPage = lazy(
     () => import('./components/pages/notfound/NotFoundPage')
 )
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+const root = document.getElementById('root');
 
 TimeAgo.addDefaultLocale(en)
 
@@ -111,23 +112,47 @@ const router = createBrowserRouter([
     },
 ])
 
-root.render(
-    <Suspense>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-        />
-        <Provider store={AppStore}>
-            <RouterProvider router={router} />
-        </Provider>
-    </Suspense>
-)
+if(root?.hasChildNodes()) {
+    hydrate(
+        <React.StrictMode>
+            <Suspense>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+                    rel="stylesheet"
+                />
+                <Provider store={AppStore}>
+                    <RouterProvider router={router} />
+                </Provider>
+            </Suspense>
+        </React.StrictMode>, root)
+}
+else {
+    render(
+        <React.StrictMode>
+            <Suspense>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+                    rel="stylesheet"
+                />
+                <Provider store={AppStore}>
+                    <RouterProvider router={router} />
+                </Provider>
+            </Suspense>
+        </React.StrictMode>, root
+    )
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
