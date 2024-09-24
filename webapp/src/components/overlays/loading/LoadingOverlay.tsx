@@ -30,6 +30,7 @@ type LoadingOverlayProps = {
 function LoadingOverlay({
     footerData,
     navbarData,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isLandingAnimationSeen,
     children,
 }: LoadingOverlayProps) {
@@ -116,6 +117,7 @@ function LoadingOverlay({
         </>
     )
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const loadingOverlayContent = (
         <div className={styles.container} hidden={hideOverlay}>
             <div className={styles.main}>{landingAnimation}</div>
@@ -124,11 +126,7 @@ function LoadingOverlay({
 
     return (
         <>
-            {!hideOverlay && !isLandingAnimationSeen ? (
-                loadingOverlayContent
-            ) : (
-                <>{children}</>
-            )}
+            {children}
         </>
     )
 }
