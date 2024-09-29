@@ -214,3 +214,23 @@ nav .bg-white {
     margin: 0 auto;
     padding: 5%;
 }
+
+.lessons-footer.row {
+    padding-bottom: 2%;
+    padding-top: 5%;
+}
+
+.lessons-footer-img {
+    display: block;
+    width: 80%;
+    opacity: 0.9;
+}
+
+.lessons-footer-img:hover {
+    opacity: 1;
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    cursor: pointer;
+}

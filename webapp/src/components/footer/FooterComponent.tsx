@@ -13,6 +13,48 @@ export default class FooterComponent extends Component<FooterComponentProps> {
         return (
             <footer>
                 <Container>
+                    <Row className="lessons-footer">
+                        <Col>
+                            <a href="/page/drums">
+                                <img
+                                    className="lessons-footer-img"
+                                    src={AzureBlobStorage.getBlobUrl(
+                                        'lessons-drums.jpeg'
+                                    )}
+                                />
+                            </a>
+                        </Col>
+                        <Col>
+                            <a href="/page/guitar">
+                                <img
+                                    className="lessons-footer-img"
+                                    src={AzureBlobStorage.getBlobUrl(
+                                        'lessons-guitar.jpeg'
+                                    )}
+                                />
+                            </a>
+                        </Col>
+                        <Col>
+                            <a href="/page/popjazz">
+                                <img
+                                    className="lessons-footer-img"
+                                    src={AzureBlobStorage.getBlobUrl(
+                                        'lessons-pop-jazz.jpeg'
+                                    )}
+                                />
+                            </a>
+                        </Col>
+                        <Col>
+                            <a href="/page/piano">
+                                <img
+                                    className="lessons-footer-img"
+                                    src={AzureBlobStorage.getBlobUrl(
+                                        'lessons-piano.jpeg'
+                                    )}
+                                />
+                            </a>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col>
                             <h1

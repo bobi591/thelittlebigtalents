@@ -124,11 +124,7 @@ function LoadingOverlay({
         </div>
     )
 
-    return (
-        <>
-            {children}
-        </>
-    )
+    return <>{children}</>
 }
 
 const mapStateToProps = (state: AppState) => {

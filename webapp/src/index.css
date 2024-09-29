@@ -77,6 +77,12 @@ body {
     }
 }
 
+footer {
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: 1px;
+}
+
 .carousel-indicators button {
     display: none;
 }
