@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
 import { lazy, Suspense } from 'react'
-import ReactDOM from 'react-dom/client'
+import { hydrate, render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
@@ -27,8 +27,6 @@ const HomePage = lazy(() => import('./components/pages/home/HomePage'))
 const NotFoundPage = lazy(
     () => import('./components/pages/notfound/NotFoundPage')
 )
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 TimeAgo.addDefaultLocale(en)
 
@@ -111,7 +109,8 @@ const router = createBrowserRouter([
     },
 ])
 
-root.render(
+const root = document.getElementById('root') as HTMLElement
+const main = (
     <Suspense>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -128,6 +127,12 @@ root.render(
         </Provider>
     </Suspense>
 )
+
+if (root.hasChildNodes()) {
+    hydrate(main, root)
+} else {
+    render(main, root)
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
