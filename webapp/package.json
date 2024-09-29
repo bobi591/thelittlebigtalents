@@ -44,7 +44,6 @@
   "scripts": {
     "start": "react-scripts start lint",
     "build": "react-scripts build lint",
-    "postbuild": "react-snap",
     "test": "react-scripts test lint",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
