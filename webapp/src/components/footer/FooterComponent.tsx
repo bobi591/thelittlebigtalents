@@ -15,11 +15,11 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                 <Container>
                     <Row className="lessons-footer">
                         <Col>
-                            <a href="/page/drums">
+                            <a href="/page/popjazz">
                                 <img
                                     className="lessons-footer-img"
                                     src={AzureBlobStorage.getBlobUrl(
-                                        'lessons-drums.jpeg'
+                                        'lessons-pop-jazz.jpeg'
                                     )}
                                 />
                             </a>
@@ -35,11 +35,11 @@ export default class FooterComponent extends Component<FooterComponentProps> {
                             </a>
                         </Col>
                         <Col>
-                            <a href="/page/popjazz">
+                            <a href="/page/drums">
                                 <img
                                     className="lessons-footer-img"
                                     src={AzureBlobStorage.getBlobUrl(
-                                        'lessons-pop-jazz.jpeg'
+                                        'lessons-drums.jpeg'
                                     )}
                                 />
                             </a>
