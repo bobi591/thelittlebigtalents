@@ -141,4 +141,4 @@ const mapDispatchToProps = () => ({
     setLandingAnimationSeen,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps())(LoadingOverlay)
+export default connect(mapStateToProps, mapDispatchToProps)(LoadingOverlay)
