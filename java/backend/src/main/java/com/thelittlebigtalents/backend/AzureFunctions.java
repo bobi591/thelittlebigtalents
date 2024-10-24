@@ -42,7 +42,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "getFooterData",
                             methods = {HttpMethod.GET},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
@@ -72,7 +72,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "getNavbarData",
                             methods = {HttpMethod.GET},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
@@ -102,7 +102,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "getInformationPageData",
                             methods = {HttpMethod.GET},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
@@ -135,7 +135,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "getInformationPageGalleryBottomData",
                             methods = {HttpMethod.GET},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
@@ -168,7 +168,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "validateJson",
                             methods = {HttpMethod.POST},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         if (request.getBody().isEmpty()) {
@@ -192,7 +192,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "createJson",
                             methods = {HttpMethod.POST},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         if (request.getBody().isEmpty()) {
@@ -223,7 +223,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "updateJson",
                             methods = {HttpMethod.POST},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         if (request.getBody().isEmpty()) {
@@ -263,7 +263,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "createSession",
                             methods = {HttpMethod.POST},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
@@ -292,7 +292,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "refreshSession",
                             methods = {HttpMethod.POST},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
@@ -321,7 +321,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "getMetadataMap",
                             methods = {HttpMethod.GET},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
@@ -343,7 +343,7 @@ public class AzureFunctions {
             @HttpTrigger(
                             name = "getMetadataMap",
                             methods = {HttpMethod.GET},
-                            authLevel = AuthorizationLevel.FUNCTION)
+                            authLevel = AuthorizationLevel.ANONYMOUS)
                     HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
