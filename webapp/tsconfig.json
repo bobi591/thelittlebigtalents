@@ -3,7 +3,7 @@
     "target": "es6",
     "module": "commonjs",
     "outDir": "dist/js",
-    "rootDir": "src",
+    "rootDirs": ["src", "./"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,6 +19,6 @@
     "jsx": "react-jsx",
     "sourceMap": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "server.ts"],
   "exclude": ["src/types/*.ts", "node_modules", ".vscode"]
 }

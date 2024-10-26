@@ -3,7 +3,7 @@ import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
 import { hydrate, render } from 'react-dom'
 import App from './App'
-import './App.css'
+import './app.css'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 
