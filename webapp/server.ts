@@ -12,6 +12,15 @@ console.log(`Starting proxy server on port ${port}...`)
 const originUrl = `http://localhost:${port}/`
 const targetUrl = process.env.REACT_APP_BACKEND_API_ENDPOINT!;
 
+const pathAppendCode = (path: string) => {
+    if(path.includes("?")){
+        return path + `&code=${process.env.REACT_APP_BACKEND_API_KEY}`
+    }
+    else {
+        return path + `?code=${process.env.REACT_APP_BACKEND_API_KEY}`
+    }
+}
+
 // Set up the proxy middleware to replace only the base URL
 server.use(
     '/',
@@ -19,7 +28,7 @@ server.use(
         target: targetUrl,
         changeOrigin: true,
         logger: console,
-        pathRewrite: (path) => path = path + `?code=${process.env.REACT_APP_BACKEND_API_KEY}`
+        pathRewrite: (path) => pathAppendCode(path)
     })
 );
 
