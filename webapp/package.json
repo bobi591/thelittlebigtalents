@@ -18,6 +18,7 @@
     "@types/node": "^16.18.39",
     "@types/react": "^18.2.19",
     "@types/react-dom": "^18.2.7",
+    "@vercel/node": "^3.2.23",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "buffer": "^6.0.3",
@@ -48,13 +49,14 @@
     "webpack": "^4.46.0"
   },
   "scripts": {
-    "start": "concurrently \"tsx server.ts\" \"react-scripts start lint\"",
-    "build": "react-scripts build lint",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test lint",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
-    "fix-code": "npm run lint && npm run pretty"
+    "fix-code": "npm run lint && npm run pretty",
+    "postinstall": "npm run build"
   },
   "eslintConfig": {
     "extends": [
