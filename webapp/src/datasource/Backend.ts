@@ -13,7 +13,7 @@ export default class Backend {
     private static postAxiosConfig(endpoint: string, body: string, isExpress: boolean) {
         if (process.env.REACT_APP_BACKEND_API_KEY) {
             return {
-                baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${Number(window.location.port) + 1}`,
+                baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${process.env.REACT_APP_EXPRESS_PORT}`,
                 endpoint: endpoint,
                 method: 'POST',
                 params: {
@@ -23,7 +23,7 @@ export default class Backend {
             }
         } else {
             return {
-                baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${Number(window.location.port) + 1}`,
+                baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${process.env.REACT_APP_EXPRESS_PORT}`,
                 endpoint: endpoint,
                 method: 'POST',
                 data: body,
@@ -34,7 +34,7 @@ export default class Backend {
     private static getAxiosConfig(endpoint: string, isExpress: boolean): AxiosRequestConfig {
         if (process.env.REACT_APP_BACKEND_API_KEY) {
             return {
-                baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${Number(window.location.port) + 1}`,
+                baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${process.env.REACT_APP_EXPRESS_PORT}`,
                 url: endpoint,
                 method: 'GET',
                 params: {
@@ -43,7 +43,7 @@ export default class Backend {
             }
         } else {
             return {
-                baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${Number(window.location.port) + 1}`,
+                baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${process.env.REACT_APP_EXPRESS_PORT}`,
                 url: endpoint,
                 method: 'GET',
             }

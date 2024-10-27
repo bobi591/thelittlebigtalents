@@ -5,7 +5,7 @@ import {createProxyMiddleware} from 'http-proxy-middleware'
 const server = express()
 dotenv.config()
 
-const port = process.env.PORT ? Number(process.env.PORT) + 1 : 3001
+const port = process.env.REACT_APP_EXPRESS_PORT
 
 console.log(`Starting proxy server on port ${port}...`)
 
