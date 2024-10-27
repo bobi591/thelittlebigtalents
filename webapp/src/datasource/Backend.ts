@@ -16,9 +16,6 @@ export default class Backend {
                 baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${process.env.REACT_APP_EXPRESS_PORT}`,
                 endpoint: endpoint,
                 method: 'POST',
-                params: {
-                    code: isExpress ? process.env.REACT_APP_BACKEND_API_KEY : '',
-                },
                 data: body,
             }
         } else {
@@ -37,9 +34,6 @@ export default class Backend {
                 baseURL: isExpress ? process.env.REACT_APP_BACKEND_API_ENDPOINT! : `http://localhost:${process.env.REACT_APP_EXPRESS_PORT}`,
                 url: endpoint,
                 method: 'GET',
-                params: {
-                    code: isExpress ? process.env.REACT_APP_BACKEND_API_KEY : '',
-                },
             }
         } else {
             return {
