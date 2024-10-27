@@ -48,7 +48,7 @@
     "webpack": "^4.46.0"
   },
   "scripts": {
-    "start": "tsx server/index.ts",
+    "start": "concurrently \"tsx server.ts\" \"react-scripts start lint\"",
     "build": "react-scripts build lint",
     "test": "react-scripts test lint",
     "eject": "react-scripts eject",
