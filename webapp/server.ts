@@ -13,7 +13,7 @@ const pathAppendCode = (path: string) => {
 // Set up the proxy middleware to replace only the base URL
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const destUrl = targetUrl + pathAppendCode(req.url!);
-  console.log(`Request from ${req.url} transofrmed to ${destUrl}`)
+  console.log(`Request from ${req.url} transofrmed to ${destUrl}`);
   const proxyResponse = await fetch(destUrl, {
     method: req.method,
     body: req.method !== "GET" ? req.body : undefined,
