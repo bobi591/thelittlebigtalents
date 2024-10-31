@@ -1,10 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
-const port = process.env.REACT_APP_EXPRESS_PORT;
-
-console.log(`Starting proxy server on port ${port}...`);
-
-const originUrl = `http://localhost:${port}/`;
 const targetUrl = process.env.REACT_APP_BACKEND_API_ENDPOINT!;
 
 const pathAppendCode = (path: string) => {
@@ -30,5 +25,3 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const data = await proxyResponse.text();
   res.send(data);
 }
-
-console.log(`Proxy for URL ${targetUrl} created from origin ${originUrl}...`);
