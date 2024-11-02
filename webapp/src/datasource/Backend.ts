@@ -11,32 +11,17 @@ import User from './security/User'
 
 export default class Backend {
     private static postAxiosConfig(endpoint: string, body: string) {
-        if (process.env.REACT_APP_BACKEND_API_KEY) {
-            return {
-                endpoint: `/api/${endpoint}`,
-                method: 'POST',
-                data: body,
-            }
-        } else {
-            return {
-                endpoint: `/api/${endpoint}`,
-                method: 'POST',
-                data: body,
-            }
+        return {
+            endpoint: `/api/${endpoint}`,
+            method: 'POST',
+            data: body,
         }
     }
 
     private static getAxiosConfig(endpoint: string): AxiosRequestConfig {
-        if (process.env.REACT_APP_BACKEND_API_KEY) {
-            return {
-                url: `/api/${endpoint}`,
-                method: 'GET',
-            }
-        } else {
-            return {
-                url: `/api/${endpoint}`,
-                method: 'GET',
-            }
+        return {
+            url: `/api/${endpoint}`,
+            method: 'GET',
         }
     }
 

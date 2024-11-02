@@ -88,9 +88,9 @@ const router = createBrowserRouter([
     },
     {
         element: (
-            <LoadingOverlay>
+            <OpacityTransitionOverlay>
                 <Main />
-            </LoadingOverlay>
+            </OpacityTransitionOverlay>
         ),
         path: '/',
         loader: () => {
