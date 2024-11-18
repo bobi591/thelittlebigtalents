@@ -158,7 +158,7 @@ export default class App extends React.Component {
                     >
                         Отмяна
                     </Button>
-                    <Button type="submit" variant="primary">
+                    <Button type="submit" variant="primary" onClick={() => this.showBookLessonModal(false)}>
                         Изпрати
                     </Button>
                 </Modal.Footer>
