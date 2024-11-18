@@ -30,10 +30,11 @@ export default class App extends React.Component {
                         variant="light"
                         style={{ margin: '2%' }}
                         onClick={() => this.showBookLessonModal(true)}
+                        disabled
                     >
                         Запиши урок
                     </Button>
-                    <Button variant="light" style={{ margin: '2%' }}>
+                    <Button variant="light" style={{ margin: '2%' }} href='tel:0876191718'>
                         Обади се
                     </Button>
                 </Card.Body>
