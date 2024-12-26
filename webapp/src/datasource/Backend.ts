@@ -12,7 +12,7 @@ import User from './security/User'
 export default class Backend {
     private static postAxiosConfig(endpoint: string, body: string) {
         return {
-            endpoint: `/api/${endpoint}`,
+            url: `${process.env.REACT_APP_BACKEND_API_ENDPOINT}/api/${endpoint}?code=${process.env.REACT_APP_BACKEND_API_KEY}`,
             method: 'POST',
             data: body,
         }
@@ -95,21 +95,30 @@ export default class Backend {
         return response.data
     }
 
-    public static async createSession(request: User): Promise<Session> {
+    public static async createSession(
+        request: User
+    ): Promise<Session | undefined> {
         const data = JSON.stringify(request)
         const jsencrypt = new JSEncrypt()
-        const publicKey = String(process.env.REACT_APP_SECURITY_PUBLIC_KEY!)
-        jsencrypt.setPublicKey(publicKey)
-        const encryptedData = jsencrypt.encrypt(data)
-        if (typeof encryptedData === 'boolean') {
-            throw 'The username and password combination encryption faced internal problem.'
+        if (!process.env.REACT_APP_SECURITY_PUBLIC_KEY) {
+            console.log('Public Key not configured.')
         } else {
-            const axiosConfig = this.postAxiosConfig(
-                'createSession',
-                encryptedData
-            )
-            const response = await axios(axiosConfig)
-            return response.data
+            jsencrypt.setPublicKey(process.env.REACT_APP_SECURITY_PUBLIC_KEY)
+            const encryptedData = jsencrypt.encrypt(data)
+            if (typeof encryptedData === 'boolean') {
+                throw 'The username and password combination encryption faced internal problem.'
+            } else {
+                const axiosConfig = this.postAxiosConfig(
+                    'createSession',
+                    encryptedData
+                )
+                try {
+                    const response = await axios(axiosConfig)
+                    return response.data
+                } catch (error) {
+                    console.error(error)
+                }
+            }
         }
     }
 

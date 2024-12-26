@@ -34,7 +34,11 @@ export default class App extends React.Component {
                     >
                         Запиши урок
                     </Button>
-                    <Button variant="light" style={{ margin: '2%' }} href='tel:0876191718'>
+                    <Button
+                        variant="light"
+                        style={{ margin: '2%' }}
+                        href="tel:0876191718"
+                    >
                         Обади се
                     </Button>
                 </Card.Body>
@@ -159,7 +163,11 @@ export default class App extends React.Component {
                     >
                         Отмяна
                     </Button>
-                    <Button type="submit" variant="primary" onClick={() => this.showBookLessonModal(false)}>
+                    <Button
+                        type="submit"
+                        variant="primary"
+                        onClick={() => this.showBookLessonModal(false)}
+                    >
                         Изпрати
                     </Button>
                 </Modal.Footer>

@@ -50,7 +50,12 @@ export const AuthorizedApp = (props: AuthorizedAppState) => {
                 username: props.username!,
                 password: props.password!,
             })
-            dispatch(updateSession(session!))
+            if (session) {
+                dispatch(updateSession(session))
+            } else {
+                console.error('Cannot create session.')
+                throw Error('Cannot create session.')
+            }
         } catch (error) {
             dispatch(provideError(error as Error))
         }
@@ -92,7 +97,7 @@ export const AuthorizedApp = (props: AuthorizedAppState) => {
                             </div>
                             <Button
                                 type="button"
-                                onClick={async () => onLoginClick()}
+                                onClick={() => onLoginClick()}
                                 disabled={isLoginDisabled}
                             >
                                 Влез
