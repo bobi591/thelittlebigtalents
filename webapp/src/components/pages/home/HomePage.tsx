@@ -190,71 +190,23 @@ export default class App extends React.Component {
                 >
                     {this.carouselOverlay}
                     <Carousel controls={false} interval={5000} wrap={true}>
-                        <Carousel.Item>
-                            <img
-                                className="carousel-picture"
-                                src={AzureBlobStorage.getBlobUrl(
-                                    'home-carousel-1.jpg'
-                                )}
-                                style={{
-                                    objectFit: 'cover',
-                                    height: '80vh',
-                                    width: '100vw',
-                                }}
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="carousel-picture"
-                                src={AzureBlobStorage.getBlobUrl(
-                                    'home-carousel-2.jpg'
-                                )}
-                                style={{
-                                    objectFit: 'cover',
-                                    height: '80vh',
-                                    width: '100vw',
-                                }}
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="carousel-picture"
-                                src={AzureBlobStorage.getBlobUrl(
-                                    'home-carousel-3.jpg'
-                                )}
-                                style={{
-                                    objectFit: 'cover',
-                                    height: '80vh',
-                                    width: '100vw',
-                                }}
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="carousel-picture"
-                                src={AzureBlobStorage.getBlobUrl(
-                                    'home-carousel-4.jpg'
-                                )}
-                                style={{
-                                    objectFit: 'cover',
-                                    height: '80vh',
-                                    width: '100vw',
-                                }}
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="carousel-picture"
-                                src={AzureBlobStorage.getBlobUrl(
-                                    'home-carousel-5.jpg'
-                                )}
-                                style={{
-                                    objectFit: 'cover',
-                                    height: '80vh',
-                                    width: '100vw',
-                                }}
-                            />
-                        </Carousel.Item>
+                        {Array.from({ length: 5 }).map((_, index) => {
+                            return (
+                                <Carousel.Item>
+                                    <img
+                                        className="carousel-picture"
+                                        src={AzureBlobStorage.getBlobUrl(
+                                            `home-carousel-${index + 1}.jpg`
+                                        )}
+                                        style={{
+                                            objectFit: 'cover',
+                                            height: '80vh',
+                                            width: '100vw',
+                                        }}
+                                    />
+                                </Carousel.Item>
+                            )
+                        })}
                     </Carousel>
                 </div>
                 <div className="d-flex-inlne justify-content-center homepage-information">
