@@ -190,7 +190,7 @@ export default class App extends React.Component {
                 >
                     {this.carouselOverlay}
                     <Carousel controls={false} interval={5000} wrap={true}>
-                        {Array.from({ length: 5 }).map((_, index) => {
+                        {Array.from({ length: 6 }).map((_, index) => {
                             return (
                                 <Carousel.Item>
                                     <img
