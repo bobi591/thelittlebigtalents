@@ -20,20 +20,21 @@ const Navbar: React.FC = () => {
   const navbar = NavbarData.map((navItem) => {
     if (isEmpty(navItem.children)) {
       return (
-        <Button
-          key={navItem.title}
-          variant="plain"
-          textTransform={'uppercase'}
-          color="blackAlpha.900"
-        >
-          {navItem.link ? <Link href={navItem.link}>{navItem.title}</Link> : <>{navItem.title}</>}
+        <Button key={navItem.title} textTransform={'uppercase'} bgColor={'unset'} color={'unset'}>
+          {navItem.link ? (
+            <Link focusRing={'none'} color={'unset'} href={navItem.link}>
+              {navItem.title}
+            </Link>
+          ) : (
+            <>{navItem.title}</>
+          )}
         </Button>
       );
     } else {
       return (
         <Menu.Root key={navItem.title}>
           <Menu.Trigger asChild>
-            <Button variant="plain" textTransform={'uppercase'} color="blackAlpha.900" gap={0}>
+            <Button textTransform={'uppercase'} gap={0} color={'unset'} bgColor={'unset'}>
               {navItem.title}
               {navItem.children && <LuChevronDown />}
             </Button>
@@ -46,14 +47,11 @@ const Navbar: React.FC = () => {
                     return (
                       <Fragment key={navItem.title}>
                         {navItem.divided && <Separator />}
-                        <Menu.Item
-                          p="1"
-                          textTransform={'uppercase'}
-                          color="blackAlpha.900"
-                          value={navItem.title}
-                        >
+                        <Menu.Item p="1" textTransform={'uppercase'} value={navItem.title}>
                           {navItem.link ? (
-                            <Link href={navItem.link}>{navItem.title}</Link>
+                            <Link focusRing={'none'} href={navItem.link}>
+                              {navItem.title}
+                            </Link>
                           ) : (
                             <>{navItem.title}</>
                           )}
@@ -65,11 +63,7 @@ const Navbar: React.FC = () => {
                       <Fragment key={navItem.title}>
                         {navItem.divided && <Separator />}
                         <Menu.Root>
-                          <Menu.TriggerItem
-                            p="1"
-                            textTransform={'uppercase'}
-                            color="blackAlpha.900"
-                          >
+                          <Menu.TriggerItem p="1" textTransform={'uppercase'}>
                             {navItem.title} <LuChevronRight />
                           </Menu.TriggerItem>
                           <Portal>
@@ -82,11 +76,12 @@ const Navbar: React.FC = () => {
                                       <Menu.Item
                                         p="1"
                                         textTransform={'uppercase'}
-                                        color="blackAlpha.900"
                                         value={navItem.title}
                                       >
                                         {navItem.link ? (
-                                          <Link href={navItem.link}>{navItem.title}</Link>
+                                          <Link focusRing={'none'} href={navItem.link}>
+                                            {navItem.title}
+                                          </Link>
                                         ) : (
                                           <>{navItem.title}</>
                                         )}
@@ -112,8 +107,8 @@ const Navbar: React.FC = () => {
 
   const desktopNavbar = (
     <Box pt={2} display={{ base: 'none', md: 'block' }}>
-      <Stack alignItems={'center'} textTransform={'uppercase'} color="blackAlpha.900">
-        <Link href="/">
+      <Stack alignItems={'center'} textTransform={'uppercase'}>
+        <Link focusRing={'none'} href="/">
           <Image alt="logo" src={'/logo.png'} width={'15%'} height={'15%'} margin={'auto'} />
         </Link>
         <Stack direction={'row'} textStyle={'xl'}>
@@ -125,8 +120,8 @@ const Navbar: React.FC = () => {
 
   const mobileNavbar = (
     <Box pt={2} display={{ base: 'block', md: 'none' }}>
-      <Stack alignItems={'center'} textTransform={'uppercase'} color="blackAlpha.900">
-        <Link href="/">
+      <Stack alignItems={'center'} textTransform={'uppercase'}>
+        <Link focusRing={'none'} href="/">
           <Image alt="logo" src={'/logo.png'} width={'15%'} height={'15%'} margin={'auto'} />
         </Link>
         <Collapsible.Root>
