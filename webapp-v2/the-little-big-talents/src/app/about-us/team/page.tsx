@@ -1,6 +1,6 @@
 import { PageBanner } from '@/app/components/page-banner/PageBanner';
 import PageSectionStack from '@/app/components/page-section-stack/PageSectionStack';
-import { Text, Stack, Image, Heading, Box } from '@chakra-ui/react';
+import { Text, Stack, Image, Heading } from '@chakra-ui/react';
 
 const Page: React.FC = () => {
   return (
