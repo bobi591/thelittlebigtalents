@@ -1,78 +1,72 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+import { Box, Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
+import ImagesSlider from './components/images-slider/ImagesSlider';
+import { Autoplay } from 'swiper/modules';
+import { LuCalendarCheck, LuPhoneCall } from 'react-icons/lu';
 
-export const Home: React.FC = () => {
+const imagesSrcs = [
+  '/slides/1.jpg',
+  '/slides/2.jpg',
+  '/slides/3.jpg',
+  '/slides/4.jpg',
+  '/slides/5.jpg',
+  '/slides/6.jpg',
+];
+
+const Home: React.FC = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <Stack alignItems={'center'} gap={20} pb={'10'}>
+      <Flex
+        position="absolute"
+        width="100%"
+        height="80vh"
+        justify="center"
+        align="center"
+        zIndex={10}
+        color={'white'}
+        background="linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0,0,0,0))"
+      >
+        <Stack ml="auto" paddingRight={{ base: 0, md: '5vw' }} alignItems={'center'} gap={8}>
+          <Stack direction={'column'} alignItems={'center'}>
+            <Heading as={'h1'} textStyle={'2xl'} textAlign={'center'}>
+              Впуснете се в света на музиката!
+            </Heading>
+            <Text>с уроци за начинаещи и напреднали</Text>
+          </Stack>
+          <Stack direction={'row'}>
+            <Button variant={'outline'} color={'white'} _hover={{ color: 'black' }} p={2} disabled>
+              <LuCalendarCheck />
+              Запиши урок
+            </Button>
+            <Button variant={'outline'} color={'white'} _hover={{ color: 'black' }} p={2}>
+              <LuPhoneCall />
+              <a href={'tel:087 619 1718'}>Обади се</a>
+            </Button>
+          </Stack>
+        </Stack>
+      </Flex>
+      <ImagesSlider>
+        {imagesSrcs.map((src) => {
+          return (
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              key={src}
+              src={src}
+              alt="Slide picture"
+              width="100vw"
+              height="80vh"
+              objectFit="cover"
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          );
+        })}
+      </ImagesSlider>
+      <Stack alignItems={'center'} gap={4}>
+        <Heading as={'h3'} textStyle={'xl'} textAlign={'center'}>
+          Готови ли сте за Вашия Музикален Път?
+        </Heading>
+        <Text maxWidth={{ base: undefined, md: '40vw' }} textAlign={'center'} textStyle={'sm'}>
+          {`В Музикален Център "Малките Големи Таланти" вярваме, че всяко дете е уникално и музиката е ключът за разкриване на неговия потенциал. Ние създаваме образователна среда, в която уникалността на всеки ученик се цени и развива!`}
+        </Text>
+      </Stack>
+    </Stack>
   );
 };
 

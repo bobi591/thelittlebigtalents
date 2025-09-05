@@ -1,0 +1,128 @@
+import { PageBanner } from '@/app/components/page-banner/PageBanner';
+import { Text, Stack, Image, Heading, Box } from '@chakra-ui/react';
+
+const Page: React.FC = () => {
+  return (
+    <Stack>
+      <PageBanner text="Музикални дисциплини" />
+      <Heading textAlign={'center'} textStyle={'md'}>
+        Добре дошли в нашето музикално пространство, в което музицират и творят деца и възрастни
+      </Heading>
+      <Stack margin={'auto'} gap={10} w={'100vw'}>
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+          flexWrap={{ base: 'wrap', md: 'nowrap' }}
+          p={10}
+        >
+          <Image
+            flex={1}
+            alt="Subject"
+            src={'/about-us/music-disciplines/subjects-1.jpg'}
+            maxH={'400px'}
+            margin={'auto'}
+            fit="contain"
+          />
+          <Stack flex={1}>
+            <Stack>
+              <Heading>Вокални дисциплини</Heading>
+              <Stack>
+                <Text>{`Поп и джаз пеене`}</Text>
+                <Text>{`Фолклорно пеене`}</Text>
+                <Text>{`Вокални групи`}</Text>
+              </Stack>
+              <Stack textStyle={'sm'}>
+                <Text>{`За най-малките – от 5 до 9г.`}</Text>
+                <Text>{`За тийнеджъри от 10 до 16г.`}</Text>
+              </Stack>
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+          flexWrap={{ base: 'wrap', md: 'nowrap' }}
+          p={10}
+          bgColor={'bg.muted'}
+        >
+          <Image
+            flex={1}
+            alt="Subject"
+            src={'/about-us/music-disciplines/subjects-2.jpg'}
+            maxH={'400px'}
+            margin={'auto'}
+            fit="contain"
+          />
+          <Stack flex={1}>
+            <Stack>
+              <Heading>Инструментални дисциплини</Heading>
+              <Stack>
+                <Text>{`Пиано`}</Text>
+                <Text>{`Китара`}</Text>
+                <Text>{`Барабани`}</Text>
+              </Stack>
+              <Stack textStyle={'sm'}>
+                <Text>{`За най-малките – от 5 до 9г.`}</Text>
+                <Text>{`За тийнеджъри от 10 до 16г.`}</Text>
+              </Stack>
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+          flexWrap={{ base: 'wrap', md: 'nowrap' }}
+          p={10}
+        >
+          <Image
+            flex={1}
+            alt="Subject"
+            src={'/about-us/music-disciplines/subjects-3.jpg'}
+            maxH={'400px'}
+            margin={'auto'}
+            fit="contain"
+          />
+          <Stack flex={1}>
+            <Stack>
+              <Heading>Теоретични дисциплини</Heading>
+              <Stack>
+                <Text>{`Теория и елементи на музиката`}</Text>
+                <Text>{`Солфеж`}</Text>
+              </Stack>
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+          flexWrap={{ base: 'wrap', md: 'nowrap' }}
+          p={10}
+          bgColor={'bg.muted'}
+        >
+          <Image
+            flex={1}
+            alt="Subject"
+            src={'/about-us/music-disciplines/subjects-4.jpg'}
+            maxH={'400px'}
+            margin={'auto'}
+            fit="contain"
+          />
+          <Stack flex={1}>
+            <Stack>
+              <Heading>Сценични дисциплини</Heading>
+              <Stack>
+                <Text>{`Сценично поведение`}</Text>
+                <Text>{`Пърформанс`}</Text>
+              </Stack>
+              <Stack textStyle={'sm'}>
+                <Text>{`За концертиращи вокалисти и инструменталисти`}</Text>
+              </Stack>
+            </Stack>
+          </Stack>
+        </Stack>
+      </Stack>
+    </Stack>
+  );
+};
+
+export default Page;
