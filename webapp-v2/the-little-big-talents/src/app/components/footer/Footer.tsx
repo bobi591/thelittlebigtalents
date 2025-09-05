@@ -5,34 +5,42 @@ const Footer: React.FC = () => {
     <footer>
       <Stack direction={'column'} borderTop={'solid 1px'} p={4} alignItems={'center'} gap={8}>
         <Stack direction={'row'} gap={{ base: 1, md: 20 }} overflow={'auto'}>
-          <Image
-            alt="Pop & Jazz lessons"
-            src={'/footer/lessons-pop-jazz.jpeg'}
-            height={'200px'}
-            width={'200px'}
-            margin={'auto'}
-          />
-          <Image
-            alt="Guitar lessons"
-            src={'/footer/lessons-guitar.jpeg'}
-            height={'200px'}
-            width={'200px'}
-            margin={'auto'}
-          />
-          <Image
-            alt="Drums lessons"
-            src={'/footer/lessons-drums.jpeg'}
-            height={'200px'}
-            width={'200px'}
-            margin={'auto'}
-          />
-          <Image
-            alt="Piano lessons"
-            src={'/footer/lessons-piano.jpeg'}
-            height={'200px'}
-            width={'200px'}
-            margin={'auto'}
-          />
+          <Link href="/individual-lessons/pop-jazz-singing" flexShrink="0">
+            <Image
+              alt="Pop & Jazz lessons"
+              src={'/footer/lessons-pop-jazz.jpeg'}
+              margin={'auto'}
+              height={'200px'}
+              width={'200px'}
+            />
+          </Link>
+          <Link href="/individual-lessons/guitar" flexShrink="0">
+            <Image
+              alt="Guitar lessons"
+              src={'/footer/lessons-guitar.jpeg'}
+              margin={'auto'}
+              height={'200px'}
+              width={'200px'}
+            />
+          </Link>
+          <Link href="/individual-lessons/drums" flexShrink="0">
+            <Image
+              alt="Drums lessons"
+              src={'/footer/lessons-drums.jpeg'}
+              margin={'auto'}
+              height={'200px'}
+              width={'200px'}
+            />
+          </Link>
+          <Link href="/individual-lessons/piano" flexShrink="0">
+            <Image
+              alt="Piano lessons"
+              src={'/footer/lessons-piano.jpeg'}
+              margin={'auto'}
+              height={'200px'}
+              width={'200px'}
+            />
+          </Link>
         </Stack>
         <Heading
           as={'h2'}
