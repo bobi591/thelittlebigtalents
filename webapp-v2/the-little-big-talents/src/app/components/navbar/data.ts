@@ -49,6 +49,10 @@ export const NavbarData: NavbarItem[] = [
             title: 'Барабани',
             link: '/individual-lessons/drums',
           },
+          {
+            title: 'Цигулка',
+            link: '/individual-lessons/violin',
+          },
         ],
       },
       {
