@@ -24,7 +24,12 @@ const Home: React.FC = () => {
         color={'white'}
         background="linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0,0,0,0))"
       >
-        <Stack ml="auto" paddingRight={{ base: 0, md: '5vw' }} alignItems={'center'} gap={8}>
+        <Stack
+          ml={{ base: '0', md: 'auto' }}
+          paddingRight={{ base: 0, md: '5vw' }}
+          alignItems={'center'}
+          gap={8}
+        >
           <Stack direction={'column'} alignItems={'center'}>
             <Heading as={'h1'} textStyle={'2xl'} textAlign={'center'}>
               Впуснете се в света на музиката!
