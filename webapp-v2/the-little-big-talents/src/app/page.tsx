@@ -57,7 +57,8 @@ const Home: React.FC = () => {
               alt="Slide picture"
               width="100vw"
               height="80vh"
-              objectFit="cover"
+              fit="cover"
+              overflow={'hidden'}
             />
           );
         })}
