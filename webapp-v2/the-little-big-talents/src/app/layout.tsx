@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/app/components/navbar/Navbar';
 
 import '@fontsource/montserrat';
+import '@fontsource/montserrat/cyrillic.css';
 import { Stack } from '@chakra-ui/react';
 import Provider from './components/chakra/provider';
 import Footer from './components/footer/Footer';
@@ -19,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="bg" suppressHydrationWarning>
       <body>
         <Provider>
           <Stack gap={0}>

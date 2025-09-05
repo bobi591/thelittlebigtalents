@@ -1,6 +1,5 @@
-import { Box, Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
+import { Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import ImagesSlider from './components/images-slider/ImagesSlider';
-import { Autoplay } from 'swiper/modules';
 import { LuCalendarCheck, LuPhoneCall } from 'react-icons/lu';
 
 const imagesSrcs = [
