@@ -14,7 +14,7 @@ const Page: React.FC = () => {
         гладко ноти, да импровизирате на инструмента и възможност да практикувате различни стилове
         като поп, рок, джаз и класическа музика.
       </Heading>
-      <Stack margin={'auto'} gap={10} w={'100vw'}>
+      <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
             flex={1}

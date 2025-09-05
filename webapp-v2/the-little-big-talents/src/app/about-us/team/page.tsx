@@ -6,7 +6,7 @@ const Page: React.FC = () => {
   return (
     <Stack>
       <PageBanner text="Екип" />
-      <Stack margin={'auto'} gap={10} w={'100vw'}>
+      <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
             flex={1}

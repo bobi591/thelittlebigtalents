@@ -2,7 +2,7 @@ import { Stack, StackProps } from '@chakra-ui/react';
 
 const PageSectionStack: React.FC<StackProps> = ({ children, ...props }) => {
   return (
-    <Stack {...props} width={'100vw'}>
+    <Stack {...props} p={0}>
       <Stack
         p={10}
         width={{ md: '80vw' }}

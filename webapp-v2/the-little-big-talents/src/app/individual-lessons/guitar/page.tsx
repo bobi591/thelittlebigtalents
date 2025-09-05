@@ -17,7 +17,7 @@ const Page: React.FC = () => {
         на любими песни и мелодии. Активно разучаване на сола, акомпанимент и импровизация в
         съвременни музикални стилове, като поп, джаз, рок и други.
       </Heading>
-      <Stack margin={'auto'} gap={10} w={'100vw'}>
+      <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
             flex={1}

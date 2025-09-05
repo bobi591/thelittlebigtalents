@@ -16,7 +16,7 @@ const Page: React.FC = () => {
         мозъка, съчетавайки, във всеки един урок, творческото, логическото и аналитично мислене,
         развитие на мелодичен, ритмичен и хармоничен слух.
       </Heading>
-      <Stack margin={'auto'} gap={10} w={'100vw'}>
+      <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
             flex={1}

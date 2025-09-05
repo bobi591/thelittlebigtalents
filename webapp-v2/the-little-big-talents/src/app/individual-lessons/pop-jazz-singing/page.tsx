@@ -17,7 +17,7 @@ const Page: React.FC = () => {
         възможността да се изпълняват различни музикални стилове като поп, рок, джаз стандарти,
         мюзикъл и други съвременни стилове.
       </Heading>
-      <Stack margin={'auto'} gap={10} w={'100vw'}>
+      <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
             flex={1}

@@ -9,7 +9,7 @@ const Page: React.FC = () => {
       <Heading textAlign={'center'} textStyle={'md'}>
         Добре дошли в нашето музикално пространство, в което музицират и творят деца и възрастни
       </Heading>
-      <Stack margin={'auto'} gap={10} w={'100vw'}>
+      <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
             flex={1}

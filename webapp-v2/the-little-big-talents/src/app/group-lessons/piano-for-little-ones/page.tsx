@@ -9,7 +9,7 @@ const Page: React.FC = () => {
         text="Пиано за най-малките"
         videoSrc="/group-lessons/piano-for-little-ones/banner.mp4"
       />
-      <Stack margin={'auto'} gap={10} w={'100vw'}>
+      <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
             flex={1}
