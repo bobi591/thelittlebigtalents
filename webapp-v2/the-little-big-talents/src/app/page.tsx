@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import ImagesSlider from './components/images-slider/ImagesSlider';
 import { LuCalendarCheck, LuPhoneCall } from 'react-icons/lu';
 
@@ -48,21 +48,23 @@ const Home: React.FC = () => {
           </Stack>
         </Stack>
       </Flex>
-      <ImagesSlider>
-        {imagesSrcs.map((src) => {
-          return (
-            <Image
-              key={src}
-              src={src}
-              alt="Slide picture"
-              width="100vw"
-              height="80vh"
-              fit="cover"
-              overflow={'hidden'}
-            />
-          );
-        })}
-      </ImagesSlider>
+      <Box overflow={'hidden'} maxWidth={'100%'}>
+        <ImagesSlider>
+          {imagesSrcs.map((src) => {
+            return (
+              <Image
+                key={src}
+                src={src}
+                alt="Slide picture"
+                width="100%"
+                height="80vh"
+                fit="cover"
+                overflow={'hidden'}
+              />
+            );
+          })}
+        </ImagesSlider>
+      </Box>
       <Stack alignItems={'center'} gap={4}>
         <Heading as={'h3'} textStyle={'xl'} textAlign={'center'}>
           Готови ли сте за Вашия Музикален Път?
