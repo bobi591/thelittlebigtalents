@@ -1,5 +1,6 @@
 import { PageBanner } from '@/app/components/page-banner/PageBanner';
-import { Text, Stack, Image, Heading, Box } from '@chakra-ui/react';
+import PageSectionStack from '@/app/components/page-section-stack/PageSectionStack';
+import { Text, Stack, Image, Heading } from '@chakra-ui/react';
 
 const Page: React.FC = () => {
   return (
@@ -9,12 +10,7 @@ const Page: React.FC = () => {
         Добре дошли в нашето музикално пространство, в което музицират и творят деца и възрастни
       </Heading>
       <Stack margin={'auto'} gap={10} w={'100vw'}>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-        >
+        <PageSectionStack>
           <Image
             flex={1}
             alt="Subject"
@@ -37,14 +33,8 @@ const Page: React.FC = () => {
               </Stack>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-          bgColor={'bg.muted'}
-        >
+        </PageSectionStack>
+        <PageSectionStack bgColor={'bg.muted'}>
           <Image
             flex={1}
             alt="Subject"
@@ -67,13 +57,8 @@ const Page: React.FC = () => {
               </Stack>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-        >
+        </PageSectionStack>
+        <PageSectionStack>
           <Image
             flex={1}
             alt="Subject"
@@ -91,14 +76,8 @@ const Page: React.FC = () => {
               </Stack>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-          bgColor={'bg.muted'}
-        >
+        </PageSectionStack>
+        <PageSectionStack bgColor={'bg.muted'}>
           <Image
             flex={1}
             alt="Subject"
@@ -119,7 +98,7 @@ const Page: React.FC = () => {
               </Stack>
             </Stack>
           </Stack>
-        </Stack>
+        </PageSectionStack>
       </Stack>
     </Stack>
   );

@@ -1,4 +1,5 @@
 import { PageBanner } from '@/app/components/page-banner/PageBanner';
+import PageSectionStack from '@/app/components/page-section-stack/PageSectionStack';
 import { Text, Stack, Image, Heading, Box } from '@chakra-ui/react';
 
 const Page: React.FC = () => {
@@ -6,12 +7,7 @@ const Page: React.FC = () => {
     <Stack>
       <PageBanner text="Екип" />
       <Stack margin={'auto'} gap={10} w={'100vw'}>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-        >
+        <PageSectionStack>
           <Image
             flex={1}
             alt="Desislava Vasileva"
@@ -34,14 +30,8 @@ const Page: React.FC = () => {
 В работата си като преподавател вярвам в индивидуалния подход и поощряване на творческо изразяване и лична интерпретация. И преди всичко създаване на навици за упражнения и отговорно отношение. По - задълбочена музикална култура, чрез слушане, анализиране и изпълнение на различни стилове музика.`}</Text>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-          bgColor={'bg.muted'}
-        >
+        </PageSectionStack>
+        <PageSectionStack bgColor={'bg.muted'}>
           <Image
             flex={1}
             alt="Kremena Petkova"
@@ -59,13 +49,8 @@ const Page: React.FC = () => {
 Завършила съм бакалавърска степен по “Музикална и клавирна педагогика” ВТУ “Св. св. Кирил и Методий” – гр. Велико Търново, в класа по пиано на изтъкнатата проф. Лилия Наумова. В своята над 25 годишна педагогическа практика съм работила с множество малки, големи и още по-големи ученици. Всеки от тях е с различна степен на музикален усет и способности, но с всеки се стремя към развитие на най-доброто на което е способен. Защото вярвам, че ученика заслужава да получи най-доброто от своя преподавател. Най-доброто от неговите знания, умения и обич. В обучението на учениците си съчетавам стандартите на класическото клавирно обучение със съвременните нужди на малките, големи и още по-големи пианисти, така че те не само да вървят напред, да подобряват своите знания и умения, но и всеки ден да научават нещо ново за музиката, да бъдат все по-вдъхновени и вълшебен свят на пианото да заема все по-голяма част от техния живот.”`}</Text>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-        >
+        </PageSectionStack>
+        <PageSectionStack>
           <Image
             flex={1}
             alt="Teodor Chirpanliev"
@@ -83,14 +68,8 @@ const Page: React.FC = () => {
 Освен като преподавател съм и активен музикант в рок групи като - Cool Den, Цар Плъх, джаз формация, J-City Ensemble и други.”`}</Text>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-          bgColor={'bg.muted'}
-        >
+        </PageSectionStack>
+        <PageSectionStack bgColor={'bg.muted'}>
           <Image
             flex={1}
             alt="Velislava Mancheva"
@@ -108,7 +87,7 @@ const Page: React.FC = () => {
 През целия ми музикален живот съм била част от различни китарни събития, печелила съм награди от различни конкурси, участвала съм на майсторски класове при невероятни професионалисти, но винаги най-голямо удоволствие ми е доставяло деленето на сцена с други музиканти и предаването на знания.”`}</Text>
             </Stack>
           </Stack>
-        </Stack>
+        </PageSectionStack>
       </Stack>
     </Stack>
   );

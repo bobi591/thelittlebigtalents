@@ -1,4 +1,5 @@
 import { PageBanner } from '@/app/components/page-banner/PageBanner';
+import PageSectionStack from '@/app/components/page-section-stack/PageSectionStack';
 import { Text, Stack, Image, Heading, List } from '@chakra-ui/react';
 
 const Page: React.FC = () => {
@@ -17,12 +18,7 @@ const Page: React.FC = () => {
         мюзикъл и други съвременни стилове.
       </Heading>
       <Stack margin={'auto'} gap={10} w={'100vw'}>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-        >
+        <PageSectionStack>
           <Image
             flex={1}
             alt="Subject"
@@ -49,14 +45,8 @@ const Page: React.FC = () => {
               </List.Root>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-          bgColor={'bg.muted'}
-        >
+        </PageSectionStack>
+        <PageSectionStack bgColor={'bg.muted'}>
           <Image
             flex={1}
             alt="Subject"
@@ -84,13 +74,8 @@ const Page: React.FC = () => {
               <List.Item>{`Хигиена и грижа за гласа`}</List.Item>
             </List.Root>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-        >
+        </PageSectionStack>
+        <PageSectionStack>
           <Image
             flex={1}
             alt="Subject"
@@ -109,7 +94,7 @@ const Page: React.FC = () => {
               </List.Root>
             </Stack>
           </Stack>
-        </Stack>
+        </PageSectionStack>
       </Stack>
     </Stack>
   );

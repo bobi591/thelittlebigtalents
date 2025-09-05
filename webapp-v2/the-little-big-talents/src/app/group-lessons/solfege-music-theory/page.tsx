@@ -1,4 +1,5 @@
 import { PageBanner } from '@/app/components/page-banner/PageBanner';
+import PageSectionStack from '@/app/components/page-section-stack/PageSectionStack';
 import { Text, Stack, Image, Heading } from '@chakra-ui/react';
 
 const Page: React.FC = () => {
@@ -9,12 +10,7 @@ const Page: React.FC = () => {
         videoSrc="/group-lessons/solfege-music-theory/banner.mp4"
       />
       <Stack margin={'auto'} gap={10} w={'100vw'}>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-        >
+        <PageSectionStack>
           <Image
             flex={1}
             alt="Image"
@@ -33,14 +29,8 @@ const Page: React.FC = () => {
               </Stack>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-          bgColor={'bg.subtle'}
-        >
+        </PageSectionStack>
+        <PageSectionStack bgColor={'bg.subtle'}>
           <Image
             flex={1}
             alt="Image"
@@ -58,13 +48,8 @@ const Page: React.FC = () => {
               </Stack>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-        >
+        </PageSectionStack>
+        <PageSectionStack>
           <Image
             flex={1}
             alt="Image"
@@ -82,14 +67,8 @@ const Page: React.FC = () => {
               </Stack>
             </Stack>
           </Stack>
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexWrap={{ base: 'wrap', md: 'nowrap' }}
-          p={10}
-          bgColor={'bg.subtle'}
-        >
+        </PageSectionStack>
+        <PageSectionStack bgColor={'bg.subtle'}>
           <Image
             flex={1}
             alt="Image"
@@ -106,7 +85,7 @@ const Page: React.FC = () => {
               </Stack>
             </Stack>
           </Stack>
-        </Stack>
+        </PageSectionStack>
       </Stack>
     </Stack>
   );
