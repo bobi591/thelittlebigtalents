@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import ImagesSlider from './components/images-slider/ImagesSlider';
 import { LuCalendarCheck, LuPhoneCall } from 'react-icons/lu';
-import SendMailButton from './utils/SendMailButton';
+import RequestLesson from './components/RequestLesson/RequestLesson';
 
 const imagesSrcs = [
   '/slides/1.jpg',
@@ -38,16 +38,10 @@ const Home: React.FC = () => {
             <Text>с уроци за начинаещи и напреднали</Text>
           </Stack>
           <Stack direction={'row'}>
-            <SendMailButton
-              variant={'outline'}
-              color={'white'}
-              _hover={{ color: 'black' }}
-              p={2}
-              disabled
-            >
+            <RequestLesson variant={'outline'} color={'white'} _hover={{ color: 'black' }} p={2}>
               <LuCalendarCheck />
               Запиши урок
-            </SendMailButton>
+            </RequestLesson>
             <Button variant={'outline'} color={'white'} _hover={{ color: 'black' }} p={2}>
               <LuPhoneCall />
               <a href={'tel:087 619 1718'}>Обади се</a>
