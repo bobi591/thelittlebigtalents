@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         <Stack direction={'row'} gap={{ base: 1, md: 20 }} overflow={'auto'}>
           <Link href="/individual-lessons/pop-jazz-singing" flexShrink="0">
             <Image
-              alt="Pop & Jazz lessons"
+              alt="Поп и джаз пеене"
               src={'/footer/lessons-pop-jazz.jpeg'}
               margin={'auto'}
               height={'200px'}
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
           </Link>
           <Link href="/individual-lessons/guitar" flexShrink="0">
             <Image
-              alt="Guitar lessons"
+              alt="Уроци по китара"
               src={'/footer/lessons-guitar.jpeg'}
               margin={'auto'}
               height={'200px'}
@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
           </Link>
           <Link href="/individual-lessons/drums" flexShrink="0">
             <Image
-              alt="Drums lessons"
+              alt="Уроци по барабани"
               src={'/footer/lessons-drums.jpeg'}
               margin={'auto'}
               height={'200px'}
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
           </Link>
           <Link href="/individual-lessons/piano" flexShrink="0">
             <Image
-              alt="Piano lessons"
+              alt="Уроци по пиано"
               src={'/footer/lessons-piano.jpeg'}
               margin={'auto'}
               height={'200px'}

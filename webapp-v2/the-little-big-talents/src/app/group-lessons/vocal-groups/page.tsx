@@ -16,7 +16,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Image"
+            alt="Вокални групи"
             src={'/group-lessons/vocal-groups/vocal-groups-1.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -37,7 +37,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
             flex={1}
-            alt="Image"
+            alt="Вокални групи"
             src={'/group-lessons/vocal-groups/vocal-groups-2.jpg'}
             maxH={'400px'}
             margin={'auto'}

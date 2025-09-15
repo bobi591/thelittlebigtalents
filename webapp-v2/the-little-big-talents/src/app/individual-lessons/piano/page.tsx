@@ -28,7 +28,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Subject"
+            alt="Уроци по пиано"
             src={'/individual-lessons/piano/piano-1.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -50,7 +50,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
             flex={1}
-            alt="Subject"
+            alt="Уроци по пиано"
             src={'/individual-lessons/piano/piano-2.jpg'}
             maxH={'400px'}
             margin={'auto'}

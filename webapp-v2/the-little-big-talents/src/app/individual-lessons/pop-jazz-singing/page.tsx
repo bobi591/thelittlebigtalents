@@ -29,7 +29,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Subject"
+            alt="Уроци по поп и джаз пеене"
             src={'/individual-lessons/pop-jazz-singing/popjazz-1.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -57,7 +57,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
             flex={1}
-            alt="Subject"
+            alt="Уроци по поп и джаз пеене"
             src={'/individual-lessons/pop-jazz-singing/popjazz-2.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -86,7 +86,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Subject"
+            alt="Уроци по поп и джаз пеене"
             src={'/individual-lessons/pop-jazz-singing/popjazz-3.jpg'}
             maxH={'400px'}
             margin={'auto'}

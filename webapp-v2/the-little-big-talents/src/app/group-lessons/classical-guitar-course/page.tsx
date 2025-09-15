@@ -21,7 +21,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Image"
+            alt="Курс по класическа китара"
             src={'/group-lessons/classical-guitar-course/classical-guitar-course-1.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -42,7 +42,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
             flex={1}
-            alt="Image"
+            alt="Курс по класическа китара"
             src={'/group-lessons/classical-guitar-course/classical-guitar-course-2.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -66,7 +66,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Image"
+            alt="Курс по класическа китара"
             src={'/group-lessons/classical-guitar-course/classical-guitar-course-3.jpg'}
             maxH={'400px'}
             margin={'auto'}

@@ -21,7 +21,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Subject"
+            alt="Музикални дисциплини"
             src={'/about-us/music-disciplines/subjects-1.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -45,7 +45,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
             flex={1}
-            alt="Subject"
+            alt="Инструментални дисциплини"
             src={'/about-us/music-disciplines/subjects-2.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -69,7 +69,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Subject"
+            alt="Теоретични дисциплини"
             src={'/about-us/music-disciplines/subjects-3.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -88,7 +88,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
             flex={1}
-            alt="Subject"
+            alt="Сценични дисциплини"
             src={'/about-us/music-disciplines/subjects-4.jpg'}
             maxH={'400px'}
             margin={'auto'}

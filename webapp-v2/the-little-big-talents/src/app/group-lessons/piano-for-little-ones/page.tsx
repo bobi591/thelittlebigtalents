@@ -20,7 +20,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Image"
+            alt="Пиано за най-малките"
             src={'/group-lessons/piano-for-little-ones/piano-for-little-ones-1.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -42,7 +42,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
             flex={1}
-            alt="Image"
+            alt="Пиано за най-малките"
             src={'/group-lessons/piano-for-little-ones/piano-for-little-ones-2.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -64,7 +64,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Image"
+            alt="Пиано за най-малките"
             src={'/group-lessons/piano-for-little-ones/piano-for-little-ones-3.jpg'}
             maxH={'400px'}
             margin={'auto'}

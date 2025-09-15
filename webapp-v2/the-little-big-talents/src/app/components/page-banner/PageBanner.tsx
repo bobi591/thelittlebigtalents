@@ -28,7 +28,7 @@ export const PageBanner: React.FC<PageBannerProps> = ({ imgSrc, text, videoSrc }
         </Heading>
       </Flex>
       {imgSrc ? (
-        <Image alt="Page Banner" src={imgSrc} width="100vw" height="40vh" objectFit="cover" />
+        <Image alt={text} src={imgSrc} width="100vw" height="40vh" objectFit="cover" />
       ) : videoSrc ? (
         <video
           src={videoSrc}

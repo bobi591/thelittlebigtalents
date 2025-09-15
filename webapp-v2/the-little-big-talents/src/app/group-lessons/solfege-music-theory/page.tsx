@@ -21,7 +21,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Image"
+            alt="Солфеж и музикална теория"
             src={'/group-lessons/solfege-music-theory/solfege-music-theory-1.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -41,7 +41,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
             flex={1}
-            alt="Image"
+            alt="Солфеж и музикална теория"
             src={'/group-lessons/solfege-music-theory/solfege-music-theory-2.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -60,7 +60,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Image"
+            alt="Солфеж и музикална теория"
             src={'/group-lessons/solfege-music-theory/solfege-music-theory-3.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -79,7 +79,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
             flex={1}
-            alt="Image"
+            alt="Солфеж и музикална теория"
             src={'/group-lessons/solfege-music-theory/solfege-music-theory-4.jpg'}
             maxH={'400px'}
             margin={'auto'}
