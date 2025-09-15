@@ -76,7 +76,7 @@ export const NavbarData: NavbarItem[] = [
             link: '/group-lessons/solfege-music-theory',
           },
           {
-            title: 'Пиано за най малките',
+            title: 'Пиано за най-малките',
             link: '/group-lessons/piano-for-little-ones',
           },
           {
