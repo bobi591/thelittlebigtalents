@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
           </Link>
         </Stack>
         <Heading
-          as={'h2'}
+          as={'h1'}
           textStyle={'xl'}
           textAlign={'center'}
         >{`Музикален Център "Малките Големи Таланти"`}</Heading>

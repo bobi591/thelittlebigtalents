@@ -35,7 +35,7 @@ const Home: React.FC = () => {
             <Heading as={'h1'} textStyle={'2xl'} textAlign={'center'}>
               Впуснете се в света на музиката!
             </Heading>
-            <Text>с уроци за начинаещи и напреднали</Text>
+            <Text as={'h1'}>с уроци за начинаещи и напреднали</Text>
           </Stack>
           <Stack direction={'row'}>
             <RequestLesson variant={'outline'} color={'white'} _hover={{ color: 'black' }} p={2}>
