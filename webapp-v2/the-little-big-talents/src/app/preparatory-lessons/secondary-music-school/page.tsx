@@ -2,6 +2,15 @@ import { PageBanner } from '@/app/components/page-banner/PageBanner';
 import PageSectionStack from '@/app/components/page-section-stack/PageSectionStack';
 import { Stack, List, Text, Heading } from '@chakra-ui/react';
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title:
+    'Подготвителни уроци за кандидатстване в средно музикално училище – Музикален Център "Малките Големи Таланти"',
+  description:
+    'Научете повече за подготвителните уроци за кандидатстване в средно музикално училище, преподавани в Музикален Център "Малките Големи Таланти".',
+};
+
 const Page: React.FC = () => {
   return (
     <Stack alignItems={'center'}>

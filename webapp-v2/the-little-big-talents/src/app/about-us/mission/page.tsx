@@ -1,6 +1,13 @@
 import { PageBanner } from '@/app/components/page-banner/PageBanner';
 import { Text, Stack } from '@chakra-ui/react';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Мисия – Музикален Център "Малките Големи Таланти"',
+  description: 'Научете повече за мисията на Музикален Център "Малките Големи Таланти".',
+};
+
 const Page: React.FC = () => {
   return (
     <Stack>

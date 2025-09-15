@@ -1,6 +1,12 @@
 import { Flex, Heading, Stack, Table } from '@chakra-ui/react';
 import { PageBanner } from '../components/page-banner/PageBanner';
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Цени – Музикален Център "Малките Големи Таланти"',
+};
+
 const Page: React.FC = () => {
   return (
     <Stack>

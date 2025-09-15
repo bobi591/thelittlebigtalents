@@ -3,6 +3,14 @@ import ImagesSlider from './components/images-slider/ImagesSlider';
 import { LuCalendarCheck, LuPhoneCall } from 'react-icons/lu';
 import RequestLesson from './components/RequestLesson/RequestLesson';
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Начало – Музикален Център "Малките Големи Таланти"',
+  description:
+    'Открийте индивидуални уроци по поп и джаз пеене, пиано, китара, барабани и цигулка, групови уроци по солфеж, музикална теория, пиано за най-малките, вокални групи и класическа китара, както и подготвителни уроци за средно и висше музикално училище – всичко в Музикален Център "Малките Големи Таланти" в София!',
+};
+
 const imagesSrcs = [
   '/slides/1.jpg',
   '/slides/2.jpg',

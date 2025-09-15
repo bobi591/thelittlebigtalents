@@ -1,6 +1,12 @@
 import { PageBanner } from '@/app/components/page-banner/PageBanner';
 import PageSectionStack from '@/app/components/page-section-stack/PageSectionStack';
 import { Text, Stack, Image, Heading } from '@chakra-ui/react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Вокални групи – Музикален Център "Малките Големи Таланти"',
+  description: 'Научете повече за вокалните групи в Музикален Център "Малките Големи Таланти".',
+};
 
 const Page: React.FC = () => {
   return (
