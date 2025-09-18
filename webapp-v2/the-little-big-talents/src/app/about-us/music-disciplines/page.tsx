@@ -1,6 +1,6 @@
 import { PageBanner } from '@/app/components/page-banner/PageBanner';
 import PageSectionStack from '@/app/components/page-section-stack/PageSectionStack';
-import { Text, Stack, Image, Heading } from '@chakra-ui/react';
+import { Text, Stack, Image, Heading, Link } from '@chakra-ui/react';
 
 import type { Metadata } from 'next';
 
@@ -15,7 +15,7 @@ const Page: React.FC = () => {
     <Stack>
       <PageBanner text="Музикални дисциплини" />
       <Heading textAlign={'center'} textStyle={'md'}>
-        Добре дошли в нашето музикално пространство, в което музицират и творят деца и възрастни
+        Добре дошли в нашето музикално пространство, в което музицират и творят деца и възрастни.
       </Heading>
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
@@ -31,9 +31,9 @@ const Page: React.FC = () => {
             <Stack>
               <Heading>Вокални дисциплини</Heading>
               <Stack>
-                <Text>{`Поп и джаз пеене`}</Text>
+                <Link href="/individual-lessons/pop-jazz-singing">{`Поп и джаз пеене`}</Link>
                 <Text>{`Фолклорно пеене`}</Text>
-                <Text>{`Вокални групи`}</Text>
+                <Link href="/group-lessons/vocal-groups">{`Вокални групи`}</Link>
               </Stack>
               <Stack textStyle={'sm'}>
                 <Text>{`За най-малките – от 5 до 9г.`}</Text>
@@ -55,9 +55,10 @@ const Page: React.FC = () => {
             <Stack>
               <Heading>Инструментални дисциплини</Heading>
               <Stack>
-                <Text>{`Пиано`}</Text>
-                <Text>{`Китара`}</Text>
-                <Text>{`Барабани`}</Text>
+                <Link href="/individual-lessons/piano">{`Пиано`}</Link>
+                <Link href="/individual-lessons/guitar">{`Китара`}</Link>
+                <Link href="/individual-lessons/drums">{`Барабани`}</Link>
+                <Link href="/individual-lessons/violin">{`Цигулка`}</Link>
               </Stack>
               <Stack textStyle={'sm'}>
                 <Text>{`За най-малките – от 5 до 9г.`}</Text>
@@ -79,8 +80,8 @@ const Page: React.FC = () => {
             <Stack>
               <Heading>Теоретични дисциплини</Heading>
               <Stack>
-                <Text>{`Теория и елементи на музиката`}</Text>
-                <Text>{`Солфеж`}</Text>
+                <Link href="/group-lessons/solfege-music-theory">{`Теория и елементи на музиката`}</Link>
+                <Link href="/group-lessons/solfege-music-theory">{`Солфеж`}</Link>
               </Stack>
             </Stack>
           </Stack>
