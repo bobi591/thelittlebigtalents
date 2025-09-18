@@ -5,7 +5,7 @@ import { Text, Stack, Image, Heading } from '@chakra-ui/react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Курс по класическа китара – Музикален Център "Малките Големи Таланти"',
+  title: 'Курс по китара за малчугани – Музикален Център "Малките Големи Таланти"',
   description:
     'Научете повече за курса по класическа китара в Музикален Център "Малките Големи Таланти".',
 };
@@ -14,14 +14,14 @@ const Page: React.FC = () => {
   return (
     <Stack>
       <PageBanner
-        text="Курс по класическа китара"
+        text="Курс по китара за малчугани"
         videoSrc="/group-lessons/classical-guitar-course/banner.mp4"
       />
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Курс по класическа китара"
+            alt="Курс по китара за малчугани"
             src={'/group-lessons/classical-guitar-course/classical-guitar-course-1.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -30,7 +30,7 @@ const Page: React.FC = () => {
           <Stack flex={1}>
             <Stack>
               <Heading textAlign={'center'}>
-                Курс по класическа китара в два модула - Ниво I и Ниво II
+                Курс по китара за малчугани в два модула - Ниво I и Ниво II
               </Heading>
               <Stack>
                 <Text>{`С мисъл за забавно и интерактивно първо докосване до музиката. Групово обучение по класическа е иновативна система специално разрабатена система за деца от 6 до 8 г.`}</Text>
@@ -42,7 +42,7 @@ const Page: React.FC = () => {
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
             flex={1}
-            alt="Курс по класическа китара"
+            alt="Курс по китара за малчугани"
             src={'/group-lessons/classical-guitar-course/classical-guitar-course-2.jpg'}
             maxH={'400px'}
             margin={'auto'}
@@ -66,7 +66,7 @@ const Page: React.FC = () => {
         <PageSectionStack>
           <Image
             flex={1}
-            alt="Курс по класическа китара"
+            alt="Курс по китара за малчугани"
             src={'/group-lessons/classical-guitar-course/classical-guitar-course-3.jpg'}
             maxH={'400px'}
             margin={'auto'}

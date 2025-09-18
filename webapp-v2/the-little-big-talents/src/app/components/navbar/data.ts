@@ -84,7 +84,7 @@ export const NavbarData: NavbarItem[] = [
             link: '/group-lessons/vocal-groups',
           },
           {
-            title: 'Курс по класическа китара',
+            title: 'Курс по китара за малчугани',
             link: '/group-lessons/classical-guitar-course',
           },
         ],
