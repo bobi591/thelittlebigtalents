@@ -18,6 +18,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback, useMemo } from 'react';
+import { Toaster, toaster } from '@/app/components/chakra/toaster';
 
 const lessonTypes = Object.keys(lessons) as (keyof typeof lessons)[];
 
@@ -56,6 +57,10 @@ const RequestLesson: React.FC<Omit<ButtonProps, 'onClick'>> = (props) => {
         body: JSON.stringify(data),
       });
       setOpen(false);
+      toaster.create({
+        title: `Запитването е изпратено успешно.`,
+        type: 'success',
+      });
     },
     [setOpen],
   );
@@ -176,6 +181,7 @@ const RequestLesson: React.FC<Omit<ButtonProps, 'onClick'>> = (props) => {
         Запиши Урок
       </Button>
       {open === true ? dialog : null}
+      <Toaster />
     </>
   );
 };
