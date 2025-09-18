@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const Page: React.FC = () => {
   return (
     <Stack>
-      <PageBanner text="Цигулка" />
+      <PageBanner text="Цигулка" videoSrc="/individual-lessons/violin/banner.mp4" />
       <Heading textAlign={'center'} textStyle={'lg'}>
         Царицата на музикалните инструменти
       </Heading>
