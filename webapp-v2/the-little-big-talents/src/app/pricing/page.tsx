@@ -31,56 +31,56 @@ const Page: React.FC = () => {
               <Table.Body>
                 <Table.Row>
                   <Table.Cell textAlign="center">
-                    Вокални уроци / поп и джаз, фолклорно пеене/
+                    Вокални уроци / поп и джаз, фолклорно пеене
                   </Table.Cell>
                   <Table.Cell textAlign="center">
                     <b>Начинаещи:</b> 4 урока на месец с продължителност от 45 до 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">180лв. / 92,03€</Table.Cell>
+                  <Table.Cell textAlign="center">200лв. / 102,26€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">
-                    Вокални уроци / поп и джаз, фолклорно пеене/
+                    Вокални уроци / поп и джаз, фолклорно пеене
                   </Table.Cell>
                   <Table.Cell textAlign="center">
                     <b>Напреднали и концертиращи:</b> 8 урока на месец с продължителност 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">340 лв. / 173,84€</Table.Cell>
+                  <Table.Cell textAlign="center">360 лв. / 184,07€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
-                  <Table.Cell textAlign="center">Уроци по пиано / цигулка</Table.Cell>
+                  <Table.Cell textAlign="center">Уроци по пиано / цигулка / китара</Table.Cell>
                   <Table.Cell textAlign="center">
                     <b>Начинаещи:</b> 4 урока на месец с продължителност от 45 до 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">180лв. / 92,03€</Table.Cell>
+                  <Table.Cell textAlign="center">200лв. / 102,26€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
-                  <Table.Cell textAlign="center">Уроци по пиано / цигулка</Table.Cell>
+                  <Table.Cell textAlign="center">Уроци по пиано / цигулка / китара</Table.Cell>
                   <Table.Cell textAlign="center">
                     <b>Напреднали и концертиращи:</b> 8 урока на месец с продължителност 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">340 лв. / 173,84€</Table.Cell>
+                  <Table.Cell textAlign="center">360 лв. / 184,07€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
-                  <Table.Cell textAlign="center">Уроци по пиано / цигулка</Table.Cell>
+                  <Table.Cell textAlign="center">Уроци по пиано</Table.Cell>
                   <Table.Cell textAlign="center">
                     <b>Пиано за певци:</b> 4 урока на месец с продължителност 45 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">100лв. / 51,13€</Table.Cell>
+                  <Table.Cell textAlign="center">120 лв. / 61,36€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
-                  <Table.Cell textAlign="center">Уроци по барабани / ударни</Table.Cell>
+                  <Table.Cell textAlign="center">Уроци по барабани / ударни / ксилофон</Table.Cell>
                   <Table.Cell textAlign="center">
                     <b>Начинаещи:</b> 4 урока на месец с продължителност от 45 до 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">180лв./ 92,03€</Table.Cell>
+                  <Table.Cell textAlign="center">200лв. / 102,26€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
-                  <Table.Cell textAlign="center">Уроци по барабани / ударни</Table.Cell>
+                  <Table.Cell textAlign="center">Уроци по барабани / ударни / ксилофон</Table.Cell>
                   <Table.Cell textAlign="center">
                     <b>Напреднали:</b> 8 урока на месец с продължителност 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">340 лв. / 173,84€</Table.Cell>
+                  <Table.Cell textAlign="center">360 лв. / 184,07€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">
