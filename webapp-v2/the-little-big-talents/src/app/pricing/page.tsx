@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const Page: React.FC = () => {
   return (
     <Stack>
-      <PageBanner text="Цени" />
+      <PageBanner text="Цени" imgSrc="/pricing/banner.jpg" />
       <Stack w={'100%'} gap={'16'} pb={5}>
         <Flex>
           <Stack alignItems={'center'} margin={'auto'}>
