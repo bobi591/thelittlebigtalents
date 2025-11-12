@@ -36,7 +36,7 @@ const Page: React.FC = () => {
                   <Table.Cell textAlign="center">
                     <b>Начинаещи:</b> 4 урока на месец с продължителност от 45 до 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">180лв. / 92,03 €</Table.Cell>
+                  <Table.Cell textAlign="center">180лв. / 92,03€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">
@@ -52,7 +52,7 @@ const Page: React.FC = () => {
                   <Table.Cell textAlign="center">
                     <b>Начинаещи:</b> 4 урока на месец с продължителност от 45 до 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">180лв. / 92,03 €</Table.Cell>
+                  <Table.Cell textAlign="center">180лв. / 92,03€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">Уроци по пиано / цигулка</Table.Cell>
@@ -66,14 +66,14 @@ const Page: React.FC = () => {
                   <Table.Cell textAlign="center">
                     <b>Пиано за певци:</b> 4 урока на месец с продължителност 45 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">100лв. / 51,13 €</Table.Cell>
+                  <Table.Cell textAlign="center">100лв. / 51,13€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">Уроци по барабани / ударни</Table.Cell>
                   <Table.Cell textAlign="center">
                     <b>Начинаещи:</b> 4 урока на месец с продължителност от 45 до 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">180лв./ 92,03 €</Table.Cell>
+                  <Table.Cell textAlign="center">180лв./ 92,03€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">Уроци по барабани / ударни</Table.Cell>
@@ -89,7 +89,7 @@ const Page: React.FC = () => {
                   <Table.Cell textAlign="center">
                     4 урока на месец с продължителност 45 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">120 лв. / 61,36 €</Table.Cell>
+                  <Table.Cell textAlign="center">120 лв. / 61,36€</Table.Cell>
                 </Table.Row>
               </Table.Body>
             </Table.Root>
@@ -121,14 +121,14 @@ const Page: React.FC = () => {
                   <Table.Cell textAlign="center">
                     <b>Начинаещи:</b> 4 урока на месец с продължителност 30мн.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">100 лв. / 51,13 €</Table.Cell>
+                  <Table.Cell textAlign="center">100 лв. / 51,13€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">Солфеж и елементи на музиката</Table.Cell>
                   <Table.Cell textAlign="center">
                     <b>Напреднали:</b> 4 урока на месец с продължителност 45мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">100 лв. / 51,13 €</Table.Cell>
+                  <Table.Cell textAlign="center">100 лв. / 51,13€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">Вокални групи</Table.Cell>
@@ -136,7 +136,7 @@ const Page: React.FC = () => {
                     <b>“Малките пеещи таланти” - от 5 до 9г.</b> 4 репетиции на месец с
                     продължителност 60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">120 лв. / 61,36 €</Table.Cell>
+                  <Table.Cell textAlign="center">120 лв. / 61,36€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">Вокални групи</Table.Cell>
@@ -144,7 +144,7 @@ const Page: React.FC = () => {
                     <b>Тийн вокална формация - 9 до 16г.</b> 4 репетиции на месец с продължителност
                     60 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">120 лв. / 61,36 €</Table.Cell>
+                  <Table.Cell textAlign="center">120 лв. / 61,36€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">
@@ -153,17 +153,17 @@ const Page: React.FC = () => {
                   <Table.Cell textAlign="center">
                     Единичен урок с продължителност 90 мин.
                   </Table.Cell>
-                  <Table.Cell textAlign="center">25 лв. / 12,78 €</Table.Cell>
+                  <Table.Cell textAlign="center">25 лв. / 12,78€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">Прослушване за прием</Table.Cell>
                   <Table.Cell textAlign="center"></Table.Cell>
-                  <Table.Cell textAlign="center">40 лв. / 20,45 €</Table.Cell>
+                  <Table.Cell textAlign="center">40 лв. / 20,45€</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell textAlign="center">Консултация с преподавател</Table.Cell>
                   <Table.Cell textAlign="center"></Table.Cell>
-                  <Table.Cell textAlign="center">50 лв. / 25,56 €</Table.Cell>
+                  <Table.Cell textAlign="center">50 лв. / 25,56€</Table.Cell>
                 </Table.Row>
               </Table.Body>
             </Table.Root>
