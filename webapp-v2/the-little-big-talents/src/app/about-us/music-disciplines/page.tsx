@@ -37,7 +37,8 @@ const Page: React.FC = () => {
               </Stack>
               <Stack textStyle={'sm'}>
                 <Text>{`За най-малките – от 5 до 9г.`}</Text>
-                <Text>{`За тийнеджъри от 10 до 16г.`}</Text>
+                <Text>{`За тийнеджъри от 10 до 18г.`}</Text>
+                <Text>{`За възрастни`}</Text>
               </Stack>
             </Stack>
           </Stack>
@@ -57,12 +58,14 @@ const Page: React.FC = () => {
               <Stack>
                 <Link href="/individual-lessons/piano">{`Пиано`}</Link>
                 <Link href="/individual-lessons/guitar">{`Китара`}</Link>
-                <Link href="/individual-lessons/drums">{`Барабани`}</Link>
                 <Link href="/individual-lessons/violin">{`Цигулка`}</Link>
+                <Link href="/individual-lessons/drums">{`Барабани`}</Link>
+                <Link href="#">{`Ксилофон, маримба и прекусии`}</Link>
               </Stack>
               <Stack textStyle={'sm'}>
                 <Text>{`За най-малките – от 5 до 9г.`}</Text>
-                <Text>{`За тийнеджъри от 10 до 16г.`}</Text>
+                <Text>{`За тийнеджъри от 10 до 18г.`}</Text>
+                <Text>{`За възрастни`}</Text>
               </Stack>
             </Stack>
           </Stack>
