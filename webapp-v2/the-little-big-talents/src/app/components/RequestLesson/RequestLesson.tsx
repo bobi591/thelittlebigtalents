@@ -52,15 +52,23 @@ const RequestLesson: React.FC<Omit<ButtonProps, 'onClick'>> = (props) => {
 
   const onSubmit = useCallback(
     async (data: RequestLessonData) => {
-      await fetch('/api/send-email', {
-        method: 'POST',
-        body: JSON.stringify(data),
-      });
-      setOpen(false);
-      toaster.create({
-        title: `Запитването е изпратено успешно.`,
-        type: 'success',
-      });
+      try {
+        await fetch('/api/send-email', {
+          method: 'POST',
+          body: JSON.stringify(data),
+        });
+        setOpen(false);
+        toaster.create({
+          title: `Запитването е изпратено успешно.`,
+          type: 'success',
+        });
+      } catch {
+        toaster.create({
+          title: `Възникна грешка при изпращането.`,
+          description: `Моля, свържете се с нас на телефон 087 619 1718.`,
+          type: 'error',
+        });
+      }
     },
     [setOpen],
   );
