@@ -15,14 +15,12 @@ const Page: React.FC = () => {
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Вокални групи"
             src={'/group-lessons/vocal-groups/vocal-groups-1.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>
                 Вокална група “Малките пеещи таланти” - от 5 до 9г.
@@ -36,14 +34,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
-            flex={1}
             alt="Вокални групи"
             src={'/group-lessons/vocal-groups/vocal-groups-2.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>Тийн вокална група – от 9 до 16г.</Heading>
               <Stack>

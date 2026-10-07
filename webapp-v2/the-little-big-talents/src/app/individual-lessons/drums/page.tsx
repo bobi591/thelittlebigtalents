@@ -24,14 +24,12 @@ const Page: React.FC = () => {
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Уроци по барабани"
             src={'/individual-lessons/drums/drums-1.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading>В началния етап учим</Heading>
               <List.Root>
@@ -46,14 +44,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
-            flex={1}
             alt="Уроци по барабани"
             src={'/individual-lessons/drums/drums-2.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Heading>Основно обучение по барабани</Heading>
             <Text>Различни техники за бързина като:</Text>
             <List.Root>

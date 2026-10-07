@@ -28,14 +28,12 @@ const Page: React.FC = () => {
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Уроци по поп и джаз пеене"
             src={'/individual-lessons/pop-jazz-singing/popjazz-1.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading>Начален етап на обучение</Heading>
               <List.Root>
@@ -56,14 +54,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
-            flex={1}
             alt="Уроци по поп и джаз пеене"
             src={'/individual-lessons/pop-jazz-singing/popjazz-2.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Heading>Основно вокално обучение</Heading>
             <List.Root>
               <List.Item>{`Развитие потенциала на гласа`}</List.Item>
@@ -85,14 +81,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Уроци по поп и джаз пеене"
             src={'/individual-lessons/pop-jazz-singing/popjazz-3.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading>Подготовка за сценични изяви, концерти и вокални конкурси</Heading>
               <List.Root>

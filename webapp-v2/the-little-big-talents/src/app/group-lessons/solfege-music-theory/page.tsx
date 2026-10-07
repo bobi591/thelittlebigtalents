@@ -20,14 +20,12 @@ const Page: React.FC = () => {
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Солфеж и музикална теория"
             src={'/group-lessons/solfege-music-theory/solfege-music-theory-1.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>Какво е солфеж?</Heading>
               <Stack>
@@ -38,14 +36,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
-            flex={1}
             alt="Солфеж и музикална теория"
             src={'/group-lessons/solfege-music-theory/solfege-music-theory-2.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>Защо е необходимо да се изучава солфеж?</Heading>
               <Stack>
@@ -57,14 +53,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Солфеж и музикална теория"
             src={'/group-lessons/solfege-music-theory/solfege-music-theory-3.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>Какво е теория на музикалните елементи?</Heading>
               <Stack>
@@ -76,14 +70,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
-            flex={1}
             alt="Солфеж и музикална теория"
             src={'/group-lessons/solfege-music-theory/solfege-music-theory-4.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>Обучение</Heading>
               <Stack>

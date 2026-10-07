@@ -16,14 +16,12 @@ const Page: React.FC = () => {
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Desislava Vasileva"
             src={'/about-us/team/Desislava.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>ДЕСИСЛАВА ВАСИЛЕВА</Heading>
               <Text
@@ -40,14 +38,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
-            flex={1}
             alt="Avrora Timeva"
             src={'/about-us/team/Avrora.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>АВРОРА ТИМЕВА</Heading>
               <Text textAlign={'center'}>{`Преподавател по пиано и камерни състави`}</Text>
@@ -75,14 +71,12 @@ Goeres, Zoila Muñoz, Бойко Цветанов, Валентин Ватев.`
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
-            flex={1}
             alt="Velislava Mancheva"
             src={'/about-us/team/Vili.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>ВЕЛИСЛАВА МАНЧЕВА</Heading>
               <Text textAlign={'center'}>{`Преподавател по китара и камерни състави`}</Text>
@@ -94,14 +88,12 @@ Goeres, Zoila Muñoz, Бойко Цветанов, Валентин Ватев.`
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Teodor Chirpanliev"
             src={'/about-us/team/Teodor.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>ТЕОДОР ЧИРПАНЛИЕВ</Heading>
               <Text textAlign={'center'}>{`Преподавател по барабани и ударни инструменти`}</Text>
@@ -113,14 +105,12 @@ Goeres, Zoila Muñoz, Бойко Цветанов, Валентин Ватев.`
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Anna-Maria Vartovska"
             src={'/about-us/team/Anna-Maria.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>АННА – МАРИЯ ВЪРТОВСКА</Heading>
               <Text
@@ -148,14 +138,12 @@ Goeres, Zoila Muñoz, Бойко Цветанов, Валентин Ватев.`
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Vera Nedyalkova-Doneva"
             src={'/about-us/team/Vera.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>ВЕРА НЕДЯЛКОВА – ДОНЕВА</Heading>
               <Text textAlign={'center'}>{`Преподавател по цигулка`}</Text>
@@ -186,14 +174,12 @@ Goeres, Zoila Muñoz, Бойко Цветанов, Валентин Ватев.`
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Selma Churukova"
             src={'/about-us/team/Selma.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>СЕЛМА ЧУРУКОВА</Heading>
               <Text textAlign={'center'}>{`Преподавател по класическо и джаз пиано`}</Text>
@@ -219,14 +205,12 @@ Goeres, Zoila Muñoz, Бойко Цветанов, Валентин Ватев.`
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Stelian Nikolov"
             src={'/about-us/team/Stelian.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>СТЕЛЯН НИКОЛОВ</Heading>
               <Text

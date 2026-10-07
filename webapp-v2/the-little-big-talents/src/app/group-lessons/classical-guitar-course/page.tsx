@@ -20,14 +20,12 @@ const Page: React.FC = () => {
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Курс по китара за малчугани"
             src={'/group-lessons/classical-guitar-course/classical-guitar-course-1.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>
                 Курс по китара за малчугани в два модула - Ниво I и Ниво II
@@ -41,14 +39,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
-            flex={1}
             alt="Курс по китара за малчугани"
             src={'/group-lessons/classical-guitar-course/classical-guitar-course-2.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>Първи модул – Ниво I</Heading>
               <Stack>
@@ -65,14 +61,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Курс по китара за малчугани"
             src={'/group-lessons/classical-guitar-course/classical-guitar-course-3.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading textAlign={'center'}>Втори модул – Ниво II</Heading>
               <Stack>

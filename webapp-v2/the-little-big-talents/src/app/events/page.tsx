@@ -15,14 +15,12 @@ const Page: React.FC = () => {
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Курс по китара"
             src={'/events/guitar-course.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Text fontWeight={'bold'} textAlign={'center'}>
                 ПРОСЛУШВАНЕ!
@@ -63,22 +61,20 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.subtle'}>
           <Image
-            flex={1}
             alt="Курс по пиано"
             src={'/events/piano-course.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Text fontWeight={'bold'} textAlign={'center'}>
                 ПРОСЛУШВАНЕ!
               </Text>
               <Heading textAlign={'center'}>ПИАНО ЗА НАЙ-МАЛКИТЕ</Heading>
               <Text>
-                Курс за групово обучение по пиано е специално разработена система за обучение на деца
-                от 4 до 6 години.
+                Курс за групово обучение по пиано е специално разработена система за обучение на
+                деца от 4 до 6 години.
               </Text>
               <Text>
                 Ако вярвате, че Вашето дете притежава музикален талант, проявете смелост и го
@@ -118,14 +114,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Кастинг за вокална група"
             src={'/events/casting-vocal-group.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Text fontWeight={'bold'} textAlign={'center'}>
                 КАСТИНГ ЗА НОВИ ПЕЕЩИ ЗВЕЗДИЧКИ

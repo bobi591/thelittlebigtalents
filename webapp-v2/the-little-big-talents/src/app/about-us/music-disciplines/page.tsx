@@ -20,14 +20,12 @@ const Page: React.FC = () => {
       <Stack margin={'auto'} gap={10} w={'100%'}>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Музикални дисциплини"
             src={'/about-us/music-disciplines/subjects-1.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading>Вокални дисциплини</Heading>
               <Stack>
@@ -45,14 +43,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
-            flex={1}
             alt="Инструментални дисциплини"
             src={'/about-us/music-disciplines/subjects-2.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading>Инструментални дисциплини</Heading>
               <Stack>
@@ -72,14 +68,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack>
           <Image
-            flex={1}
             alt="Теоретични дисциплини"
             src={'/about-us/music-disciplines/subjects-3.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading>Теоретични дисциплини</Heading>
               <Stack>
@@ -91,14 +85,12 @@ const Page: React.FC = () => {
         </PageSectionStack>
         <PageSectionStack bgColor={'bg.muted'}>
           <Image
-            flex={1}
             alt="Сценични дисциплини"
             src={'/about-us/music-disciplines/subjects-4.jpg'}
             maxH={'400px'}
-            margin={'auto'}
             fit="contain"
           />
-          <Stack flex={1}>
+          <Stack>
             <Stack>
               <Heading>Сценични дисциплини</Heading>
               <Stack>
