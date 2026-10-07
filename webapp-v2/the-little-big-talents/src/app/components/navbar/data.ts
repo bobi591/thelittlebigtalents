@@ -53,6 +53,10 @@ export const NavbarData: NavbarItem[] = [
             title: 'Цигулка',
             link: '/individual-lessons/violin',
           },
+          {
+            title: 'Ксилофон',
+            link: '/individual-lessons/xylophone',
+          },
         ],
       },
       {

@@ -11,7 +11,7 @@ import Footer from './components/footer/Footer';
 export const metadata: Metadata = {
   title: 'Музикален Център "Малките Големи Таланти"',
   description:
-    'Музикален Център "Малките Големи Таланти". Уроци по барабани, китара, пеене, пиано и солфеж.',
+    'Музикален Център "Малките Големи Таланти". Уроци по барабани, ксилофон, китара, пеене, пиано и солфеж.',
 };
 
 export default function RootLayout({

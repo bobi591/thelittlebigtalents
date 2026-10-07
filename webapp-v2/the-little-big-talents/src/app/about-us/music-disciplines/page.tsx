@@ -56,7 +56,7 @@ const Page: React.FC = () => {
                 <Link href="/individual-lessons/guitar">{`Китара`}</Link>
                 <Link href="/individual-lessons/violin">{`Цигулка`}</Link>
                 <Link href="/individual-lessons/drums">{`Барабани`}</Link>
-                <Link href="#">{`Ксилофон, маримба и прекусии`}</Link>
+                <Link href="/individual-lessons/xylophone">{`Ксилофон, маримба и перкусии`}</Link>
               </Stack>
               <Stack textStyle={'sm'}>
                 <Text>{`За най-малките – от 5 до 9г.`}</Text>
